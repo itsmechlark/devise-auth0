@@ -1,0 +1,26 @@
+require:
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rails
+  - rubocop-rspec
+
+inherit_gem:
+  rubocop-shopify: rubocop.yml
+
+AllCops:
+  DisplayCopNames: true
+  DisplayStyleGuide: true
+  TargetRubyVersion: 2.7
+  NewCops: enable
+  Exclude:
+    - Gemfile*
+    - gemfiles/*
+    - spec/fixtures/rails_app/**/*
+    - vendor/bundle/**/*
+
+Rails:
+  Enabled: true
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*.rb"
