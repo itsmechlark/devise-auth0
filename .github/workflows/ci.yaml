@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true
+    - name: Run RuboCop
+      run: bundle exec rubocop
+
+  rspec:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        gemfile: [rails_5.2_stable, rails_6.0_stable, rails_6.1_stable]
+        ruby: ['2.7', '3.0', '3.1']
+    env:
+      BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - name: Suppress git warnings
+      run: git config --global init.defaultBranch main
+    - name: Run RSpec
+      run: bundle exec rspec
