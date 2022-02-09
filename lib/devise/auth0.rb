@@ -26,11 +26,12 @@ module Devise
   module Auth0
     extend ::Dry::Configurable
 
-    setting(:domain, default: ENV["AUTH0_DOMAIN"].presence)
     setting(:algorithm, default: "RS256")
     setting(:aud, default: ENV["AUTH0_AUDIENCE"].presence)
     setting(:client_id, default: ENV["AUTH0_CLIENT_ID"].presence)
     setting(:client_secret, default: ENV["AUTH0_CLIENT_SECRET"].presence)
+    setting(:domain, default: ENV["AUTH0_DOMAIN"].presence)
+    setting(:omniauth, default: false)
   end
 end
 
