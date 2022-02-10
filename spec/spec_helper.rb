@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "simplecov"
+
 SimpleCov.start("rails") do
   add_filter "/lib/devise/auth0/version.rb"
   add_filter "/spec/"
@@ -18,18 +19,19 @@ ENV["AUTH0_AUDIENCE"] ||= "https://rails-api-auth-sample.firstcircle.io"
 ENV["AUTH0_CLIENT_ID"] ||= Faker::Internet.password
 ENV["AUTH0_CLIENT_SECRET"] ||= Faker::Internet.password
 
-require "multi_json"
-require "timecop"
-require "vcr"
-require "webmock/rspec"
-
 require File.expand_path(
   "fixtures/rails_app/config/environment", __dir__
 )
 
 require "rspec/rails"
+require "multi_json"
+require "timecop"
+require "vcr"
+require "webmock/rspec"
 
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].sort.each { |f| require f }
+
+ActiveRecord::Migration.maintain_test_schema!
 
 VCR.configure do |config|
   config.allow_http_connections_when_no_cassette = false
