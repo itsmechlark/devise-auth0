@@ -11,16 +11,17 @@ end
 require "bundler/setup"
 require "dotenv/load"
 require "faker"
-require "multi_json"
-require "timecop"
-require "vcr"
-require "webmock/rspec"
 
 ENV["RAILS_ENV"] ||= "test"
 ENV["AUTH0_DOMAIN"] ||= "firstcircle-dev.eu.auth0.com"
 ENV["AUTH0_AUDIENCE"] ||= "https://rails-api-auth-sample.firstcircle.io"
 ENV["AUTH0_CLIENT_ID"] ||= Faker::Internet.password
 ENV["AUTH0_CLIENT_SECRET"] ||= Faker::Internet.password
+
+require "multi_json"
+require "timecop"
+require "vcr"
+require "webmock/rspec"
 
 require File.expand_path(
   "fixtures/rails_app/config/environment", __dir__
@@ -31,8 +32,14 @@ require "rspec/rails"
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].sort.each { |f| require f }
 
 VCR.configure do |config|
+  config.allow_http_connections_when_no_cassette = false
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
+  config.configure_rspec_metadata!
   config.hook_into(:webmock)
+
+  unless ENV.key?("CI")
+    config.default_cassette_options = { record: :new_episodes }
+  end
 
   [
     "AUTH0_DOMAIN",
