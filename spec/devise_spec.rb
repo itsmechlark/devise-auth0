@@ -30,7 +30,7 @@ RSpec.describe(Devise) do
     end
 
     it "defaults to '/auth/auth0/callback' for callback_path" do
-      expect(config.callback_path).to(eq('/auth/auth0/callback',))
+      expect(config.callback_path).to(eq("/auth/auth0/callback",))
     end
 
     it "defaults to ENV['AUTH0_CLIENT_ID'] for client_id" do
