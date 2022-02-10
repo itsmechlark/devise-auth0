@@ -28,11 +28,14 @@ module Devise
 
     setting(:algorithm, default: "RS256")
     setting(:aud, default: ENV["AUTH0_AUDIENCE"].presence)
+    setting(:callback_path, default: '/auth/auth0/callback')
     setting(:client_id, default: ENV["AUTH0_CLIENT_ID"].presence)
     setting(:client_secret, default: ENV["AUTH0_CLIENT_SECRET"].presence)
     setting(:domain, default: ENV["AUTH0_DOMAIN"].presence)
     setting(:omniauth, default: false)
+    setting(:scope, default: 'openid')
   end
 end
 
 require "devise/auth0/version"
+require 'devise/auth0/rails'

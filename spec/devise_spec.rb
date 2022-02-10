@@ -29,6 +29,10 @@ RSpec.describe(Devise) do
       expect(config.aud).to(eq(ENV["AUTH0_AUDIENCE"]))
     end
 
+    it "defaults to '/auth/auth0/callback' for callback_path" do
+      expect(config.callback_path).to(eq('/auth/auth0/callback',))
+    end
+
     it "defaults to ENV['AUTH0_CLIENT_ID'] for client_id" do
       expect(config.client_id).to(eq(ENV["AUTH0_CLIENT_ID"]))
     end
@@ -42,7 +46,14 @@ RSpec.describe(Devise) do
     end
 
     it "defaults to false for omniauth" do
+      # TODO: Setting this manually here since in the fixture rails app's
+      # devise initializer we're setting the omniauth option to true
+      config.omniauth = false
       expect(config.omniauth).to(be_falsey)
+    end
+
+    it "defaults to openid for scope" do
+      expect(config.scope).to(eq("openid"))
     end
   end
 end

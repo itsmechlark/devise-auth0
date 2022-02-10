@@ -6,7 +6,7 @@ require 'devise/auth0/rails'
 RSpec.describe Devise::Engine do
   subject(:initializer) do
     described_class.initializers.detect do |initializer|
-      initializer.name == 'devise.auth0'
+      initializer.name == 'devise.omniauth'
     end 
   end 
 
@@ -21,11 +21,11 @@ RSpec.describe Devise::Engine do
   end
 
   describe 'auth0 provider initialization' do
-    subject(:config) { Devise.omniauth_configs[:auth0] }
-
     context 'when devise auth0 omniauth is true' do
-      pending 'adds auth0 provider to omniauth from configuration' do
-        expect(true).to be(false)
+      it 'adds auth0 provider to omniauth from configuration' do
+        middlewares = Rails.application.middleware
+        auth0_provider = middlewares.find { |middleware| middleware.name == 'OmniAuth::Builder' }
+        expect(auth0_provider).not_to be_nil
       end
     end
   end
