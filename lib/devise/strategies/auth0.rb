@@ -2,8 +2,8 @@
 
 require "devise/strategies/base"
 
-require_relative "helpers"
-require_relative "token"
+require_relative "../auth0/helpers"
+require_relative "../auth0/token"
 
 module Devise
   module Strategies

@@ -6,11 +6,11 @@ require "dry-configurable"
 # Authentication library
 module Devise
   module Models
-    autoload :Auth0, "devise/auth0/model"
+    autoload :Auth0, "devise/models/auth0"
   end
 
   module Strategies
-    autoload :Auth0, "devise/auth0/strategy"
+    autoload :Auth0, "devise/strategies/auth0"
   end
 
   # Yields to Devise::Auth0.config
@@ -20,7 +20,7 @@ module Devise
     yield(Devise::Auth0.config)
   end
 
-  add_module(:auth0, strategy: true, model: "devise/auth0/model")
+  add_module(:auth0, strategy: true, model: "devise/models/auth0")
 
   # Auth0 extension for devise
   module Auth0
