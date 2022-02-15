@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "omniauth"
 require "omniauth-auth0"
 
 module Devise
