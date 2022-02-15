@@ -20,7 +20,7 @@ module Devise
     yield(Devise::Auth0.config)
   end
 
-  add_module(:auth0, strategy: :auth0, model: "devise/auth0/model")
+  add_module(:auth0, strategy: true, model: "devise/auth0/model")
 
   # Auth0 extension for devise
   module Auth0
