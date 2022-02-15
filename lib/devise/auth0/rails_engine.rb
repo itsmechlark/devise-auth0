@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "omniauth-auth0"
+require "omniauth/rails_csrf_protection"
 
 module Devise
   class Engine < ::Rails::Engine
