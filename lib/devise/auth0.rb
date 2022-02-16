@@ -12,8 +12,6 @@ module Devise
     yield(Devise::Auth0.config)
   end
 
-  add_module(:auth0, strategy: true, model: "devise/models/auth0")
-
   module Models
     autoload :Auth0, "devise/models/auth0"
   end
@@ -35,7 +33,10 @@ module Devise
     setting(:omniauth, default: false)
     setting(:scope, default: "openid")
   end
+
+  add_module(:auth0, strategy: true, model: "devise/models/auth0")
 end
 
 require "devise/auth0/version"
 require "devise/auth0/rails_engine"
+require "devise/strategies/auth0"
