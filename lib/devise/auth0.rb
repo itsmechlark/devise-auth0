@@ -34,9 +34,9 @@ module Devise
     setting(:scope, default: "openid")
   end
 
-  add_module(:auth0, strategy: true, model: "devise/models/auth0")
+  add_module(:auth0, strategy: true)
 end
 
 require "devise/auth0/version"
-require "devise/auth0/rails_engine"
+require "devise/auth0/rails"
 require "devise/strategies/auth0"

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "spec_helper"
-require "devise/auth0/rails_engine"
+require "devise/auth0/rails"
 
 RSpec.describe("Devise::Engine") do
   subject(:initializer) do
