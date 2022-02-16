@@ -1,3 +1,4 @@
+.env
 *.gem
 *.rbc
 /.config
@@ -57,3 +58,7 @@ build-iPhoneSimulator/
 
 gemfiles/.bundle
 gemfiles/*.lock
+
+/spec/fixtures/rails_app/log/*
+/spec/fixtures/rails_app/tmp/*
+*.sqlite3

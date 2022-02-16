@@ -1,8 +1,8 @@
 name: CI
 
 on:
-  - push
-  - pull_request
+  pull_request:
+    types: [opened, reopened, synchronize]
 
 jobs:
   rubocop:
@@ -22,8 +22,18 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        gemfile: [rails_5.2_stable, rails_6.0_stable, rails_6.1_stable]
+        gemfile:
+          - rails_5.2_stable
+          - rails_6.0_stable
+          - rails_6.1_stable
+          - rails_7.0_stable
+          - rails_edge
         ruby: ['2.7', '3.0', '3.1']
+        exclude:
+          - ruby: '3.0'
+            gemfile: rails_5.2_stable
+          - ruby: '3.1'
+            gemfile: rails_5.2_stable
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
     steps:

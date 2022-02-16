@@ -1,0 +1,240 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://[AUTH0_DOMAIN]/oauth/token
+    body:
+      encoding: UTF-8
+      string: '{"grant_type":"client_credentials","client_id":"[AUTH0_CLIENT_ID]","client_secret":"[AUTH0_CLIENT_SECRET]","audience":"https://[AUTH0_DOMAIN]/api/v2/"}'
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.6.5p114
+      Content-Type:
+      - application/json
+      Auth0-Client:
+      - eyJuYW1lIjoicnVieS1hdXRoMCIsInZlcnNpb24iOiI1LjYuMSIsImVudiI6eyJydWJ5IjoiMi42LjUiLCJyYWlscyI6IjUuMi42In19
+      Content-Length:
+      - '223'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - "[AUTH0_DOMAIN]"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 08 Feb 2022 16:14:11 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 6da6263ce94cd9cc-SIN
+      Cache-Control:
+      - no-store
+      Set-Cookie:
+      - __cf_bm=l7I1o5A3511v7.gaLgtT5yGOEUKiztV3UQP5t1QevBc-1644336851-0-AffjnyefEJGV8oFIpQoiSbrTH84LlOEl1leLbEvtUTekwKrwiPM8GumqNV8L2szvA/lkchKborAaB+KDHszx5I4=;
+        path=/; expires=Tue, 08-Feb-22 16:44:11 GMT; domain=.eu.auth0.com; HttpOnly;
+        Secure; SameSite=None
+      - did=s%3Av0%3A2678b850-88fa-11ec-a797-b994209d27db.TE2vGA2Pn4NFZc0cij0XBS%2BYSZTzrTA64nk08H6mpZM;
+        Max-Age=31557600; Path=/; Expires=Wed, 08 Feb 2023 22:14:11 GMT; HttpOnly;
+        Secure; SameSite=None
+      - did_compat=s%3Av0%3A2678b850-88fa-11ec-a797-b994209d27db.TE2vGA2Pn4NFZc0cij0XBS%2BYSZTzrTA64nk08H6mpZM;
+        Max-Age=31557600; Path=/; Expires=Wed, 08 Feb 2023 22:14:11 GMT; HttpOnly;
+        Secure
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Accept-Encoding, Origin
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ot-Baggage-Auth0-Request-Id:
+      - 6da6263ce94cd9cc
+      Ot-Tracer-Sampled:
+      - 'true'
+      Ot-Tracer-Spanid:
+      - 5de7c82c29a073a7
+      Ot-Tracer-Traceid:
+      - 11689d08591849d5
+      Pragma:
+      - no-cache
+      X-Auth0-Requestid:
+      - ca0b4c3d567b7df69570
+      X-Content-Type-Options:
+      - nosniff
+      X-Ratelimit-Limit:
+      - '30'
+      X-Ratelimit-Remaining:
+      - '29'
+      X-Ratelimit-Reset:
+      - '1644336852'
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlMYVlEMFR2VjdPLW16clFXeHhxTCJ9.eyJpc3MiOiJodHRwczovL2ZpcnN0Y2lyY2xlLWRldi5ldS5hdXRoMC5jb20vIiwic3ViIjoiSVBVbFgybHB5S2xJc043QnJiZkdHVXVpaEx0SlRqUUJAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZmlyc3RjaXJjbGUtZGV2LmV1LmF1dGgwLmNvbS9hcGkvdjIvIiwiaWF0IjoxNjQ0MzM2ODUxLCJleHAiOjE2NDQ0MjMyNTEsImF6cCI6IklQVWxYMmxweUtsSXNON0JyYmZHR1V1aWhMdEpUalFCIiwic2NvcGUiOiJyZWFkOnVzZXJzIHVwZGF0ZTp1c2VycyBkZWxldGU6dXNlcnMgY3JlYXRlOnVzZXJzIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.DDM-yKswTcLQ2Zsf62omZ_XIEE2QtVH9vk0lwEuZ69YsKCGSlSnNqnNk7JzogrbSCqEy2JuOqwK53I6_x5jkvZKSEgXu6QMOc-aLlyUPH8U-GCkGDrFVKYsbhX1k6jZHSI2iVPCbjEZTkBtcy-CgEzFZ6j53V9mySHu7fNplOaw1F0LPJkfPD0GH5TA5G7fQJ4LZk5PMlJVgcCNsGBMlTYjqK7c7ur77fFySOHTG1crYHkoRpHgv-y4yu87dWEf-bh4mNjb-znlLlb32_RCbg9yAW7EvLg7RIsJ2b44E49VDQptOziBqExhV-4sZ-oHI-z2ePnMdxINbGb7Z577Ssw","scope":"read:users
+        update:users delete:users create:users","expires_in":86400,"token_type":"Bearer"}'
+  recorded_at: Tue, 08 Feb 2022 09:31:11 GMT
+- request:
+    method: get
+    uri: https://[AUTH0_DOMAIN]/.well-known/jwks.json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.9.3
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 08 Feb 2022 16:14:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 6da62647ed69d9cc-SIN
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - public, max-age=15, stale-while-revalidate=15, stale-if-error=86400
+      Last-Modified:
+      - Tue, 08 Feb 2022 15:42:49 GMT
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Accept-Encoding, Origin, Accept-Encoding
+      Cf-Cache-Status:
+      - EXPIRED
+      Access-Control-Allow-Credentials:
+      - 'false'
+      Access-Control-Expose-Headers:
+      - X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ot-Baggage-Auth0-Request-Id:
+      - 6da62647ed69d9cc
+      Ot-Tracer-Sampled:
+      - 'true'
+      Ot-Tracer-Spanid:
+      - 2d9646694f079f20
+      Ot-Tracer-Traceid:
+      - 144780320d21eda0
+      X-Auth0-Requestid:
+      - 4e9b441ade71470b6c99
+      X-Content-Type-Options:
+      - nosniff
+      X-Ratelimit-Limit:
+      - '20'
+      X-Ratelimit-Remaining:
+      - '19'
+      X-Ratelimit-Reset:
+      - '1644336853'
+      Set-Cookie:
+      - __cf_bm=4GSapqMBIgBJBrcIOmqVBUG89jaKEYcVkupsCpfdCUQ-1644336852-0-AYn91Nb9+2hMgtvAg6fSP564n5rXV83zb7qtTTgXm0b2iPozgeCaJWWHOhbWraYnhHIhPL5V+nVZtIPmV1wldeM=;
+        path=/; expires=Tue, 08-Feb-22 16:44:12 GMT; domain=.eu.auth0.com; HttpOnly;
+        Secure; SameSite=None
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"keys":[{"alg":"RS256","kty":"RSA","use":"sig","n":"4I90ihmKAShjPGe7ytMZXO3XGait2EIh6ZdKIyNO1Ju6F5oh1hFvksFzdCD93lQByLObyyzS90gBVd4ephmzEX4A6z5wwkqKGSL9RoVKFo5FgWHomozyd-uTTZ1SSZ-d8A_wVTz4cJK7UcMKXUMbmeWhtqHf71ZwYxtxEfyeMn2Lw_ASQt3tAmnDRJl89SPi1xwCGAS8WhiDWvXFHXUd_raCzJJUnRqKSkwrc56-uf_-EveZenbjzsH-_nehegCqQhQrqaWfNxVjQ6HjGywYcJ_dosJtWG7xzNNEELy50Y98H9A8RkGJykRXTvjDwD2V0OuVgnlBnBoGHQLCdfIlpQ","e":"AQAB","kid":"iLaYD0TvV7O-mzrQWxxqL","x5t":"gSBzwtbfCwiuz5fvtwtd2qEEq2w","x5c":["MIIDEzCCAfugAwIBAgIJMMDKFDMuu/lBMA0GCSqGSIb3DQEBCwUAMCcxJTAjBgNVBAMTHGZpcnN0Y2lyY2xlLWRldi5ldS5hdXRoMC5jb20wHhcNMjEwOTE1MDgwMTM3WhcNMzUwNTI1MDgwMTM3WjAnMSUwIwYDVQQDExxmaXJzdGNpcmNsZS1kZXYuZXUuYXV0aDAuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4I90ihmKAShjPGe7ytMZXO3XGait2EIh6ZdKIyNO1Ju6F5oh1hFvksFzdCD93lQByLObyyzS90gBVd4ephmzEX4A6z5wwkqKGSL9RoVKFo5FgWHomozyd+uTTZ1SSZ+d8A/wVTz4cJK7UcMKXUMbmeWhtqHf71ZwYxtxEfyeMn2Lw/ASQt3tAmnDRJl89SPi1xwCGAS8WhiDWvXFHXUd/raCzJJUnRqKSkwrc56+uf/+EveZenbjzsH+/nehegCqQhQrqaWfNxVjQ6HjGywYcJ/dosJtWG7xzNNEELy50Y98H9A8RkGJykRXTvjDwD2V0OuVgnlBnBoGHQLCdfIlpQIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBRKGIg8ttIMtcpqqd5bDY2p+oZ/DTAOBgNVHQ8BAf8EBAMCAoQwDQYJKoZIhvcNAQELBQADggEBAF/XVXiVnhaGsr4UXPcYbuJdB3L+w7rac/huXheSAWqr6f5n+cRUyAjvqzdzYFm8xZpVPcIXjKKin0U4W+5qhdl314RizN6w1hNnMM7y7IyI8DDYG8kyLhsPaNDCAbSvOYYMNwdZQv63tjzXGFvpmVeuvIuJ5jVpBVboWKNol52CandmrLK619my2LwtRczLlgxowhUd36Xdfnii0lz+Ud5DbLTvQ0h/NE0Y34SRVvQTAs7WtagIc6OAM3jS2cTuPcIzr9mDQZCyZMWNkh3/LJ6hoYFS5jgpKY+wHoOXPpbwkOAb+axlGezNeND2q/sszAQMyu+tgBBRqzwWx4lSq2Y="]},{"alg":"RS256","kty":"RSA","use":"sig","n":"37TlCGT2IPDd7svv3EXlDi_rUTzEcSjUHQlA-QRUfrBqVG6ATfN-BEwcRCbbIDtA2LF1gqXgo20iYb4ywyLPy82o6qjRfGtgJs9W_0ssQ5WtZLgKkbkBjW9rDsYThplR4n6ZQ4cnIq5uFT4P9HKtz4VjX9bRR5gkfQCkBdf-xTpIVgo1PWyULslUsVEsnCX7rSG8d4oEsId08I53B7YqB0V69EfkIuXbTs2BSJN1f06RTBSZlIo-LleuBX78oWXpLvYv0P_jswu2Pgr3oGbtTCqaKBFrHp-8EM4lp4H3xq4kJ53soxPEZZ50wIu7mbUMCO33N3UqvJd993PowhAezw","e":"AQAB","kid":"qmPC82FfyJjfLp5jbKJ0m","x5t":"AtnCY_nt6ogDRLoP8HOQkQTtsx4","x5c":["MIIDEzCCAfugAwIBAgIJHP4VnJ3pgi9yMA0GCSqGSIb3DQEBCwUAMCcxJTAjBgNVBAMTHGZpcnN0Y2lyY2xlLWRldi5ldS5hdXRoMC5jb20wHhcNMjEwOTE1MDgwMTM3WhcNMzUwNTI1MDgwMTM3WjAnMSUwIwYDVQQDExxmaXJzdGNpcmNsZS1kZXYuZXUuYXV0aDAuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA37TlCGT2IPDd7svv3EXlDi/rUTzEcSjUHQlA+QRUfrBqVG6ATfN+BEwcRCbbIDtA2LF1gqXgo20iYb4ywyLPy82o6qjRfGtgJs9W/0ssQ5WtZLgKkbkBjW9rDsYThplR4n6ZQ4cnIq5uFT4P9HKtz4VjX9bRR5gkfQCkBdf+xTpIVgo1PWyULslUsVEsnCX7rSG8d4oEsId08I53B7YqB0V69EfkIuXbTs2BSJN1f06RTBSZlIo+LleuBX78oWXpLvYv0P/jswu2Pgr3oGbtTCqaKBFrHp+8EM4lp4H3xq4kJ53soxPEZZ50wIu7mbUMCO33N3UqvJd993PowhAezwIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBTmBAA49FoSa5MwREthI+ySzD/sqzAOBgNVHQ8BAf8EBAMCAoQwDQYJKoZIhvcNAQELBQADggEBADoZ+bNd9TnuULNVDsS6zv+BtvSvKE2lcIxaGf+Oubh1TwustHYV08zHJdKroFbEmQ6LIHxUVxrZN8WuwLOiD43A2cGifJA3dBpSE7OZ7FgET2eJfZShlO1jRY1QMLfOSrH9ciZsVyT34s2nTk0LDfxViGToQilulhkAMWOUWaSXWUorvSo3GZreSLFlqtSSj2R9tcxvhc0y9R98imqiA5HUVImhEThXn5Tdnbp2P1Yh3XCjjvFvlavIFUMxkVF/BNgdvfU7WROdhOV3DM4MT23bJa1p7R3qJ7ld7GwiETaomiSRGIDeOgelHFXJChgaPHQw12k693c486X6PJVGUw0="]}]}'
+  recorded_at: Tue, 08 Feb 2022 09:31:11 GMT
+- request:
+    method: get
+    uri: https://[AUTH0_DOMAIN]/api/v2/users/google-oauth2%7C101843459961769220909?include_fields=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.6.5p114
+      Content-Type:
+      - application/json
+      Auth0-Client:
+      - eyJuYW1lIjoicnVieS1hdXRoMCIsInZlcnNpb24iOiI1LjYuMSIsImVudiI6eyJydWJ5IjoiMi42LjUiLCJyYWlscyI6IjUuMi42In19
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlMYVlEMFR2VjdPLW16clFXeHhxTCJ9.eyJpc3MiOiJodHRwczovL2ZpcnN0Y2lyY2xlLWRldi5ldS5hdXRoMC5jb20vIiwic3ViIjoiSVBVbFgybHB5S2xJc043QnJiZkdHVXVpaEx0SlRqUUJAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZmlyc3RjaXJjbGUtZGV2LmV1LmF1dGgwLmNvbS9hcGkvdjIvIiwiaWF0IjoxNjQ0MzM2ODUxLCJleHAiOjE2NDQ0MjMyNTEsImF6cCI6IklQVWxYMmxweUtsSXNON0JyYmZHR1V1aWhMdEpUalFCIiwic2NvcGUiOiJyZWFkOnVzZXJzIHVwZGF0ZTp1c2VycyBkZWxldGU6dXNlcnMgY3JlYXRlOnVzZXJzIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.DDM-yKswTcLQ2Zsf62omZ_XIEE2QtVH9vk0lwEuZ69YsKCGSlSnNqnNk7JzogrbSCqEy2JuOqwK53I6_x5jkvZKSEgXu6QMOc-aLlyUPH8U-GCkGDrFVKYsbhX1k6jZHSI2iVPCbjEZTkBtcy-CgEzFZ6j53V9mySHu7fNplOaw1F0LPJkfPD0GH5TA5G7fQJ4LZk5PMlJVgcCNsGBMlTYjqK7c7ur77fFySOHTG1crYHkoRpHgv-y4yu87dWEf-bh4mNjb-znlLlb32_RCbg9yAW7EvLg7RIsJ2b44E49VDQptOziBqExhV-4sZ-oHI-z2ePnMdxINbGb7Z577Ssw
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - "[AUTH0_DOMAIN]"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 08 Feb 2022 16:14:13 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 6da6264f1d12d9cc-SIN
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - origin,accept-encoding
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ot-Baggage-Auth0-Request-Id:
+      - 6da6264f1d12d9cc
+      Ot-Tracer-Sampled:
+      - 'true'
+      Ot-Tracer-Spanid:
+      - 5fcd90466f8426a1
+      Ot-Tracer-Traceid:
+      - 68d92857145efa09
+      X-Content-Type-Options:
+      - nosniff
+      X-Ratelimit-Limit:
+      - '10'
+      X-Ratelimit-Remaining:
+      - '9'
+      X-Ratelimit-Reset:
+      - '1644336855'
+      Set-Cookie:
+      - __cf_bm=M277O6eFVKwuAspBDPaySr0M8XCwEc7E9MBq2q7KQJo-1644336853-0-AWTCma9bS5KlsXNcNprsWvzH4w3xwkwS1SoCCYO6a7nmEIUwe1g0M/GRGmrRjXEBwSc2zbJBk7IulKuHVnnaftI=;
+        path=/; expires=Tue, 08-Feb-22 16:44:13 GMT; domain=.eu.auth0.com; HttpOnly;
+        Secure; SameSite=None
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"created_at":"2021-09-15T10:09:16.597Z","email":"juandelacruz@example.com","email_verified":true,"family_name":"dela Cruz","given_name":"Juan",
+        "identities":[{"provider":"google-oauth2","user_id":"101843459961769220909","connection":"google-oauth2","isSocial":true}],"locale":"en","name":"Juan
+        dela Cruz","nickname":"juandelacruz","updated_at":"2022-02-08T09:31:05.822Z","user_id":"google-oauth2|101843459961769220909","last_ip":"127.0.0.1","last_login":"2022-02-08T09:31:05.821Z","logins_count":1}'
+  recorded_at: Tue, 08 Feb 2022 09:31:11 GMT
+recorded_with: VCR 6.0.0
