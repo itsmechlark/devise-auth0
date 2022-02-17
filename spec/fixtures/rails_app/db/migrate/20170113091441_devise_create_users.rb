@@ -34,6 +34,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
 
       ## Auth0
       t.string(:uid)
+      t.boolean(:bot, default: false)
 
       t.timestamps(null: false)
     end

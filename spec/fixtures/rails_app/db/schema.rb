@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2017_01_13_091441) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "uid"
+    t.boolean "bot", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

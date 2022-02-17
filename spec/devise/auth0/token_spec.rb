@@ -49,11 +49,61 @@ RSpec.describe(Devise::Auth0::Token) do
       before do
         allow(token)
           .to(receive(:verify)
-          .and_return([{ "sub" => "12345@clients", "gty" => "client-credentials" }]))
+          .and_return([{ "azp" => "12345", "gty" => "client-credentials" }]))
       end
 
-      it { expect(user["user_id"]).to(eq("12345@clients")) }
-      it { expect(user["email"]).to(eq("12345@clients.#{::Devise::Auth0.config.domain}")) }
+      it { expect(user["user_id"]).to(eq("12345")) }
+      it { expect(user["email"]).to(eq("12345@#{::Devise::Auth0.config.domain}")) }
+    end
+  end
+
+  describe "#bot?" do
+    before do
+      allow(token)
+        .to(receive(:verify)
+        .and_return([{}]))
+    end
+
+    it { expect(token).not_to(be_bot) }
+
+    context "when not verified" do
+      before do
+        allow(token)
+          .to(receive(:verify)
+          .and_return(nil))
+      end
+
+      it { expect(token).not_to(be_bot) }
+    end
+
+    context "when client credentials" do
+      before do
+        allow(token)
+          .to(receive(:verify)
+          .and_return([{ "gty" => "client-credentials" }]))
+      end
+
+      it { expect(token).to(be_bot) }
+    end
+  end
+
+  describe "#scopes" do
+    before do
+      allow(token)
+        .to(receive(:verify)
+        .and_return([{ "scope" => "read:users read:user/roles" }]))
+    end
+
+    it { expect(token.scopes).to(match_array(["read:users", "read:user/roles"])) }
+
+    context "when not verified" do
+      before do
+        allow(token)
+          .to(receive(:verify)
+          .and_return(nil))
+      end
+
+      it { expect(token.scopes).to(be_empty) }
     end
   end
 
