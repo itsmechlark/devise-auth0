@@ -1,10 +1,18 @@
 # frozen_string_literal: true
 
 require "spec_helper"
+require_relative "session_helpers"
+
+include Requests::SessionHelpers
 
 describe "Login with Auth0", type: :request do
   before do
     Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:auth0]
+  end
+
+  after do
+    OmniAuth.config.mock_auth[:auth0] = nil
+    OmniAuth.config.mock_auth[:default] = nil
   end
 
   context "with valid credentials" do

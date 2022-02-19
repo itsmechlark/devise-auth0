@@ -4,6 +4,7 @@ require "spec_helper"
 
 # rubocop:disable RSpec/FilePath
 RSpec.describe(Devise::Strategies::Auth0, type: :request) do
+  OmniAuth.config.test_mode = false
   include_context("with integration")
   include_context("with fixtures")
 

@@ -4,6 +4,7 @@ module Requests
   module SessionHelpers
     def log_in(invalid: false)
       invalid ? mock_invalid_auth_hash : mock_valid_auth_hash
+      OmniAuth.config.test_mode = true
       Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:auth0]
       get("/auth/auth0/callback?code=<fake_code>")
     end
@@ -11,12 +12,11 @@ module Requests
     def mock_valid_auth_hash
       # The mock_auth configuration allows you to set per-provider (or default)
       # authentication hashes to return during integration testing. https://github.com/omniauth/omniauth/wiki/Integration-Testing
-      OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:auth0] = OmniAuth::AuthHash.new(valid_auth)
+      OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new(valid_auth)
     end
 
     def mock_invalid_auth_hash
-      OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:auth0] = :invalid_credentials
 
       OmniAuth.config.on_failure = proc { |env|
