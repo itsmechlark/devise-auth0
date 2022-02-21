@@ -3,9 +3,11 @@
 require "omniauth-auth0"
 require "omniauth/rails_csrf_protection"
 
+require "devise/auth0/controllers/helpers"
+
 module Devise
   class Engine < ::Rails::Engine
-    initializer "devise.omniauth", after: :load_config_initializers, before: :build_middleware_stack do |app|
+    initializer "devise.auth0", after: :load_config_initializers, before: :build_middleware_stack do |app|
       config = Devise::Auth0.config
       if config.omniauth
         app.middleware.use(::OmniAuth::Builder) do
@@ -20,6 +22,10 @@ module Devise
               },
             }
         end
+      end
+
+      ActiveSupport.on_load(:action_controller) do
+        include Devise::Auth0::Controllers::Helpers
       end
     end
   end

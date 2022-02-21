@@ -20,19 +20,32 @@ module Devise
 
       def user_id
         return if verify.nil?
+        return verify[0]["azp"] if bot?
 
         verify[0]["sub"]
       end
 
       def user
-        @user ||= if verify[0]["gty"] == "client-credentials"
+        @user ||= if bot?
           {
             "user_id" => user_id,
-            "email" => "#{verify[0]["sub"]}.#{config.domain}",
+            "email" => "#{user_id}@#{config.domain}",
           }
         else
-          client.user(user_id)
+          ::Devise::Auth0.client.user(user_id)
         end
+      end
+
+      def bot?
+        return false if verify.nil?
+
+        verify[0]["gty"] == "client-credentials"
+      end
+
+      def scopes
+        return [] if verify.nil?
+
+        verify[0]["scope"].split(" ")
       end
 
       def verify
@@ -57,14 +70,6 @@ module Devise
 
       def config
         ::Devise::Auth0.config
-      end
-
-      def client
-        @auth0_client ||= Auth0Client.new(
-          client_id: config.client_id,
-          client_secret: config.client_secret,
-          domain: config.domain
-        )
       end
 
       def jwks_hash

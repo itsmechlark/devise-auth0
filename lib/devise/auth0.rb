@@ -32,6 +32,14 @@ module Devise
     setting(:domain, default: ENV["AUTH0_DOMAIN"].presence)
     setting(:omniauth, default: false)
     setting(:scope, default: "openid")
+
+    def self.client
+      @auth0_client ||= Auth0Client.new(
+        client_id: config.client_id,
+        client_secret: config.client_secret,
+        domain: config.domain
+      )
+    end
   end
 
   add_module(:auth0, strategy: true)

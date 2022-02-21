@@ -72,4 +72,7 @@ RSpec.configure do |config|
     WebMock.reset!
     WebMock.disable_net_connect!
   end
+
+  config.include(Devise::Test::ControllerHelpers, type: :controller)
+  config.include(Devise::Test::ControllerHelpers, type: :view)
 end
