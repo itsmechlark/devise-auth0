@@ -2,12 +2,20 @@
 
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
+AUTH0_CONFIG = Rails.application.config_for(:auth0)
+
 Devise.setup do |config|
   # TODO: Setting this explicitly to true here so we can test that the
   # auth0 provider gets included when this configuration is true since
   # we aren't able to modify this in runtime (the application loaded already)
   config.auth0 do |auth0|
+    auth0.aud = AUTH0_CONFIG['auth0_aud']
+    auth0.callback_path = '/auth/auth0/callback'
+    auth0.client_id = AUTH0_CONFIG['auth0_client_id']
+    auth0.client_secret = AUTH0_CONFIG['auth0_client_secret']
+    auth0.domain = AUTH0_CONFIG['auth0_domain']
     auth0.omniauth = true
+    auth0.scope = 'openid'
   end
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing

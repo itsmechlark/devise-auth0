@@ -91,7 +91,7 @@ PATH
       auth0 (~> 5.6)
       devise (~> 4.8)
       dry-configurable (~> 0.13)
-      faraday
+      faraday (~> 1.10.0)
       jwt (~> 2.3)
       omniauth-auth0 (~> 3.0)
       omniauth-rails_csrf_protection
@@ -137,7 +137,7 @@ GEM
     erubi (1.10.0)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
-    faraday (1.9.3)
+    faraday (1.10.0)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
       faraday-excon (~> 1.1)
@@ -188,6 +188,8 @@ GEM
     multipart-post (2.1.1)
     netrc (0.11.0)
     nio4r (2.5.8)
+    nokogiri (1.13.1-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.1-x86_64-linux)
       racc (~> 1.4)
     oauth2 (1.4.7)
@@ -320,6 +322,8 @@ GEM
     zeitwerk (2.5.4)
 
 PLATFORMS
+  x86_64-darwin-20
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
@@ -345,4 +349,4 @@ DEPENDENCIES
   webmock (~> 3.4)
 
 BUNDLED WITH
-   2.3.5
+   2.3.7
