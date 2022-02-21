@@ -75,6 +75,7 @@ module Devise
       def jwks_hash
         conn = ::Faraday.new("https://#{config.domain}") do |f|
           f.request(:retry, max: 3)
+          f.adapter(::Faraday.default_adapter)
         end
         jwks_keys = JSON.parse(conn.get("/.well-known/jwks.json").body)["keys"]
         Hash[
