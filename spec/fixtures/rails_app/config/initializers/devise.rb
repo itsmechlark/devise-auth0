@@ -3,6 +3,12 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
+  # TODO: Setting this explicitly to true here so we can test that the
+  # auth0 provider gets included when this configuration is true since
+  # we aren't able to modify this in runtime (the application loaded already)
+  config.auth0 do |auth0|
+    auth0.omniauth = true
+  end
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
