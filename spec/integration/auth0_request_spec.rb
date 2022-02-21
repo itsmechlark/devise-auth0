@@ -13,7 +13,6 @@ describe "Login with Auth0", type: :request do
 
   after do
     OmniAuth.config.mock_auth[:auth0] = nil
-    OmniAuth.config.mock_auth[:default] = nil
   end
 
   context "with valid credentials" do

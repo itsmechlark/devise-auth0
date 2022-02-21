@@ -12,7 +12,6 @@ module Requests
       # The mock_auth configuration allows you to set per-provider (or default)
       # authentication hashes to return during integration testing. https://github.com/omniauth/omniauth/wiki/Integration-Testing
       OmniAuth.config.mock_auth[:auth0] = OmniAuth::AuthHash.new(valid_auth)
-      OmniAuth.config.mock_auth[:default] = OmniAuth::AuthHash.new(valid_auth)
     end
 
     def mock_invalid_auth_hash
