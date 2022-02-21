@@ -7,6 +7,7 @@ include Requests::SessionHelpers
 
 describe "Login with Auth0", type: :request do
   before do
+    OmniAuth.config.test_mode = true
     Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:auth0]
   end
 

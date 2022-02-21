@@ -4,7 +4,6 @@ module Requests
   module SessionHelpers
     def log_in(invalid: false)
       invalid ? mock_invalid_auth_hash : mock_valid_auth_hash
-      OmniAuth.config.test_mode = true
       Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:auth0]
       get("/auth/auth0/callback?code=<fake_code>")
     end
