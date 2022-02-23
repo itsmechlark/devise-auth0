@@ -54,7 +54,7 @@ module Devise
           algorithms: config.algorithm,
           iss: "https://#{config.domain}/",
           verify_iss: true,
-          aud: config.aud,
+          aud: config.aud.split(","),
           verify_aud: true) do |header|
           jwks_hash[header["kid"]]
         end
