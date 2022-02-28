@@ -30,6 +30,8 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency("dry-configurable", "~> 0.13")
   s.add_runtime_dependency("faraday", "~> 1.10.0")
   s.add_runtime_dependency("jwt", "~> 2.3")
+  s.add_runtime_dependency("mail")
+  s.add_runtime_dependency("net-smtp")
   s.add_runtime_dependency("omniauth-auth0", "~> 3.0")
   s.add_runtime_dependency("omniauth-rails_csrf_protection")
 
