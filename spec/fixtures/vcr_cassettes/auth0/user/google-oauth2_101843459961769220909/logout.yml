@@ -1,0 +1,325 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://[AUTH0_DOMAIN]/oauth/token
+    body:
+      encoding: UTF-8
+      string: '{"grant_type":"client_credentials","client_id":"[AUTH0_CLIENT_ID]","client_secret":"[AUTH0_CLIENT_SECRET]","audience":"https://[AUTH0_DOMAIN]/api/v2/"}'
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.6.5p114
+      Content-Type:
+      - application/json
+      Auth0-Client:
+      - eyJuYW1lIjoicnVieS1hdXRoMCIsInZlcnNpb24iOiI1LjYuMSIsImVudiI6eyJydWJ5IjoiMi42LjUiLCJyYWlscyI6IjYuMS40LjYifX0=
+      Content-Length:
+      - '223'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - "[AUTH0_DOMAIN]"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 28 Feb 2022 05:49:21 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 6e475e79fe2d190c-SIN
+      Cache-Control:
+      - no-store
+      Set-Cookie:
+      - __cf_bm=hUgNvmXsiEbSIJmexy2B84Lwjr9UrCBYZk6w7RFhhak-1646027361-0-AVj2LVLyNhsPBM0+CTm4u9KT8mtFukji3GkuQXHdH9yUpIC+hvzFUHis9i4LC8JaniQLPw4HiZSTpfDZZ8F1S5Y=;
+        path=/; expires=Mon, 28-Feb-22 06:19:21 GMT; domain=.eu.auth0.com; HttpOnly;
+        Secure; SameSite=None
+      - did=s%3Av0%3A2cf2c8f0-985a-11ec-b3eb-15d289596244.lTGKQEokfWly07CQ9wXg9hpio%2Bp26XK9prwSdPWVeqI;
+        Max-Age=31557600; Path=/; Expires=Tue, 28 Feb 2023 11:49:21 GMT; HttpOnly;
+        Secure; SameSite=None
+      - did_compat=s%3Av0%3A2cf2c8f0-985a-11ec-b3eb-15d289596244.lTGKQEokfWly07CQ9wXg9hpio%2Bp26XK9prwSdPWVeqI;
+        Max-Age=31557600; Path=/; Expires=Tue, 28 Feb 2023 11:49:21 GMT; HttpOnly;
+        Secure
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Accept-Encoding, Origin
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ot-Baggage-Auth0-Request-Id:
+      - 6e475e79fe2d190c
+      Ot-Tracer-Sampled:
+      - 'true'
+      Ot-Tracer-Spanid:
+      - 789fcff749aef29e
+      Ot-Tracer-Traceid:
+      - '023827767f908e11'
+      Pragma:
+      - no-cache
+      X-Auth0-Requestid:
+      - 67075171f8cf045985e4
+      X-Content-Type-Options:
+      - nosniff
+      X-Ratelimit-Limit:
+      - '30'
+      X-Ratelimit-Remaining:
+      - '29'
+      X-Ratelimit-Reset:
+      - '1646027362'
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlMYVlEMFR2VjdPLW16clFXeHhxTCJ9.eyJpc3MiOiJodHRwczovL2ZpcnN0Y2lyY2xlLWRldi5ldS5hdXRoMC5jb20vIiwic3ViIjoiSVBVbFgybHB5S2xJc043QnJiZkdHVXVpaEx0SlRqUUJAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZmlyc3RjaXJjbGUtZGV2LmV1LmF1dGgwLmNvbS9hcGkvdjIvIiwiaWF0IjoxNjQ2MDI3MzYxLCJleHAiOjE2NDYxMTM3NjEsImF6cCI6IklQVWxYMmxweUtsSXNON0JyYmZHR1V1aWhMdEpUalFCIiwic2NvcGUiOiJyZWFkOmNsaWVudF9ncmFudHMgcmVhZDp1c2VycyB1cGRhdGU6dXNlcnMgZGVsZXRlOnVzZXJzIGNyZWF0ZTp1c2VycyByZWFkOmdyYW50cyBkZWxldGU6Z3JhbnRzIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.UF3oehMvhRZ11R1A76zXf-PXDrUUYnZX93tyINH0R21taBMYa5z93y62ZLLjyHrMBu5mUAG0gNgTt4KsD443Abi3tlb8oEFJ1z_er1lcmAFHZj7Rdtwp27YWVR0O-8v3PLntrZUUDGkZjPIb0JhXLXdrWVOX_-eejhcAIinh8hQ9mLKS9AnmG31u8rn79C6b_Sat9cKxF5pD3hijo_2FlrA789KWAkfjJyXCtTySBx_ZK0-DpcRAlBQEQQONTO_7lmQwDGxCv3gwIAyUZxhvRDx4fXSH1ADrgpoBKkzJIp7UwhJKPGYiDh9NyZdgDHpv0K7_Y1SmIo6KpFx4os3U8w","scope":"read:client_grants
+        read:users update:users delete:users create:users read:grants delete:grants","expires_in":86400,"token_type":"Bearer"}'
+  recorded_at: Mon, 28 Feb 2022 05:49:21 GMT
+- request:
+    method: get
+    uri: https://[AUTH0_DOMAIN]/api/v2/grants?user_id=google-oauth2%7C114473891729720308813
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.6.5p114
+      Content-Type:
+      - application/json
+      Auth0-Client:
+      - eyJuYW1lIjoicnVieS1hdXRoMCIsInZlcnNpb24iOiI1LjYuMSIsImVudiI6eyJydWJ5IjoiMi42LjUiLCJyYWlscyI6IjYuMS40LjYifX0=
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlMYVlEMFR2VjdPLW16clFXeHhxTCJ9.eyJpc3MiOiJodHRwczovL2ZpcnN0Y2lyY2xlLWRldi5ldS5hdXRoMC5jb20vIiwic3ViIjoiSVBVbFgybHB5S2xJc043QnJiZkdHVXVpaEx0SlRqUUJAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZmlyc3RjaXJjbGUtZGV2LmV1LmF1dGgwLmNvbS9hcGkvdjIvIiwiaWF0IjoxNjQ2MDI3MzYxLCJleHAiOjE2NDYxMTM3NjEsImF6cCI6IklQVWxYMmxweUtsSXNON0JyYmZHR1V1aWhMdEpUalFCIiwic2NvcGUiOiJyZWFkOmNsaWVudF9ncmFudHMgcmVhZDp1c2VycyB1cGRhdGU6dXNlcnMgZGVsZXRlOnVzZXJzIGNyZWF0ZTp1c2VycyByZWFkOmdyYW50cyBkZWxldGU6Z3JhbnRzIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.UF3oehMvhRZ11R1A76zXf-PXDrUUYnZX93tyINH0R21taBMYa5z93y62ZLLjyHrMBu5mUAG0gNgTt4KsD443Abi3tlb8oEFJ1z_er1lcmAFHZj7Rdtwp27YWVR0O-8v3PLntrZUUDGkZjPIb0JhXLXdrWVOX_-eejhcAIinh8hQ9mLKS9AnmG31u8rn79C6b_Sat9cKxF5pD3hijo_2FlrA789KWAkfjJyXCtTySBx_ZK0-DpcRAlBQEQQONTO_7lmQwDGxCv3gwIAyUZxhvRDx4fXSH1ADrgpoBKkzJIp7UwhJKPGYiDh9NyZdgDHpv0K7_Y1SmIo6KpFx4os3U8w
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - "[AUTH0_DOMAIN]"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 28 Feb 2022 05:49:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 6e475e7f9fee6c90-SIN
+      Cache-Control:
+      - no-cache
+      Link:
+      - <http://[AUTH0_DOMAIN]/api/v2/grants?user_id=google-oauth2%7C114473891729720308813&page=0&per_page=50>;
+        rel="first", <http://[AUTH0_DOMAIN]/api/v2/grants?user_id=google-oauth2%7C114473891729720308813&page=0&per_page=50>;
+        rel="last"
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - origin,accept-encoding
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ot-Baggage-Auth0-Request-Id:
+      - 6e475e7f9fee6c90
+      Ot-Tracer-Sampled:
+      - 'true'
+      Ot-Tracer-Spanid:
+      - 7132857d2cbc1c92
+      Ot-Tracer-Traceid:
+      - 2539b92315db3791
+      X-Content-Type-Options:
+      - nosniff
+      X-Ratelimit-Limit:
+      - '10'
+      X-Ratelimit-Remaining:
+      - '9'
+      X-Ratelimit-Reset:
+      - '1646027363'
+      Set-Cookie:
+      - __cf_bm=QplMVgzAS5_z1IK52DFVHE0YsBI2nW3FxRLCXXG_mrE-1646027362-0-AfSFwoAriuZ4EunC7YYc8uvz6p5oSeE/IYveuuXNve+qYr1TuKRp9+VgRQFMK/IaAK4++JWPKBlvTW5IQLrQtuo=;
+        path=/; expires=Mon, 28-Feb-22 06:19:22 GMT; domain=.eu.auth0.com; HttpOnly;
+        Secure; SameSite=None
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"user_id":"google-oauth2|114473891729720308813","audience":"[AUTH0_AUDIENCE]","scope":["openid","profile","email"],"clientID":"QCAv2C4XXriwPnzSXlCWbG9wdvKNY9Kp","id":"6144291ad1ce9f9dc8d9482e"}]'
+  recorded_at: Mon, 28 Feb 2022 05:49:22 GMT
+- request:
+    method: delete
+    uri: https://[AUTH0_DOMAIN]/api/v2/grants/6144291ad1ce9f9dc8d9482e?user_id=google-oauth2%7C114473891729720308813
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.6.5p114
+      Content-Type:
+      - application/json
+      Auth0-Client:
+      - eyJuYW1lIjoicnVieS1hdXRoMCIsInZlcnNpb24iOiI1LjYuMSIsImVudiI6eyJydWJ5IjoiMi42LjUiLCJyYWlscyI6IjYuMS40LjYifX0=
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlMYVlEMFR2VjdPLW16clFXeHhxTCJ9.eyJpc3MiOiJodHRwczovL2ZpcnN0Y2lyY2xlLWRldi5ldS5hdXRoMC5jb20vIiwic3ViIjoiSVBVbFgybHB5S2xJc043QnJiZkdHVXVpaEx0SlRqUUJAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZmlyc3RjaXJjbGUtZGV2LmV1LmF1dGgwLmNvbS9hcGkvdjIvIiwiaWF0IjoxNjQ2MDI3MzYxLCJleHAiOjE2NDYxMTM3NjEsImF6cCI6IklQVWxYMmxweUtsSXNON0JyYmZHR1V1aWhMdEpUalFCIiwic2NvcGUiOiJyZWFkOmNsaWVudF9ncmFudHMgcmVhZDp1c2VycyB1cGRhdGU6dXNlcnMgZGVsZXRlOnVzZXJzIGNyZWF0ZTp1c2VycyByZWFkOmdyYW50cyBkZWxldGU6Z3JhbnRzIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.UF3oehMvhRZ11R1A76zXf-PXDrUUYnZX93tyINH0R21taBMYa5z93y62ZLLjyHrMBu5mUAG0gNgTt4KsD443Abi3tlb8oEFJ1z_er1lcmAFHZj7Rdtwp27YWVR0O-8v3PLntrZUUDGkZjPIb0JhXLXdrWVOX_-eejhcAIinh8hQ9mLKS9AnmG31u8rn79C6b_Sat9cKxF5pD3hijo_2FlrA789KWAkfjJyXCtTySBx_ZK0-DpcRAlBQEQQONTO_7lmQwDGxCv3gwIAyUZxhvRDx4fXSH1ADrgpoBKkzJIp7UwhJKPGYiDh9NyZdgDHpv0K7_Y1SmIo6KpFx4os3U8w
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - "[AUTH0_DOMAIN]"
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      Date:
+      - Mon, 28 Feb 2022 05:49:22 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 6e475e851d5d49fc-SIN
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - origin,accept-encoding
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ot-Baggage-Auth0-Request-Id:
+      - 6e475e851d5d49fc
+      Ot-Tracer-Sampled:
+      - 'true'
+      Ot-Tracer-Spanid:
+      - 5b9afac641bfc823
+      Ot-Tracer-Traceid:
+      - 32c382b50ad5b20f
+      X-Content-Type-Options:
+      - nosniff
+      X-Ratelimit-Limit:
+      - '10'
+      X-Ratelimit-Remaining:
+      - '9'
+      X-Ratelimit-Reset:
+      - '1646027364'
+      Set-Cookie:
+      - __cf_bm=5Xvth.W_A.7.8XZ4HZjvppTUAX9ajlwMwGz3CX8iUko-1646027362-0-AXdDSZ08EOSxLaGmS8U+I4xxpmHSW+E5Suj//9OyuU2efvd7vwVMG5/hNS8ajRYpw3qbH6OMEzxCms5xSzh3ey4=;
+        path=/; expires=Mon, 28-Feb-22 06:19:22 GMT; domain=.eu.auth0.com; HttpOnly;
+        Secure; SameSite=None
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Mon, 28 Feb 2022 05:49:22 GMT
+- request:
+    method: post
+    uri: https://[AUTH0_DOMAIN]/oauth/token?include_fields=true
+    body:
+      encoding: UTF-8
+      string: '{"grant_type":"client_credentials","client_id":"[AUTH0_CLIENT_ID]","client_secret":"[AUTH0_CLIENT_SECRET]","audience":"https://[AUTH0_DOMAIN]/api/v2/"}'
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.6.5p114
+      Content-Type:
+      - application/json
+      Auth0-Client:
+      - eyJuYW1lIjoicnVieS1hdXRoMCIsInZlcnNpb24iOiI1LjYuMSIsImVudiI6eyJydWJ5IjoiMi42LjUiLCJyYWlscyI6IjYuMS40LjYifX0=
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlMYVlEMFR2VjdPLW16clFXeHhxTCJ9.eyJpc3MiOiJodHRwczovL2ZpcnN0Y2lyY2xlLWRldi5ldS5hdXRoMC5jb20vIiwic3ViIjoiSVBVbFgybHB5S2xJc043QnJiZkdHVXVpaEx0SlRqUUJAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZmlyc3RjaXJjbGUtZGV2LmV1LmF1dGgwLmNvbS9hcGkvdjIvIiwiaWF0IjoxNjQ0MzM2ODUxLCJleHAiOjE2NDQ0MjMyNTEsImF6cCI6IklQVWxYMmxweUtsSXNON0JyYmZHR1V1aWhMdEpUalFCIiwic2NvcGUiOiJyZWFkOnVzZXJzIHVwZGF0ZTp1c2VycyBkZWxldGU6dXNlcnMgY3JlYXRlOnVzZXJzIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.DDM-yKswTcLQ2Zsf62omZ_XIEE2QtVH9vk0lwEuZ69YsKCGSlSnNqnNk7JzogrbSCqEy2JuOqwK53I6_x5jkvZKSEgXu6QMOc-aLlyUPH8U-GCkGDrFVKYsbhX1k6jZHSI2iVPCbjEZTkBtcy-CgEzFZ6j53V9mySHu7fNplOaw1F0LPJkfPD0GH5TA5G7fQJ4LZk5PMlJVgcCNsGBMlTYjqK7c7ur77fFySOHTG1crYHkoRpHgv-y4yu87dWEf-bh4mNjb-znlLlb32_RCbg9yAW7EvLg7RIsJ2b44E49VDQptOziBqExhV-4sZ-oHI-z2ePnMdxINbGb7Z577Ssw
+      Content-Length:
+      - '223'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - "[AUTH0_DOMAIN]"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 28 Feb 2022 05:49:39 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 6e475eebbf5991c0-SIN
+      Cache-Control:
+      - no-store
+      Set-Cookie:
+      - __cf_bm=NaG_lyp2jkL0eKqwk_TX.U8qip6SzHhMyPwZcke_mHc-1646027379-0-AWK2WNO18PrDQTK85U8YwYf4t6dOIHbKbUemmCTxOs0E93g777P3Og2tZV2mZ5Kf69ubSeRkFxVFuvrc8YdYIUw=;
+        path=/; expires=Mon, 28-Feb-22 06:19:39 GMT; domain=.eu.auth0.com; HttpOnly;
+        Secure; SameSite=None
+      - did=s%3Av0%3A38160ad0-985a-11ec-b1ec-8bcdc736ea92.f3Ik71woyuKY%2FLAveoemhO3zkQWY8FVsJjmeMLNPq9A;
+        Max-Age=31557600; Path=/; Expires=Tue, 28 Feb 2023 11:49:39 GMT; HttpOnly;
+        Secure; SameSite=None
+      - did_compat=s%3Av0%3A38160ad0-985a-11ec-b1ec-8bcdc736ea92.f3Ik71woyuKY%2FLAveoemhO3zkQWY8FVsJjmeMLNPq9A;
+        Max-Age=31557600; Path=/; Expires=Tue, 28 Feb 2023 11:49:39 GMT; HttpOnly;
+        Secure
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - Accept-Encoding, Origin
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ot-Baggage-Auth0-Request-Id:
+      - 6e475eebbf5991c0
+      Ot-Tracer-Sampled:
+      - 'true'
+      Ot-Tracer-Spanid:
+      - 2a33751254b8683b
+      Ot-Tracer-Traceid:
+      - 3f095b15634d3a0b
+      Pragma:
+      - no-cache
+      X-Auth0-Requestid:
+      - 7a0957aec949580fa435
+      X-Content-Type-Options:
+      - nosniff
+      X-Ratelimit-Limit:
+      - '30'
+      X-Ratelimit-Remaining:
+      - '29'
+      X-Ratelimit-Reset:
+      - '1646027380'
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"access_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlMYVlEMFR2VjdPLW16clFXeHhxTCJ9.eyJpc3MiOiJodHRwczovL2ZpcnN0Y2lyY2xlLWRldi5ldS5hdXRoMC5jb20vIiwic3ViIjoiSVBVbFgybHB5S2xJc043QnJiZkdHVXVpaEx0SlRqUUJAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZmlyc3RjaXJjbGUtZGV2LmV1LmF1dGgwLmNvbS9hcGkvdjIvIiwiaWF0IjoxNjQ2MDI3Mzc5LCJleHAiOjE2NDYxMTM3NzksImF6cCI6IklQVWxYMmxweUtsSXNON0JyYmZHR1V1aWhMdEpUalFCIiwic2NvcGUiOiJyZWFkOmNsaWVudF9ncmFudHMgcmVhZDp1c2VycyB1cGRhdGU6dXNlcnMgZGVsZXRlOnVzZXJzIGNyZWF0ZTp1c2VycyByZWFkOmdyYW50cyBkZWxldGU6Z3JhbnRzIiwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIn0.dJK3A86PfdWXG7uX7ajOu2Ka1o_Jm0Gxdqey6aeAgmKM-hDOfBLhKpXiICW2YKfFueznBwKawM80AKXhgbJ3c0-Fc7D4WLV9QYS3MzYltL0EpB2UTj9hArVqmkU78IuGNeQ1Onl1xPj2MUa8qKFVTkPxbsdNEwvvzVqItEj-4G90vQQ6PVSGwlfOxJR0mUFQ9XN4NOi1IPEc_Wn6AFanVxvgN798RelaqIwVmfzmEwR68BpqEVXHBDZB_XDygZNqn7IfCSkD_ctBVJ2yRuJOGdeb0-arwXO0jAKjhzzFoZdu_mkqIL1rkan0TuqOe_lMVjj4dp33KnLyTcPU5Y0LzQ","scope":"read:client_grants
+        read:users update:users delete:users create:users read:grants delete:grants","expires_in":86400,"token_type":"Bearer"}'
+  recorded_at: Mon, 28 Feb 2022 05:49:39 GMT
+recorded_with: VCR 6.0.0

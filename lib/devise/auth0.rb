@@ -37,6 +37,12 @@ module Devise
     def self.client
       @auth0_client ||= Client.new(config)
     end
+
+    def self.logout(record)
+      client.grants(user_id: record.auth0_id).each do |grant|
+        client.delete_grant(grant["id"], record.auth0_id)
+      end
+    end
   end
 
   add_module(:auth0, strategy: true, controller: :auth0_callbacks, route: { auth0_callback: [:callback] })

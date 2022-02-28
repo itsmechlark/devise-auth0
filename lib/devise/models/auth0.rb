@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "devise/hooks/auth0"
+
 module Devise
   module Models
     module Auth0

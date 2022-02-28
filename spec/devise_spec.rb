@@ -52,4 +52,19 @@ RSpec.describe(Devise) do
       expect(config.scope).to(eq("openid"))
     end
   end
+
+  describe ".logout" do
+    let(:user) do
+      instance_double(
+        "User",
+        auth0_id: "google-oauth2|114473891729720308813"
+      )
+    end
+
+    it "deletes all grants for the user" do
+      VCR.use_cassette("auth0/user/google-oauth2|101843459961769220909/logout") do
+        described_class::Auth0.logout(user)
+      end
+    end
+  end
 end
