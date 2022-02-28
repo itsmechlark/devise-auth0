@@ -28,7 +28,7 @@ RSpec.describe(Devise) do
     end
 
     it "defaults to ENV['AUTH0_AUDIENCE'] for aud" do
-      expect(config.aud).to(eq(ENV["AUTH0_AUDIENCE"]))
+      expect(config.aud).to(match_array(ENV["AUTH0_AUDIENCE"].to_s.split(",")))
     end
 
     it "defaults to ENV['AUTH0_CLIENT_ID'] for client_id" do

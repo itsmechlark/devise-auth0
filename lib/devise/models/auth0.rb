@@ -84,7 +84,7 @@ module Devise
           ).first.try(:[], "scope")
         else
           self.class.auth0_client.get_user_permissions(auth0_id).select do |permission|
-            permission["resource_server_identifier"] == self.class.auth0_config.aud
+            self.class.auth0_config.aud.include?(permission["resource_server_identifier"])
           end.map do |permission|
             permission["permission_name"]
           end
