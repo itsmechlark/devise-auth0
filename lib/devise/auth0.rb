@@ -27,7 +27,9 @@ module Devise
     extend ::Dry::Configurable
 
     setting(:algorithm, default: "RS256")
-    setting(:aud, default: ENV["AUTH0_AUDIENCE"].presence)
+    setting(:aud,
+      default: ENV["AUTH0_AUDIENCE"].presence,
+      constructor: ->(aud) { aud.is_a?(Array) ? aud : aud.to_s.split(",") })
     setting(:client_id, default: ENV["AUTH0_CLIENT_ID"].presence)
     setting(:client_secret, default: ENV["AUTH0_CLIENT_SECRET"].presence)
     setting(:domain, default: ENV["AUTH0_DOMAIN"].presence)
