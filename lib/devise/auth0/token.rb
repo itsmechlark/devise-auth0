@@ -7,14 +7,15 @@ module Devise
   module Auth0
     # Helpers to parse token from a request and to a response
     class Token
-      def self.parse(auth, config = nil)
-        token = new(auth, config)
+      def self.parse(auth, resource_class)
+        token = new(auth, resource_class)
         token.verify
         token
       end
 
-      def initialize(auth, config = ::Devise.auth0)
+      def initialize(auth, resource_class)
         @auth = auth.presence
+        @resource_class = resource_class
       end
 
       def provider
@@ -39,7 +40,7 @@ module Devise
             "email" => "#{uid}@#{config.domain}",
           }
         else
-          ::Devise::Auth0.client.user(auth0_id)
+          client.user(auth0_id)
         end
       end
 
@@ -76,7 +77,11 @@ module Devise
       private
 
       def config
-        ::Devise.auth0
+        @resource_class.auth0_config
+      end
+
+      def client
+        @resource_class.auth0_client
       end
 
       def jwks_hash

@@ -4,6 +4,8 @@ require "spec_helper"
 require "devise/auth0"
 
 RSpec.describe(Devise) do
+  include_context("with fixtures")
+
   let!(:old_domain) { described_class.auth0.domain }
 
   after {  described_class.auth0.domain = old_domain }
@@ -55,9 +57,11 @@ RSpec.describe(Devise) do
 
   describe ".logout" do
     let(:user) do
-      instance_double(
-        "User",
-        auth0_id: "google-oauth2|114473891729720308813"
+      auth0_user_model.create(
+        provider: "google-oauth2",
+        uid: "114473891729720308813",
+        email: Faker::Internet.unique.email,
+        password: "password"
       )
     end
 

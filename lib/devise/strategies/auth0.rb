@@ -28,7 +28,7 @@ module Devise
       private
 
       def token
-        @token ||= ::Devise::Auth0::Token.parse(auth, mapping.to.auth0_config)
+        @token ||= mapping.to.parse_auth0_token(auth)
       end
 
       def auth

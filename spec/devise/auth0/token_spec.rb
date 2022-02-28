@@ -10,12 +10,12 @@ RSpec.describe(Devise::Auth0::Token) do
 
   after { Timecop.return }
 
-  let(:token) { described_class.new(jwt_token) }
+  let(:token) { described_class.new(jwt_token, auth0_user_model) }
 
   describe ".parse" do
     subject(:parsed_token) do
       VCR.use_cassette("auth0/jwks") do
-        described_class.parse(jwt_token)
+        described_class.parse(jwt_token, auth0_user_model)
       end
     end
 

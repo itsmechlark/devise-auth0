@@ -78,6 +78,10 @@ module Devise
           user
         end
 
+        def parse_auth0_token(token)
+          ::Devise::Auth0::Token.parse(token, self)
+        end
+
         def from_auth0_omniauth(auth)
           uid = auth.uid.include?("|") ? auth.uid.split("|").last : auth.uid
           where(provider: auth.provider, uid: uid).first_or_create do |user|

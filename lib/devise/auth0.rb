@@ -34,13 +34,9 @@ module Devise
     setting(:omniauth, default: false)
     setting(:scope, default: "openid")
 
-    def self.client
-      @auth0_client ||= Client.new(config)
-    end
-
     def self.logout(record)
-      client.grants(user_id: record.auth0_id).each do |grant|
-        client.delete_grant(grant["id"], record.auth0_id)
+      record.class.auth0_client.grants(user_id: record.auth0_id).each do |grant|
+        record.class.auth0_client.delete_grant(grant["id"], record.auth0_id)
       end
     end
   end
