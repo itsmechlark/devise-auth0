@@ -121,8 +121,8 @@ RSpec.describe(Devise::Models::Auth0) do
       it { expect(user.auth0_id).to(eq(token.auth0_id)) }
       it { expect(user.email).to(eq(token.user["email"])) }
 
-      it "call #after_auth0_token_authentication" do
-        expect_any_instance_of(model).to(receive(:after_auth0_token_authentication).with(token))
+      it "call #after_auth0_token_created" do
+        expect_any_instance_of(model).to(receive(:after_auth0_token_created).with(token))
         model.from_auth0_token(token)
       end
     end
@@ -191,8 +191,8 @@ RSpec.describe(Devise::Models::Auth0) do
       it { expect(user.uid).to(eq(auth.uid)) }
       it { expect(user.email).to(eq(auth.info.email)) }
 
-      it "call #after_auth0_omniauth_authentication" do
-        expect_any_instance_of(model).to(receive(:after_auth0_omniauth_authentication).with(auth))
+      it "call #after_auth0_omniauth_created" do
+        expect_any_instance_of(model).to(receive(:after_auth0_omniauth_created).with(auth))
         model.from_auth0_omniauth(auth)
       end
     end

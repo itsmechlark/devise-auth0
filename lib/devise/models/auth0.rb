@@ -39,10 +39,10 @@ module Devise
         "#{provider}|#{uid}"
       end
 
-      def after_auth0_token_authentication(token)
+      def after_auth0_token_created(token)
       end
 
-      def after_auth0_omniauth_authentication(auth)
+      def after_auth0_omniauth_created(auth)
       end
 
       private
@@ -65,14 +65,14 @@ module Devise
       end
 
       module ClassMethods
-        Devise::Models.config(self, :auth0_config)
+        Devise::Models.config(self, :auth0_options)
 
         def from_auth0_token(token)
           user = where(provider: token.provider, uid: token.uid).first_or_create do |user|
             user.email = token.user["email"] if user.respond_to?(:email=)
             user.password = Devise.friendly_token[0, 20] if user.respond_to?(:password=)
             user.bot = token.bot? if user.respond_to?(:bot=)
-            user.after_auth0_token_authentication(token)
+            user.after_auth0_token_created(token)
           end
           user.auth0_scopes = token.scopes
           user
@@ -87,14 +87,17 @@ module Devise
           where(provider: auth.provider, uid: uid).first_or_create do |user|
             user.email = auth.info.email if user.respond_to?(:email=)
             user.password = Devise.friendly_token[0, 20] if user.respond_to?(:password=)
-            user.after_auth0_omniauth_authentication(auth)
+            user.after_auth0_omniauth_created(auth)
           end
         end
 
         def auth0_config
           return @auth0_config unless @auth0_config.nil?
 
-          @auth0_config ||= ::Devise.auth0.dup
+          @auth0_config ||= ::Devise.auth0.deep_dup
+          # @auth0_config.unfreeze
+          # @auth0_config.update(auth0_options) if auth0_options
+          @auth0_config
         end
 
         def auth0_client
