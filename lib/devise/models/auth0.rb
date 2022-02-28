@@ -94,9 +94,10 @@ module Devise
         def auth0_config
           return @auth0_config unless @auth0_config.nil?
 
-          @auth0_config ||= ::Devise.auth0.deep_dup
-          # @auth0_config.unfreeze
-          # @auth0_config.update(auth0_options) if auth0_options
+          @auth0_config ||= ::Devise.auth0.pristine
+          @auth0_config.update(::Devise.auth0.values)
+          @auth0_config.update(auth0_options) if defined?(@auth0_options)
+          @auth0_config.finalize!
           @auth0_config
         end
 
