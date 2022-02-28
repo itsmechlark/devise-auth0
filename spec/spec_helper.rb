@@ -36,6 +36,7 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].sort.each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 VCR.configure do |config|
+  config.default_cassette_options = { match_requests_on: [:method, :uri] }
   config.allow_http_connections_when_no_cassette = false
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.configure_rspec_metadata!

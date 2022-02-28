@@ -17,7 +17,7 @@ RSpec.describe("Login with Auth0", type: :request) do
 
   describe "GET /<scope>/auth/auth0/callback" do
     context "with valid credentials" do
-      before { log_in(invalid: false) }
+      before { omniauth_log_in(invalid: false) }
 
       it { expect(response).to(have_http_status(:ok)) }
       it { expect(response.body).to(include("auth0|123456789")) }
@@ -25,14 +25,14 @@ RSpec.describe("Login with Auth0", type: :request) do
     end
 
     context "with valid credentials and need signup" do
-      before { log_in(invalid: false, data: { info: { email: nil } }, follow_redirect: false) }
+      before { omniauth_log_in(invalid: false, data: { info: { email: nil } }, follow_redirect: false) }
 
-      it { expect(response).to(redirect_to(new_user_session_url)) }
+      it { expect(response).to(redirect_to(new_admin_user_session_url)) }
       it { expect(session["devise.auth0_data"]).not_to(be_nil) }
     end
 
     context "with invalid credentials" do
-      before { log_in(invalid: true) }
+      before { omniauth_log_in(invalid: true) }
 
       it { expect(response.body).not_to(include("auth0|123456789")) }
       it { expect(session["devise.auth0_data"]).to(be_nil) }
@@ -42,11 +42,11 @@ RSpec.describe("Login with Auth0", type: :request) do
       before do
         OmniAuth.config.mock_auth[:auth0] = :access_denied
         Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:auth0]
-        get(user_auth0_omniauth_callback_path(error: :access_denied))
+        get(admin_user_auth0_omniauth_callback_path(error: :access_denied))
       end
 
       it { expect(session["devise.auth0_data"]).to(be_nil) }
-      it { expect(response).to(redirect_to(new_user_session_url)) }
+      it { expect(response).to(redirect_to(new_admin_user_session_url)) }
     end
   end
 
@@ -55,12 +55,12 @@ RSpec.describe("Login with Auth0", type: :request) do
       before do
         OmniAuth.config.mock_auth[:auth0] = :invalid_credentials
         Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:auth0]
-        post user_auth0_omniauth_authorize_url
+        post admin_user_auth0_omniauth_authorize_url
         follow_redirect!
       end
 
       it { expect(session["devise.auth0_data"]).to(be_nil) }
-      it { expect(response).to(redirect_to(new_user_session_url)) }
+      it { expect(response).to(redirect_to(new_admin_user_session_url)) }
     end
   end
 end

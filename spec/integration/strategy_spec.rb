@@ -17,6 +17,7 @@ RSpec.describe(Devise::Strategies::Auth0, type: :request) do
       end
     end
 
+    it { expect(auth0_admin_user_model.where(provider: "google-oauth2", uid: "101843459961769220909")).to(be_exists) }
     it { expect(response).to(have_http_status(:ok)) }
     it { expect(response.body).to(include("google-oauth2|101843459961769220909")) }
   end

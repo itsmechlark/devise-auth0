@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "mail"
 require "devise/hooks/auth0"
 
 module Devise
@@ -7,8 +8,34 @@ module Devise
     module Auth0
       extend ActiveSupport::Concern
 
+      included do
+        validate :email_domain_allowed, :email_domain_disallowed
+      end
+
       def self.required_fields(klass)
         []
+      end
+
+      def email_domain_allowed
+        return unless respond_to?(:email) && !self.class.auth0_config.email_domains_allowlist.empty?
+
+        m = Mail::Address.new(email)
+        return if m.domain.nil?
+
+        unless self.class.auth0_config.email_domains_allowlist.include?(m.domain)
+          errors.add(:email, :not_allowed)
+        end
+      end
+
+      def email_domain_disallowed
+        return unless respond_to?(:email) && !self.class.auth0_config.email_domains_blocklist.empty?
+
+        m = Mail::Address.new(email)
+        return if m.domain.nil?
+
+        if self.class.auth0_config.email_domains_blocklist.include?(m.domain)
+          errors.add(:email, :not_allowed)
+        end
       end
 
       def can?(action, resource_class = nil)
@@ -83,6 +110,8 @@ module Devise
         end
 
         def from_auth0_omniauth(auth)
+          return unless auth0_config.omniauth
+
           uid = auth.uid.include?("|") ? auth.uid.split("|").last : auth.uid
           where(provider: auth.provider, uid: uid).first_or_create do |user|
             user.email = auth.info.email if user.respond_to?(:email=)

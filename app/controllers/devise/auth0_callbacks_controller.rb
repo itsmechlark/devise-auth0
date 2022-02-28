@@ -5,7 +5,7 @@ module Devise
     def callback
       user = resource_class.from_auth0_omniauth(request.env["omniauth.auth"])
 
-      if user.persisted?
+      if user&.persisted?
         set_flash_message(:notice, :success, kind: "Auth0") if is_navigational_format?
         sign_in_and_redirect(user, event: :authentication)
       else

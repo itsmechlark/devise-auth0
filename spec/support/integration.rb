@@ -14,10 +14,10 @@ RSpec.shared_context("with integration") do
     get(path, headers: auth_headers(auth))
   end
 
-  def log_in(invalid: false, data: {}, follow_redirect: true)
+  def omniauth_log_in(invalid: false, data: {}, follow_redirect: true)
     invalid ? mock_invalid_auth_hash : mock_valid_auth_hash(data)
     Rails.application.env_config["omniauth.auth"] = OmniAuth.config.mock_auth[:auth0]
-    get(user_auth0_omniauth_callback_path(code: "<fake_code>"))
+    get(admin_user_auth0_omniauth_callback_path(code: "<fake_code>"))
     follow_redirect! if follow_redirect
   end
 
@@ -37,9 +37,9 @@ RSpec.shared_context("with integration") do
       uid: "auth0|123456789",
       info: {
         name: "John Foo",
-        email: "johnfoo@example.org",
+        email: "johnfoo@firstcircle.com",
         nickname: "john",
-        image: "https://example.org/john.jpg",
+        image: "https://firstcircle.com/john.jpg",
       },
       credentials: {
         token: "ACCESS_TOKEN",
@@ -51,10 +51,10 @@ RSpec.shared_context("with integration") do
       },
       extra: {
         raw_info: {
-          email: "johnfoo@example.org",
+          email: "johnfoo@firstcircle.com",
           email_verified: "true",
           name: "John Foo",
-          picture: "https://example.org/john.jpg",
+          picture: "https://firstcircle.com/john.jpg",
           user_id: "auth0|123456789",
           nickname: "john",
           created_at: "2014-07-15T17:19:50.387Z",

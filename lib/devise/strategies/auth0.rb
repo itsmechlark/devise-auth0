@@ -19,8 +19,10 @@ module Devise
       end
 
       def authenticate!
-        resource = token.valid? && mapping.to.from_auth0_token(token)
-        return success!(resource) if resource
+        if token.valid?
+          resource = mapping.to.from_auth0_token(token)
+          return success!(resource) if resource.persisted?
+        end
 
         fail!(:invalid)
       end

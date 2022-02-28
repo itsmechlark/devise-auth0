@@ -33,6 +33,8 @@ module Devise
     setting(:domain, default: ENV["AUTH0_DOMAIN"].presence)
     setting(:omniauth, default: false)
     setting(:scope, default: "openid")
+    setting(:email_domains_allowlist, default: [])
+    setting(:email_domains_blocklist, default: [])
 
     def self.logout(record)
       record.class.auth0_client.grants(user_id: record.auth0_id).each do |grant|

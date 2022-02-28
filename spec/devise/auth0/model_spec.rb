@@ -13,6 +13,106 @@ RSpec.describe(Devise::Models::Auth0) do
     it { expect(described_class.required_fields(model)).to(eq([])) }
   end
 
+  describe "#email_domain_allowed" do
+    let(:model) { auth0_admin_user_model }
+
+    context "with not allowed domain" do
+      subject(:user) do
+        model.new(
+          provider: "auth0",
+          uid: Faker::Internet.unique.uuid,
+          email: Faker::Internet.unique.email,
+          password: "password"
+        )
+      end
+
+      it { is_expected.not_to(be_valid) }
+
+      it "adds error" do
+        user.valid?
+        expect(user.errors[:email].join).to(include("email.not_allowed"))
+      end
+    end
+
+    context "with allowed domain" do
+      subject(:user) do
+        model.new(
+          provider: "auth0",
+          uid: Faker::Internet.unique.uuid,
+          email: auth0_admin_user_email,
+          password: "password"
+        )
+      end
+
+      it { is_expected.to(be_valid) }
+    end
+
+    context "with no allowed list" do
+      subject(:user) do
+        model.new(
+          provider: "auth0",
+          uid: Faker::Internet.unique.uuid,
+          email: Faker::Internet.unique.email,
+          password: "password"
+        )
+      end
+
+      let(:model) { auth0_user_model }
+
+      it { is_expected.to(be_valid) }
+    end
+  end
+
+  describe "#email_domain_disallowed" do
+    let(:model) { auth0_user_model }
+
+    context "with disallowed domain" do
+      subject(:user) do
+        model.new(
+          provider: "auth0",
+          uid: Faker::Internet.unique.uuid,
+          email: auth0_admin_user_email,
+          password: "password"
+        )
+      end
+
+      it { is_expected.not_to(be_valid) }
+
+      it "adds error" do
+        user.valid?
+        expect(user.errors[:email].join).to(include("email.not_allowed"))
+      end
+    end
+
+    context "with allowed domain" do
+      subject(:user) do
+        model.new(
+          provider: "auth0",
+          uid: Faker::Internet.unique.uuid,
+          email: Faker::Internet.unique.email,
+          password: "password"
+        )
+      end
+
+      it { is_expected.to(be_valid) }
+    end
+
+    context "with no blocklist" do
+      subject(:user) do
+        model.new(
+          provider: "auth0",
+          uid: Faker::Internet.unique.uuid,
+          email: auth0_admin_user_email,
+          password: "password"
+        )
+      end
+
+      let(:model) { auth0_admin_user_model }
+
+      it { is_expected.to(be_valid) }
+    end
+  end
+
   describe "#can?" do
     subject(:user) { auth0_user }
 
@@ -150,23 +250,24 @@ RSpec.describe(Devise::Models::Auth0) do
   end
 
   describe(".from_auth0_omniauth(auth)") do
+    let(:model) { auth0_admin_user_model }
     let(:user) { model.from_auth0_omniauth(auth) }
     let(:auth) do
       info = instance_double(
         "AuthInfo",
-        email: auth0_user.email
+        email: auth0_admin_user.email
       )
 
       instance_double(
         "Auth",
-        provider: auth0_user.provider,
-        uid: "auth0|#{auth0_user.uid}",
+        provider: auth0_admin_user.provider,
+        uid: "auth0|#{auth0_admin_user.uid}",
         info: info
       )
     end
 
     it "finds record which has given `user_id` as `uid`" do
-      expect(model.from_auth0_omniauth(auth)).to(eq(auth0_user))
+      expect(model.from_auth0_omniauth(auth)).to(eq(auth0_admin_user))
     end
 
     context "when uid does not match" do
@@ -175,7 +276,7 @@ RSpec.describe(Devise::Models::Auth0) do
 
         info = instance_double(
           "AuthInfo",
-          email: Faker::Internet.unique.email
+          email: auth0_admin_user_email
         )
 
         instance_double(

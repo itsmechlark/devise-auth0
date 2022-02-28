@@ -1,6 +1,21 @@
 # frozen_string_literal: true
 
 RSpec.shared_context("with fixtures") do
+  let(:auth0_admin_user_model) { AdminUser }
+  let(:auth0_admin_user_email) do
+    Faker::Internet.unique.email(domain: auth0_admin_user_model.auth0_config.email_domains_allowlist.sample)
+  end
+  let(:auth0_admin_user) do
+    uid = Faker::Internet.unique.uuid
+
+    auth0_admin_user_model.create(
+      provider: "auth0",
+      uid: uid,
+      email: auth0_admin_user_email,
+      password: "password"
+    )
+  end
+
   let(:auth0_user_model) { User }
   let(:auth0_user) do
     uid = Faker::Internet.unique.uuid

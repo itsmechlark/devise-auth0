@@ -23,6 +23,15 @@ module Devise
                 },
               })
           end
+
+          # Patches the existing devise failure app to ensure a right mapping is used.
+          # Read more: devise/omniauth.rb
+          ::OmniAuth.config.on_failure = proc do |env|
+            env["devise.mapping"] = ::Devise::Mapping.find_by_path!(env["PATH_INFO"], :fullpath)
+            controller_name  = ActiveSupport::Inflector.camelize(env["devise.mapping"].controllers[:omniauth_callbacks])
+            controller_klass = ActiveSupport::Inflector.constantize("#{controller_name}Controller")
+            controller_klass.action(:failure).call(env)
+          end
         end
 
         ActiveSupport.on_load(:action_controller) do
