@@ -54,7 +54,8 @@ RSpec.describe(Devise::Models::Auth0) do
 
       let(:user) do
         auth0_user_model.create(
-          uid: "google-oauth2|101843459961769220909",
+          provider: "google-oauth2",
+          uid: "101843459961769220909",
           email: Faker::Internet.unique.email,
           password: "password",
           bot: false
@@ -73,6 +74,7 @@ RSpec.describe(Devise::Models::Auth0) do
 
       let(:bot) do
         auth0_user_model.create(
+          provider: "auth0",
           uid: "UDuyRC6XeVr9eCPIrOP0dgIL0xTLs33f",
           email: Faker::Internet.unique.email,
           password: "password",
@@ -86,7 +88,15 @@ RSpec.describe(Devise::Models::Auth0) do
 
   describe(".from_auth0_token(token)") do
     let(:user) { model.from_auth0_token(token) }
-    let(:token) { instance_double("Token", user_id: auth0_user.uid, scopes: []) }
+    let(:token) do
+      instance_double(
+        "Token",
+        provider: auth0_user.provider,
+        uid: auth0_user.uid,
+        auth0_id: auth0_user.auth0_id,
+        scopes: []
+      )
+    end
 
     it "finds record which has given `user_id` as `uid`" do
       expect(model.from_auth0_token(token)).to(eq(auth0_user))
@@ -94,9 +104,13 @@ RSpec.describe(Devise::Models::Auth0) do
 
     context "when uid does not match" do
       let(:token) do
+        uid = Faker::Internet.unique.uuid
+
         instance_double(
           "Token",
-          user_id: Faker::Internet.unique.uuid,
+          provider: "google-oauth2",
+          uid: uid,
+          auth0_id: "google-oauth2|#{uid}",
           user: { "email" => Faker::Internet.unique.email },
           scopes: [],
           bot?: false
@@ -104,8 +118,13 @@ RSpec.describe(Devise::Models::Auth0) do
       end
 
       it { expect(user).to(be_persisted) }
-      it { expect(user.uid).to(eq(token.user_id)) }
+      it { expect(user.auth0_id).to(eq(token.auth0_id)) }
       it { expect(user.email).to(eq(token.user["email"])) }
+
+      it "call #after_auth0_token_authentication" do
+        expect_any_instance_of(model).to(receive(:after_auth0_token_authentication).with(token))
+        model.from_auth0_token(token)
+      end
     end
 
     context "when bot" do
@@ -114,8 +133,10 @@ RSpec.describe(Devise::Models::Auth0) do
 
         instance_double(
           "Token",
-          user_id: uid,
-          user: { "email" => "#{uid}.#{Devise::Auth0.config.domain}" },
+          provider: "auth0",
+          uid: uid,
+          auth0_id: "auth0|#{uid}",
+          user: { "email" => "#{uid}@#{Devise.auth0.domain}" },
           scopes: [],
           bot?: true
         )
@@ -125,6 +146,55 @@ RSpec.describe(Devise::Models::Auth0) do
 
       it { expect(user).to(be_persisted) }
       it { expect(user).to(be_bot) }
+    end
+  end
+
+  describe(".from_auth0_omniauth(auth)") do
+    let(:user) { model.from_auth0_omniauth(auth) }
+    let(:auth) do
+      info = instance_double(
+        "AuthInfo",
+        email: auth0_user.email
+      )
+
+      instance_double(
+        "Auth",
+        provider: auth0_user.provider,
+        uid: "auth0|#{auth0_user.uid}",
+        info: info
+      )
+    end
+
+    it "finds record which has given `user_id` as `uid`" do
+      expect(model.from_auth0_omniauth(auth)).to(eq(auth0_user))
+    end
+
+    context "when uid does not match" do
+      let(:auth) do
+        uid = Faker::Internet.unique.uuid
+
+        info = instance_double(
+          "AuthInfo",
+          email: Faker::Internet.unique.email
+        )
+
+        instance_double(
+          "Auth",
+          provider: "auth0",
+          uid: uid,
+          info: info
+        )
+      end
+
+      it { expect(user).to(be_persisted) }
+      it { expect(user.provider).to(eq(auth.provider)) }
+      it { expect(user.uid).to(eq(auth.uid)) }
+      it { expect(user.email).to(eq(auth.info.email)) }
+
+      it "call #after_auth0_omniauth_authentication" do
+        expect_any_instance_of(model).to(receive(:after_auth0_omniauth_authentication).with(auth))
+        model.from_auth0_omniauth(auth)
+      end
     end
   end
 end

@@ -11,10 +11,10 @@ RSpec.describe(Devise) do
   describe ".auth0" do
     let(:domain) { Faker::Internet.domain_name }
 
-    it "yields to Devise::Auth0.config" do
+    it "yields to Devise.auth0" do
       described_class.auth0 { |auth0| auth0.domain = domain }
 
-      expect(Devise::Auth0.config.domain).to(eq(domain))
+      expect(described_class.auth0.domain).to(eq(domain))
     end
   end
 
@@ -27,10 +27,6 @@ RSpec.describe(Devise) do
 
     it "defaults to ENV['AUTH0_AUDIENCE'] for aud" do
       expect(config.aud).to(eq(ENV["AUTH0_AUDIENCE"]))
-    end
-
-    it "defaults to '/auth/auth0/callback' for callback_path" do
-      expect(config.callback_path).to(eq("/auth/auth0/callback",))
     end
 
     it "defaults to ENV['AUTH0_CLIENT_ID'] for client_id" do

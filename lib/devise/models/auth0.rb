@@ -33,19 +33,29 @@ module Devise
         @auth0_scopes = scopes
       end
 
+      def auth0_id
+        "#{provider}|#{uid}"
+      end
+
+      def after_auth0_token_authentication(token)
+      end
+
+      def after_auth0_omniauth_authentication(auth)
+      end
+
       private
 
       def auth0_scopes
         return @auth0_scopes unless @auth0_scopes.nil?
 
         @auth0_scopes ||= if bot?
-          ::Devise::Auth0.client.client_grants(
+          self.class.auth0_client.client_grants(
             client_id: uid,
-            audience: ::Devise::Auth0.config.aud
+            audience: self.class.auth0_config.aud
           ).first.try(:[], "scope")
         else
-          ::Devise::Auth0.client.get_user_permissions(uid).select do |permission|
-            permission["resource_server_identifier"] == ::Devise::Auth0.config.aud
+          self.class.auth0_client.get_user_permissions(auth0_id).select do |permission|
+            permission["resource_server_identifier"] == self.class.auth0_config.aud
           end.map do |permission|
             permission["permission_name"]
           end
@@ -53,14 +63,36 @@ module Devise
       end
 
       module ClassMethods
+        Devise::Models.config(self, :auth0_config)
+
         def from_auth0_token(token)
-          user = where(uid: token.user_id).first_or_create do |user|
+          user = where(provider: token.provider, uid: token.uid).first_or_create do |user|
             user.email = token.user["email"] if user.respond_to?(:email=)
             user.password = Devise.friendly_token[0, 20] if user.respond_to?(:password=)
             user.bot = token.bot? if user.respond_to?(:bot=)
+            user.after_auth0_token_authentication(token)
           end
           user.auth0_scopes = token.scopes
           user
+        end
+
+        def from_auth0_omniauth(auth)
+          uid = auth.uid.include?("|") ? auth.uid.split("|").last : auth.uid
+          where(provider: auth.provider, uid: uid).first_or_create do |user|
+            user.email = auth.info.email if user.respond_to?(:email=)
+            user.password = Devise.friendly_token[0, 20] if user.respond_to?(:password=)
+            user.after_auth0_omniauth_authentication(auth)
+          end
+        end
+
+        def auth0_config
+          return @auth0_config unless @auth0_config.nil?
+
+          @auth0_config ||= ::Devise.auth0.dup
+        end
+
+        def auth0_client
+          @auth0_client ||= ::Devise::Auth0::Client.new(auth0_config)
         end
       end
     end

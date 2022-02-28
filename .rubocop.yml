@@ -24,3 +24,8 @@ Rails:
 Metrics/BlockLength:
   Exclude:
     - "spec/**/*.rb"
+
+RSpec/AnyInstance:
+  Enabled: true
+  Exclude:
+    - "spec/devise/auth0/model_spec.rb"

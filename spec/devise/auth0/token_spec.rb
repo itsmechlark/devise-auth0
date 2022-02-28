@@ -22,17 +22,17 @@ RSpec.describe(Devise::Auth0::Token) do
     it { is_expected.to(be_a(described_class)) }
   end
 
-  describe "#user_id" do
+  describe "#auth0_id" do
     it "returns sub if has payload" do
       allow(token).to(receive(:verify).and_return([{ "sub" => "auth0|12345" }]))
 
-      expect(token.user_id).to(eq("auth0|12345"))
+      expect(token.auth0_id).to(eq("auth0|12345"))
     end
 
     it "returns false if no payload" do
       allow(token).to(receive(:verify).and_return(nil))
 
-      expect(token.user_id).to(be_nil)
+      expect(token.auth0_id).to(be_nil)
     end
   end
 
@@ -53,7 +53,7 @@ RSpec.describe(Devise::Auth0::Token) do
       end
 
       it { expect(user["user_id"]).to(eq("12345")) }
-      it { expect(user["email"]).to(eq("12345@#{::Devise::Auth0.config.domain}")) }
+      it { expect(user["email"]).to(eq("12345@#{::Devise.auth0.domain}")) }
     end
   end
 

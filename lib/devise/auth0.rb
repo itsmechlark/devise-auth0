@@ -3,6 +3,8 @@
 require "devise"
 require "dry-configurable"
 
+require "devise/auth0/client"
+
 # Authentication library
 module Devise
   # Yields to Devise::Auth0.config
@@ -26,7 +28,6 @@ module Devise
 
     setting(:algorithm, default: "RS256")
     setting(:aud, default: ENV["AUTH0_AUDIENCE"].presence)
-    setting(:callback_path, default: "/auth/auth0/callback")
     setting(:client_id, default: ENV["AUTH0_CLIENT_ID"].presence)
     setting(:client_secret, default: ENV["AUTH0_CLIENT_SECRET"].presence)
     setting(:domain, default: ENV["AUTH0_DOMAIN"].presence)
@@ -34,15 +35,11 @@ module Devise
     setting(:scope, default: "openid")
 
     def self.client
-      @auth0_client ||= Auth0Client.new(
-        client_id: config.client_id,
-        client_secret: config.client_secret,
-        domain: config.domain
-      )
+      @auth0_client ||= Client.new(config)
     end
   end
 
-  add_module(:auth0, strategy: true)
+  add_module(:auth0, strategy: true, controller: :auth0_callbacks, route: { auth0_callback: [:callback] })
 end
 
 require "devise/auth0/version"

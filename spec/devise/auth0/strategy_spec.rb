@@ -59,7 +59,8 @@ RSpec.describe(Devise::Strategies::Auth0) do
       let(:strategy) { described_class.new(env, :user) }
       let!(:user) do
         auth0_user_model.create(
-          uid: "google-oauth2|101843459961769220909",
+          provider: "google-oauth2",
+          uid: "101843459961769220909",
           email: Faker::Internet.unique.email,
           password: "password"
         )

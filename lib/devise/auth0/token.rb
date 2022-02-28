@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "auth0"
 require "faraday"
 require "jwt"
 
@@ -8,19 +7,27 @@ module Devise
   module Auth0
     # Helpers to parse token from a request and to a response
     class Token
-      def self.parse(auth)
-        token = new(auth)
+      def self.parse(auth, config = nil)
+        token = new(auth, config)
         token.verify
         token
       end
 
-      def initialize(auth)
+      def initialize(auth, config = ::Devise.auth0)
         @auth = auth.presence
       end
 
-      def user_id
+      def provider
+        auth0_id&.split("|")&.first
+      end
+
+      def uid
+        auth0_id&.split("|")&.last
+      end
+
+      def auth0_id
         return if verify.nil?
-        return verify[0]["azp"] if bot?
+        return "auth0|#{verify[0]["azp"]}" if bot?
 
         verify[0]["sub"]
       end
@@ -28,11 +35,11 @@ module Devise
       def user
         @user ||= if bot?
           {
-            "user_id" => user_id,
-            "email" => "#{user_id}@#{config.domain}",
+            "user_id" => uid,
+            "email" => "#{uid}@#{config.domain}",
           }
         else
-          ::Devise::Auth0.client.user(user_id)
+          ::Devise::Auth0.client.user(auth0_id)
         end
       end
 
@@ -69,7 +76,7 @@ module Devise
       private
 
       def config
-        ::Devise::Auth0.config
+        ::Devise.auth0
       end
 
       def jwks_hash

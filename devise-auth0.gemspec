@@ -38,6 +38,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("dotenv")
   s.add_development_dependency("faker", "~> 2.0")
   s.add_development_dependency("multipart-parser", "~> 0.1.1")
+  s.add_development_dependency("pry-byebug", "~> 3.7")
   s.add_development_dependency("rack_session_access")
   s.add_development_dependency("rake", "~> 13.0")
   s.add_development_dependency("rspec-rails", "~> 4.0")

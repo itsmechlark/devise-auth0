@@ -3,8 +3,11 @@
 RSpec.shared_context("with fixtures") do
   let(:auth0_user_model) { User }
   let(:auth0_user) do
+    uid = Faker::Internet.unique.uuid
+
     auth0_user_model.create(
-      uid: Faker::Internet.unique.uuid,
+      provider: "auth0",
+      uid: uid,
       email: Faker::Internet.unique.email,
       password: "password"
     )

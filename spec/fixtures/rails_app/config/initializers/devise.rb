@@ -2,18 +2,16 @@
 
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
-AUTH0_CONFIG = Rails.application.config_for(:auth0)
 
 Devise.setup do |config|
   # TODO: Setting this explicitly to true here so we can test that the
   # auth0 provider gets included when this configuration is true since
   # we aren't able to modify this in runtime (the application loaded already)
   config.auth0 do |auth0|
-    auth0.aud = AUTH0_CONFIG['auth0_aud']
-    auth0.callback_path = '/auth/auth0/callback'
-    auth0.client_id = AUTH0_CONFIG['auth0_client_id']
-    auth0.client_secret = AUTH0_CONFIG['auth0_client_secret']
-    auth0.domain = AUTH0_CONFIG['auth0_domain']
+    auth0.aud = ENV["AUTH0_AUDIENCE"]
+    auth0.client_id = ENV["AUTH0_CLIENT_ID"]
+    auth0.client_secret = ENV["AUTH0_CLIENT_SECRET"]
+    auth0.domain = ENV["AUTH0_DOMAIN"]
     auth0.omniauth = true
     auth0.scope = 'openid'
   end
@@ -236,7 +234,7 @@ Devise.setup do |config|
   # Turn scoped views on. Before rendering "sessions/new", it will first check for
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
-  # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).

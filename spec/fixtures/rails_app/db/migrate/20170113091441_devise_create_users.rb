@@ -33,6 +33,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       # t.datetime :locked_at
 
       ## Auth0
+      t.string(:provider)
       t.string(:uid)
       t.boolean(:bot, default: false)
 

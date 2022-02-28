@@ -19,6 +19,8 @@ ENV["AUTH0_AUDIENCE"] ||= "https://rails-api-auth-sample.firstcircle.io"
 ENV["AUTH0_CLIENT_ID"] ||= Faker::Internet.password
 ENV["AUTH0_CLIENT_SECRET"] ||= Faker::Internet.password
 
+require "pry-byebug"
+
 require File.expand_path(
   "fixtures/rails_app/config/environment", __dir__
 )
