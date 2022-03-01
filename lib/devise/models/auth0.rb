@@ -9,7 +9,11 @@ module Devise
       extend ActiveSupport::Concern
 
       included do
-        validate :email_domain_allowed, :email_domain_disallowed
+        validates :uid, uniqueness: { scope: :provider, message: "should happen once per provider" }
+        with_options if: -> { respond_to?(:email) } do
+          validates :email, uniqueness: true
+          validate :email_domain_allowed, :email_domain_disallowed
+        end
       end
 
       def self.required_fields(klass)
@@ -17,7 +21,7 @@ module Devise
       end
 
       def email_domain_allowed
-        return unless respond_to?(:email) && !self.class.auth0_config.email_domains_allowlist.empty?
+        return if self.class.auth0_config.email_domains_allowlist.empty?
 
         m = Mail::Address.new(email)
         return if m.domain.nil?
@@ -28,7 +32,7 @@ module Devise
       end
 
       def email_domain_disallowed
-        return unless respond_to?(:email) && !self.class.auth0_config.email_domains_blocklist.empty?
+        return if self.class.auth0_config.email_domains_blocklist.empty?
 
         m = Mail::Address.new(email)
         return if m.domain.nil?
@@ -95,7 +99,15 @@ module Devise
         Devise::Models.config(self, :auth0_options)
 
         def from_auth0_token(token)
-          user = where(provider: token.provider, uid: token.uid).first_or_create do |user|
+          user = where(
+            auth0_where_conditions(
+              provider: token.provider,
+              uid: token.uid,
+              email: token.user["email"]
+            )
+          ).first_or_create do |user|
+            user.provider = token.provider
+            user.uid = token.uid
             user.email = token.user["email"] if user.respond_to?(:email=)
             user.password = Devise.friendly_token[0, 20] if user.respond_to?(:password=)
             user.bot = token.bot? if user.respond_to?(:bot=)
@@ -113,11 +125,25 @@ module Devise
           return unless auth0_config.omniauth
 
           uid = auth.uid.include?("|") ? auth.uid.split("|").last : auth.uid
-          where(provider: auth.provider, uid: uid).first_or_create do |user|
+          where(
+            auth0_where_conditions(
+              provider: auth.provider,
+              uid: uid,
+              email: auth.info.email
+            )
+          ).first_or_create do |user|
+            user.provider = auth.provider
+            user.uid = uid
             user.email = auth.info.email if user.respond_to?(:email=)
             user.password = Devise.friendly_token[0, 20] if user.respond_to?(:password=)
             user.after_auth0_omniauth_created(auth)
           end
+        end
+
+        def auth0_where_conditions(provider:, uid:, email: nil)
+          sql = arel_table[:provider].eq(provider).and(arel_table[:uid].eq(uid))
+          sql = sql.or(arel_table[:email].eq(email)) if email && column_names.include?("email")
+          sql
         end
 
         def auth0_config

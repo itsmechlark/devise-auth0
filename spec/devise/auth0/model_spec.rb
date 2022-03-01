@@ -194,12 +194,33 @@ RSpec.describe(Devise::Models::Auth0) do
         provider: auth0_user.provider,
         uid: auth0_user.uid,
         auth0_id: auth0_user.auth0_id,
+        user: { email: Faker::Internet.unique.email },
         scopes: []
       )
     end
 
     it "finds record which has given `user_id` as `uid`" do
       expect(model.from_auth0_token(token)).to(eq(auth0_user))
+    end
+
+    context "when email does match" do
+      let(:token) do
+        uid = Faker::Internet.unique.uuid
+
+        instance_double(
+          "Token",
+          provider: "google-oauth2",
+          uid: uid,
+          auth0_id: "google-oauth2|#{uid}",
+          user: { "email" => auth0_user.email },
+          scopes: [],
+          bot?: false
+        )
+      end
+
+      it { expect(user).to(be_persisted) }
+      it { expect(user.email).to(eq(token.user["email"])) }
+      it { expect(user.auth0_id).to(eq(auth0_user.auth0_id)) }
     end
 
     context "when uid does not match" do
@@ -268,6 +289,28 @@ RSpec.describe(Devise::Models::Auth0) do
 
     it "finds record which has given `user_id` as `uid`" do
       expect(model.from_auth0_omniauth(auth)).to(eq(auth0_admin_user))
+    end
+
+    context "when email does match" do
+      let(:auth) do
+        uid = Faker::Internet.unique.uuid
+
+        info = instance_double(
+          "AuthInfo",
+          email: auth0_admin_user.email
+        )
+
+        instance_double(
+          "Auth",
+          provider: "auth0",
+          uid: "auth0|#{uid}",
+          info: info
+        )
+      end
+
+      it { expect(user).to(be_persisted) }
+      it { expect(user.email).to(eq(auth.info.email)) }
+      it { expect(user.auth0_id).to(eq(auth0_admin_user.auth0_id)) }
     end
 
     context "when uid does not match" do
