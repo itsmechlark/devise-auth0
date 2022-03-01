@@ -9,7 +9,7 @@ module Devise
       extend ActiveSupport::Concern
 
       included do
-        validates :uid, uniqueness: { scope: :provider, message: "should happen once per provider" }
+        validates :uid, allow_blank: true, uniqueness: { scope: :provider, message: "should happen once per provider" }
         with_options if: -> { respond_to?(:email) } do
           validates :email, uniqueness: true
           validate :email_domain_allowed, :email_domain_disallowed
