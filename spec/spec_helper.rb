@@ -14,6 +14,7 @@ require "dotenv/load"
 require "faker"
 
 ENV["RAILS_ENV"] ||= "test"
+ENV["AUTH0_CUSTOM_DOMAIN"] ||= "firstcircle-dev.eu.auth0.com"
 ENV["AUTH0_DOMAIN"] ||= "firstcircle-dev.eu.auth0.com"
 ENV["AUTH0_AUDIENCE"] ||= "https://rails-api-auth-sample.firstcircle.io"
 ENV["AUTH0_CLIENT_ID"] ||= Faker::Internet.password
