@@ -60,7 +60,7 @@ module Devise
         @payload ||= JWT.decode(@auth, nil,
           true, # Verify the signature of this token
           algorithms: config.algorithm,
-          iss: "https://#{config.custom_domain}/",
+          iss: "https://#{issuer}/",
           verify_iss: true,
           aud: config.aud,
           verify_aud: true) do |header|
@@ -82,6 +82,10 @@ module Devise
 
       def client
         @resource_class.auth0_client
+      end
+
+      def issuer
+        config.custom_domain.presence || config.domain.presence
       end
 
       def jwks_hash
