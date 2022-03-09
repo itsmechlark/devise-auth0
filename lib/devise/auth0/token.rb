@@ -85,7 +85,7 @@ module Devise
       end
 
       def issuer
-        config.custom_domain.presence || config.domain.presence
+        config.domain.presence || config.original_domain.presence
       end
 
       def jwks_hash

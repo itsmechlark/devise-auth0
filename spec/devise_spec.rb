@@ -39,8 +39,8 @@ RSpec.describe(Devise) do
       expect(config.client_secret).to(eq(ENV["AUTH0_CLIENT_SECRET"]))
     end
 
-    it "defaults to ENV['AUTH0_CUSTOM_DOMAIN'] for custom_domain" do
-      expect(config.custom_domain).to(eq(ENV["AUTH0_CUSTOM_DOMAIN"]))
+    it "defaults to ENV['AUTH0_ORIGINAL_DOMAIN'] for original_domain" do
+      expect(config.original_domain).to(eq(ENV["AUTH0_ORIGINAL_DOMAIN"]))
     end
 
     it "defaults to ENV['AUTH0_DOMAIN'] for domain" do

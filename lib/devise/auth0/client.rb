@@ -9,7 +9,7 @@ module Devise
         super(
           client_id: config.client_id,
           client_secret: config.client_secret,
-          domain: config.domain,
+          domain: config.original_domain,
         )
       end
     end
