@@ -53,7 +53,7 @@ module Devise
       def scopes
         return [] if verify.nil?
 
-        verify[0]["scope"].split(" ")
+        verify[0]["scope"].to_s.split(" ")
       end
 
       def verify
