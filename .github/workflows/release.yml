@@ -1,0 +1,93 @@
+name: Prod Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check_changelog:
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.released.outputs.version }}
+      changelog: ${{ steps.released.outputs.changes || '' }}
+      status: ${{ steps.released.outputs.status || 'unreleased' }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: zattoo/changelog@v1
+        name: Validate Changelog
+        with:
+          token: ${{ secrets.DEVOPS_GITHUB_TOKEN }}
+          sources: "src/, package.json, yarn.lock"
+      - name: Get Unreleased
+        id: unreleased
+        if: ${{ always() }}
+        uses: mindsers/changelog-reader-action@v2
+        continue-on-error: true
+        with:
+          version: "Unreleased"
+      - name: Get Latest Released
+        id: released
+        if: ${{ always() && (steps.unreleased.outputs.changes == '' || steps.unreleased.outputs.status != 'unreleased') }}
+        uses: mindsers/changelog-reader-action@v2
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.0'
+        bundler-cache: true
+    - name: Run RuboCop
+      run: bundle exec rubocop
+
+  unit_test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        gemfile:
+          - rails_5.2_stable
+          - rails_6.0_stable
+          - rails_6.1_stable
+          - rails_7.0_stable
+          - rails_edge
+        ruby: ['2.7', '3.0', '3.1']
+        exclude:
+          - ruby: '3.0'
+            gemfile: rails_5.2_stable
+          - ruby: '3.1'
+            gemfile: rails_5.2_stable
+    env:
+      BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby }}
+        bundler-cache: true
+    - name: Suppress git warnings
+      run: git config --global init.defaultBranch main
+    - name: Run RSpec
+      run: bundle exec rspec
+
+  release:
+    runs-on: ubuntu-latest
+    needs: [lint, unit_test, check_changelog]
+    if: ${{ needs.check_changelog.outputs.status != 'unreleased' }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: carabao-capital/actions
+          ref: ${{ secrets.DEVOPS_ACTIONS_REF }}
+          token: ${{ secrets.DEVOPS_GITHUB_TOKEN }}
+      - uses: ./create-release
+        with:
+          github-token: ${{ secrets.DEVOPS_GITHUB_TOKEN }}
+          slack-token: ${{ secrets.DEVOPS_SLACK_TOKEN }}
+          version: ${{ needs.check_changelog.outputs.version }}
+          changelog: ${{ needs.check_changelog.outputs.changelog }}
