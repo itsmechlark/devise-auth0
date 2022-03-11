@@ -14,9 +14,9 @@ require "dotenv/load"
 require "faker"
 
 ENV["RAILS_ENV"] ||= "test"
-ENV["AUTH0_ORIGINAL_DOMAIN"] ||= "firstcircle-dev.eu.auth0.com"
-ENV["AUTH0_DOMAIN"] ||= "firstcircle-dev.eu.auth0.com"
-ENV["AUTH0_AUDIENCE"] ||= "https://rails-api-auth-sample.firstcircle.io"
+ENV["AUTH0_CUSTOM_DOMAIN"] ||= "auth.test.firstcircle.ph"
+ENV["AUTH0_DOMAIN"] ||= "firstcircle-test.eu.auth0.com"
+ENV["AUTH0_AUDIENCE"] ||= "https://staging-t.api.connect.firstcircle.ph"
 ENV["AUTH0_CLIENT_ID"] ||= Faker::Internet.password
 ENV["AUTH0_CLIENT_SECRET"] ||= Faker::Internet.password
 
@@ -37,18 +37,22 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].sort.each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 VCR.configure do |config|
-  config.default_cassette_options = { match_requests_on: [:method, :uri] }
+  config.default_cassette_options = {
+    allow_playback_repeats: true,
+    match_requests_on: [:method, :uri],
+  }
   config.allow_http_connections_when_no_cassette = false
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
   config.configure_rspec_metadata!
   config.hook_into(:webmock)
 
   unless ENV.key?("CI")
-    config.default_cassette_options = { record: :new_episodes }
+    config.default_cassette_options.merge(record: :new_episodes)
   end
 
   [
     "AUTH0_DOMAIN",
+    "AUTH0_CUSTOM_DOMAIN",
     "AUTH0_AUDIENCE",
     "AUTH0_CLIENT_ID",
     "AUTH0_CLIENT_SECRET",

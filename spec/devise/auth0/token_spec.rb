@@ -6,7 +6,7 @@ require "devise/auth0/token"
 RSpec.describe(Devise::Auth0::Token) do
   include_context("with fixtures")
 
-  before { Timecop.freeze(Time.zone.at(1644312671)) }
+  before { Timecop.freeze(Time.zone.at(1646975954)) }
 
   after { Timecop.return }
 

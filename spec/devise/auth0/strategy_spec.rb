@@ -67,7 +67,7 @@ RSpec.describe(Devise::Strategies::Auth0) do
       end
 
       before do
-        Timecop.freeze(Time.zone.at(1644312671))
+        Timecop.freeze(Time.zone.at(1646975954))
         VCR.use_cassette("auth0/user/google-oauth2|101843459961769220909") do
           strategy.authenticate!
         end

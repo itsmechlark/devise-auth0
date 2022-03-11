@@ -27,21 +27,22 @@ RSpec.shared_context("with fixtures") do
       password: "password"
     )
   end
+
   let(:jwt_token) do
-    "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlMYVlEMFR2VjdP"\
-      "LW16clFXeHhxTCJ9.eyJpc3MiOiJodHRwczovL2ZpcnN0Y2lyY2xlLWRldi5"\
-      "ldS5hdXRoMC5jb20vIiwic3ViIjoiZ29vZ2xlLW9hdXRoMnwxMDE4NDM0NTk"\
-      "5NjE3NjkyMjA5MDkiLCJhdWQiOlsiaHR0cHM6Ly9yYWlscy1hcGktYXV0aC1"\
-      "zYW1wbGUuZmlyc3RjaXJjbGUuaW8iLCJodHRwczovL2ZpcnN0Y2lyY2xlLWR"\
-      "ldi5ldS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNjQ0MzEyNjcxLCJ"\
-      "leHAiOjE2NDQzOTkwNzEsImF6cCI6IlFDQXYyQzRYWHJpd1BuelNYbENXYkc"\
-      "5d2R2S05ZOUtwIiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCJ9.ZE"\
-      "dnB_tNBquqPHgSa9GhUE8CPKCEcLybDaXcsGhxgOeIQfd1ei-uZ6E40NsERu"\
-      "JyUVT9Sm8dy-gm9Mg9o-NdQmHVkBx53Cb3EV_3z8Jz4Yi9LNNbXW6SmIAs0q"\
-      "hHBzQYFsnWilH6j0P9avVTEE0YwCPwht8La9YCMcPTQwknIKTxLFS_PdqQWX"\
-      "BIlDhCJcQTc1pWm2U--M2cnnR2ghawxIEngp-gQrljMkAPANnf1L7EkSSFM1"\
-      "5aahX1ckL-NetyhQyRTwggV35w-IvL11COQPCNtuCsMlT_VgqSM4np78g8xp"\
-      "HYdj4SYY75GJbSTsBRPseRt9drxorUT5PGbrggDg"
+    "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ikl4aTdVSHdURGhWO"\
+      "FpJWmFJNnNFUyJ9.eyJpc3MiOiJodHRwczovL2F1dGgudGVzdC5maXJzdGNp"\
+      "cmNsZS5waC8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDEwMTg0MzQ1OTk2MTc2"\
+      "OTIyMDkwOSIsImF1ZCI6WyJodHRwczovL3N0YWdpbmctdC5hcGkuY29ubmVj"\
+      "dC5maXJzdGNpcmNsZS5waCIsImh0dHBzOi8vZmlyc3RjaXJjbGUtdGVzdC5l"\
+      "dS5hdXRoMC5jb20vdXNlcmluZm8iXSwiaWF0IjoxNjQ2OTc1OTU0LCJleHAi"\
+      "OjE2NDgyNzE5NTQsImF6cCI6IjlsSkZUelY3UjdSZHNVdmVmdHNHdkJkancz"\
+      "SWQwend0Iiwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInBlcm1p"\
+      "c3Npb25zIjpbXX0.v_paPUZg6Ocz5_d79gwPxfgp2xt4aWLDATNZWL3Fmmix"\
+      "MXR-gkMYCSTNrivoqCXEYQiL_fL2mmW0IvARMI7BNoh5ezfkpmm8kHxELKRX"\
+      "QWJLshp7FMnTir1d2s1WW0CJ82fSC5r1-RtdsguUnWuomBUHik_oKX7ZN_iz"\
+      "M2jP9zBStuThBpT5ZGHEticeXZS4T1p6j_mZF9jYKJP1GdhjE2mBgpxNU0dl"\
+      "w_oVKsJpVud0TjeKqtd72LS8vMOTzE_N0eefniscVg3wlyYCe8wnB48zdhvb"\
+      "9AihcIwwUt_eNre6YHvxl_oBcg38WdN0FXkZay3vx2o1JfYO-wnH3HFnBA"
   end
   let(:client_token) do
     "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlMYVlEMFR2VjdPL"\

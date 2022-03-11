@@ -87,7 +87,7 @@ http_interactions:
   recorded_at: Tue, 08 Feb 2022 09:31:11 GMT
 - request:
     method: get
-    uri: https://[AUTH0_DOMAIN]/.well-known/jwks.json
+    uri: https://[AUTH0_CUSTOM_DOMAIN]/.well-known/jwks.json
     body:
       encoding: US-ASCII
       string: ''
@@ -159,7 +159,7 @@ http_interactions:
       - h3=":443"; ma=86400, h3-29=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '{"keys":[{"alg":"RS256","kty":"RSA","use":"sig","n":"4I90ihmKAShjPGe7ytMZXO3XGait2EIh6ZdKIyNO1Ju6F5oh1hFvksFzdCD93lQByLObyyzS90gBVd4ephmzEX4A6z5wwkqKGSL9RoVKFo5FgWHomozyd-uTTZ1SSZ-d8A_wVTz4cJK7UcMKXUMbmeWhtqHf71ZwYxtxEfyeMn2Lw_ASQt3tAmnDRJl89SPi1xwCGAS8WhiDWvXFHXUd_raCzJJUnRqKSkwrc56-uf_-EveZenbjzsH-_nehegCqQhQrqaWfNxVjQ6HjGywYcJ_dosJtWG7xzNNEELy50Y98H9A8RkGJykRXTvjDwD2V0OuVgnlBnBoGHQLCdfIlpQ","e":"AQAB","kid":"iLaYD0TvV7O-mzrQWxxqL","x5t":"gSBzwtbfCwiuz5fvtwtd2qEEq2w","x5c":["MIIDEzCCAfugAwIBAgIJMMDKFDMuu/lBMA0GCSqGSIb3DQEBCwUAMCcxJTAjBgNVBAMTHGZpcnN0Y2lyY2xlLWRldi5ldS5hdXRoMC5jb20wHhcNMjEwOTE1MDgwMTM3WhcNMzUwNTI1MDgwMTM3WjAnMSUwIwYDVQQDExxmaXJzdGNpcmNsZS1kZXYuZXUuYXV0aDAuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4I90ihmKAShjPGe7ytMZXO3XGait2EIh6ZdKIyNO1Ju6F5oh1hFvksFzdCD93lQByLObyyzS90gBVd4ephmzEX4A6z5wwkqKGSL9RoVKFo5FgWHomozyd+uTTZ1SSZ+d8A/wVTz4cJK7UcMKXUMbmeWhtqHf71ZwYxtxEfyeMn2Lw/ASQt3tAmnDRJl89SPi1xwCGAS8WhiDWvXFHXUd/raCzJJUnRqKSkwrc56+uf/+EveZenbjzsH+/nehegCqQhQrqaWfNxVjQ6HjGywYcJ/dosJtWG7xzNNEELy50Y98H9A8RkGJykRXTvjDwD2V0OuVgnlBnBoGHQLCdfIlpQIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBRKGIg8ttIMtcpqqd5bDY2p+oZ/DTAOBgNVHQ8BAf8EBAMCAoQwDQYJKoZIhvcNAQELBQADggEBAF/XVXiVnhaGsr4UXPcYbuJdB3L+w7rac/huXheSAWqr6f5n+cRUyAjvqzdzYFm8xZpVPcIXjKKin0U4W+5qhdl314RizN6w1hNnMM7y7IyI8DDYG8kyLhsPaNDCAbSvOYYMNwdZQv63tjzXGFvpmVeuvIuJ5jVpBVboWKNol52CandmrLK619my2LwtRczLlgxowhUd36Xdfnii0lz+Ud5DbLTvQ0h/NE0Y34SRVvQTAs7WtagIc6OAM3jS2cTuPcIzr9mDQZCyZMWNkh3/LJ6hoYFS5jgpKY+wHoOXPpbwkOAb+axlGezNeND2q/sszAQMyu+tgBBRqzwWx4lSq2Y="]},{"alg":"RS256","kty":"RSA","use":"sig","n":"37TlCGT2IPDd7svv3EXlDi_rUTzEcSjUHQlA-QRUfrBqVG6ATfN-BEwcRCbbIDtA2LF1gqXgo20iYb4ywyLPy82o6qjRfGtgJs9W_0ssQ5WtZLgKkbkBjW9rDsYThplR4n6ZQ4cnIq5uFT4P9HKtz4VjX9bRR5gkfQCkBdf-xTpIVgo1PWyULslUsVEsnCX7rSG8d4oEsId08I53B7YqB0V69EfkIuXbTs2BSJN1f06RTBSZlIo-LleuBX78oWXpLvYv0P_jswu2Pgr3oGbtTCqaKBFrHp-8EM4lp4H3xq4kJ53soxPEZZ50wIu7mbUMCO33N3UqvJd993PowhAezw","e":"AQAB","kid":"qmPC82FfyJjfLp5jbKJ0m","x5t":"AtnCY_nt6ogDRLoP8HOQkQTtsx4","x5c":["MIIDEzCCAfugAwIBAgIJHP4VnJ3pgi9yMA0GCSqGSIb3DQEBCwUAMCcxJTAjBgNVBAMTHGZpcnN0Y2lyY2xlLWRldi5ldS5hdXRoMC5jb20wHhcNMjEwOTE1MDgwMTM3WhcNMzUwNTI1MDgwMTM3WjAnMSUwIwYDVQQDExxmaXJzdGNpcmNsZS1kZXYuZXUuYXV0aDAuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA37TlCGT2IPDd7svv3EXlDi/rUTzEcSjUHQlA+QRUfrBqVG6ATfN+BEwcRCbbIDtA2LF1gqXgo20iYb4ywyLPy82o6qjRfGtgJs9W/0ssQ5WtZLgKkbkBjW9rDsYThplR4n6ZQ4cnIq5uFT4P9HKtz4VjX9bRR5gkfQCkBdf+xTpIVgo1PWyULslUsVEsnCX7rSG8d4oEsId08I53B7YqB0V69EfkIuXbTs2BSJN1f06RTBSZlIo+LleuBX78oWXpLvYv0P/jswu2Pgr3oGbtTCqaKBFrHp+8EM4lp4H3xq4kJ53soxPEZZ50wIu7mbUMCO33N3UqvJd993PowhAezwIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBTmBAA49FoSa5MwREthI+ySzD/sqzAOBgNVHQ8BAf8EBAMCAoQwDQYJKoZIhvcNAQELBQADggEBADoZ+bNd9TnuULNVDsS6zv+BtvSvKE2lcIxaGf+Oubh1TwustHYV08zHJdKroFbEmQ6LIHxUVxrZN8WuwLOiD43A2cGifJA3dBpSE7OZ7FgET2eJfZShlO1jRY1QMLfOSrH9ciZsVyT34s2nTk0LDfxViGToQilulhkAMWOUWaSXWUorvSo3GZreSLFlqtSSj2R9tcxvhc0y9R98imqiA5HUVImhEThXn5Tdnbp2P1Yh3XCjjvFvlavIFUMxkVF/BNgdvfU7WROdhOV3DM4MT23bJa1p7R3qJ7ld7GwiETaomiSRGIDeOgelHFXJChgaPHQw12k693c486X6PJVGUw0="]}]}'
+      string: '{"keys":[{"alg":"RS256","kty":"RSA","use":"sig","n":"8QSOO5fPiagytk11eu0CzVvOrT_5ANamUlex6RNZ94wawn80oDr3UMGFuIYn3WzjKjFcSXY98Theuk0dxe-bpxGr52TKCQVhJAeNQVNtrA44Qzw6Wp6gOTSAl6YxEhfRWYnPCqNilj1NOwhOoMNCstkaK3R--SfZROpsCim05jTA-FHDMxLCpGgC22y5b6O2w9fmQYaAI8OcQCRtpsL8ce9O_-SGQ8Uh2y86F1GoUUdq1AC4_kM1Q_9DvuXekN4IpTOKZYgw6Vz82_S3pDR5Dscmf-4a1pz1e91jH5isCPyKnQosGTV_vhdIn1Lyk8LCR1cr67l-8rkEGnLmwJZyEQ","e":"AQAB","kid":"Ixi7UHwTDhV8ZIZaI6sES","x5t":"mH9Eud7CLOYrifdAqRkgDjTP4ZU","x5c":["MIIDFTCCAf2gAwIBAgIJKoBdzfgGFKZqMA0GCSqGSIb3DQEBCwUAMCgxJjAkBgNVBAMTHWZpcnN0Y2lyY2xlLXRlc3QuZXUuYXV0aDAuY29tMB4XDTIxMDkxNTA4MDcyMVoXDTM1MDUyNTA4MDcyMVowKDEmMCQGA1UEAxMdZmlyc3RjaXJjbGUtdGVzdC5ldS5hdXRoMC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDxBI47l8+JqDK2TXV67QLNW86tP/kA1qZSV7HpE1n3jBrCfzSgOvdQwYW4hifdbOMqMVxJdj3xOF66TR3F75unEavnZMoJBWEkB41BU22sDjhDPDpanqA5NICXpjESF9FZic8Ko2KWPU07CE6gw0Ky2RordH75J9lE6mwKKbTmNMD4UcMzEsKkaALbbLlvo7bD1+ZBhoAjw5xAJG2mwvxx707/5IZDxSHbLzoXUahRR2rUALj+QzVD/0O+5d6Q3gilM4pliDDpXPzb9LekNHkOxyZ/7hrWnPV73WMfmKwI/IqdCiwZNX++F0ifUvKTwsJHVyvruX7yuQQacubAlnIRAgMBAAGjQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFP7mO5nRJV2j2u3zcxcuhzSR7MAbMA4GA1UdDwEB/wQEAwIChDANBgkqhkiG9w0BAQsFAAOCAQEAWW5qad+rFIuamKHwg8FN7UyXPmTapHyqSuMvrTa1P5JZJs7vFiAw4m3gT7jP9wk+qCoICHkK1Du46Yp1E7GaMjCwVsj0XcSnRWr81vwPqhfaDKNaQdN+YKKzXiTlWtTUlhpetVC5XRamxM6jLYq+ZyZ3Iv53SD4AWkoDHWphRBpgWzU3aRg9gjo82A5P5LXmXAp6WiJjisEukpUeR4kBTTgl5qrAu3VPLbc4E1GC00hp2UNbemObhS/wYyz69rUDf3hwIg2h9JE4PFaQEcw2oI4I/f/PO+dnMqKzMIxKLkdHLurR1is1K40HyIyLoTrsBlrWO23i7bTu5EHwpCn5AA=="]},{"alg":"RS256","kty":"RSA","use":"sig","n":"y3TBIBVw7IRHtEQqiGKeY3grSLVOnzjZmQbfYAmMIJ2iCSAwZK0aAo7N0R4IdLkIR-FDa3ktflSccDcf9k9FvsItpfuBm0CCdnr3FHjX-mWNTKj_VZeng-MvbP04R9gc35AuY1jkAzW6AncIYPdvzPdTXNyCCtnjwy3gBzZh2dX9TzQeyQU1hU6Qq-wOhwhYLtDdPH1Lu39uYw4YdrJnHoEHfmyRxwQg_pFopS9o3Bh-mYOAywWik25HaZ_jiok_vjkyVAScnvvjbIJAKhC7LX7ZDIyrELNr5e1-v3JQoR_mlNQamssHXN_aVlJBBSMjpfEUAab6uO0xZ4wd3z0QhQ","e":"AQAB","kid":"zpRZtjmpPNO5PskUyIIxd","x5t":"s8tHsfEBJmyczf51R7PX-fTFdgI","x5c":["MIIDFTCCAf2gAwIBAgIJY2acJpLPMYQpMA0GCSqGSIb3DQEBCwUAMCgxJjAkBgNVBAMTHWZpcnN0Y2lyY2xlLXRlc3QuZXUuYXV0aDAuY29tMB4XDTIxMDkxNTA4MDcyMVoXDTM1MDUyNTA4MDcyMVowKDEmMCQGA1UEAxMdZmlyc3RjaXJjbGUtdGVzdC5ldS5hdXRoMC5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDLdMEgFXDshEe0RCqIYp5jeCtItU6fONmZBt9gCYwgnaIJIDBkrRoCjs3RHgh0uQhH4UNreS1+VJxwNx/2T0W+wi2l+4GbQIJ2evcUeNf6ZY1MqP9Vl6eD4y9s/ThH2BzfkC5jWOQDNboCdwhg92/M91Nc3IIK2ePDLeAHNmHZ1f1PNB7JBTWFTpCr7A6HCFgu0N08fUu7f25jDhh2smcegQd+bJHHBCD+kWilL2jcGH6Zg4DLBaKTbkdpn+OKiT++OTJUBJye++NsgkAqELstftkMjKsQs2vl7X6/clChH+aU1Bqaywdc39pWUkEFIyOl8RQBpvq47TFnjB3fPRCFAgMBAAGjQjBAMA8GA1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFMRegyIaWfJW8btilDzYqgqc9JvAMA4GA1UdDwEB/wQEAwIChDANBgkqhkiG9w0BAQsFAAOCAQEAderDM4owMX+BAPsiZ6xu/6vekkO9oTtjLCMVFMXaqsXGAYQ+yXDt8cFVV0MnwQiHh8nCd8QdLR6kTzo2CCnP0jyluV09gZD34Fa2/7CneWrJ1vLqZ06Sa0svApO4GevoqnTQ7aKPVPbWMEW6GgLfrorey/3SOtXth5p1sbotD3P9g+Yl1bxO5t2ys/BWOTpDhfFmm56U2T61PFyl0Rb204Ov3mDGsuMOL+l5quFBzt4HNYRcyUqXPpDT6JxmXKoYcvHSOi7bMmBeDoW5QvZnUDwl/SycZe+j+Mzi+nLFgSMd+/rC/gltzlnX6U5iRDQm4l2Z4xKkC4+pfGCrr2/VrQ=="]}]}'
   recorded_at: Tue, 08 Feb 2022 09:31:11 GMT
 - request:
     method: get
@@ -309,82 +309,6 @@ http_interactions:
         for JSON Web Token validation","attributes":{"error":"Expired token received
         for JSON Web Token validation"}}'
   recorded_at: Thu, 17 Feb 2022 04:13:16 GMT
-- request:
-    method: get
-    uri: https://[AUTH0_DOMAIN]/.well-known/jwks.json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.9.3
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Date:
-      - Thu, 17 Feb 2022 07:59:03 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Connection:
-      - keep-alive
-      Cf-Ray:
-      - 6ded795a5f37564c-SIN
-      Access-Control-Allow-Origin:
-      - "*"
-      Cache-Control:
-      - public, max-age=15, stale-while-revalidate=15, stale-if-error=86400
-      Last-Modified:
-      - Thu, 17 Feb 2022 07:28:53 GMT
-      Strict-Transport-Security:
-      - max-age=31536000
-      Vary:
-      - Accept-Encoding, Origin, Accept-Encoding
-      Cf-Cache-Status:
-      - EXPIRED
-      Access-Control-Allow-Credentials:
-      - 'false'
-      Access-Control-Expose-Headers:
-      - X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset
-      Expect-Ct:
-      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
-      Ot-Baggage-Auth0-Request-Id:
-      - 6ded795a5f37564c
-      Ot-Tracer-Sampled:
-      - 'true'
-      Ot-Tracer-Spanid:
-      - 5374310733dba27c
-      Ot-Tracer-Traceid:
-      - 71a31cf15ede095c
-      X-Auth0-Requestid:
-      - 229d2baebbfc3bdc69ee
-      X-Content-Type-Options:
-      - nosniff
-      X-Ratelimit-Limit:
-      - '20'
-      X-Ratelimit-Remaining:
-      - '19'
-      X-Ratelimit-Reset:
-      - '1645084744'
-      Set-Cookie:
-      - __cf_bm=_R_42h1MNPf1r.oFiZb3YWcimN30wvtIajxiX_iSi.8-1645084743-0-Af93r7FcB5Qhxn3MXcPjmwbDVVlg1KUtfZjPp6WO65CFbwg34hNxF6JenN6RrO+ERngSe708i1vemdULSkNrSgw=;
-        path=/; expires=Thu, 17-Feb-22 08:29:03 GMT; domain=.eu.auth0.com; HttpOnly;
-        Secure; SameSite=None
-      Server:
-      - cloudflare
-      Alt-Svc:
-      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
-    body:
-      encoding: ASCII-8BIT
-      string: '{"keys":[{"alg":"RS256","kty":"RSA","use":"sig","n":"4I90ihmKAShjPGe7ytMZXO3XGait2EIh6ZdKIyNO1Ju6F5oh1hFvksFzdCD93lQByLObyyzS90gBVd4ephmzEX4A6z5wwkqKGSL9RoVKFo5FgWHomozyd-uTTZ1SSZ-d8A_wVTz4cJK7UcMKXUMbmeWhtqHf71ZwYxtxEfyeMn2Lw_ASQt3tAmnDRJl89SPi1xwCGAS8WhiDWvXFHXUd_raCzJJUnRqKSkwrc56-uf_-EveZenbjzsH-_nehegCqQhQrqaWfNxVjQ6HjGywYcJ_dosJtWG7xzNNEELy50Y98H9A8RkGJykRXTvjDwD2V0OuVgnlBnBoGHQLCdfIlpQ","e":"AQAB","kid":"iLaYD0TvV7O-mzrQWxxqL","x5t":"gSBzwtbfCwiuz5fvtwtd2qEEq2w","x5c":["MIIDEzCCAfugAwIBAgIJMMDKFDMuu/lBMA0GCSqGSIb3DQEBCwUAMCcxJTAjBgNVBAMTHGZpcnN0Y2lyY2xlLWRldi5ldS5hdXRoMC5jb20wHhcNMjEwOTE1MDgwMTM3WhcNMzUwNTI1MDgwMTM3WjAnMSUwIwYDVQQDExxmaXJzdGNpcmNsZS1kZXYuZXUuYXV0aDAuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4I90ihmKAShjPGe7ytMZXO3XGait2EIh6ZdKIyNO1Ju6F5oh1hFvksFzdCD93lQByLObyyzS90gBVd4ephmzEX4A6z5wwkqKGSL9RoVKFo5FgWHomozyd+uTTZ1SSZ+d8A/wVTz4cJK7UcMKXUMbmeWhtqHf71ZwYxtxEfyeMn2Lw/ASQt3tAmnDRJl89SPi1xwCGAS8WhiDWvXFHXUd/raCzJJUnRqKSkwrc56+uf/+EveZenbjzsH+/nehegCqQhQrqaWfNxVjQ6HjGywYcJ/dosJtWG7xzNNEELy50Y98H9A8RkGJykRXTvjDwD2V0OuVgnlBnBoGHQLCdfIlpQIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBRKGIg8ttIMtcpqqd5bDY2p+oZ/DTAOBgNVHQ8BAf8EBAMCAoQwDQYJKoZIhvcNAQELBQADggEBAF/XVXiVnhaGsr4UXPcYbuJdB3L+w7rac/huXheSAWqr6f5n+cRUyAjvqzdzYFm8xZpVPcIXjKKin0U4W+5qhdl314RizN6w1hNnMM7y7IyI8DDYG8kyLhsPaNDCAbSvOYYMNwdZQv63tjzXGFvpmVeuvIuJ5jVpBVboWKNol52CandmrLK619my2LwtRczLlgxowhUd36Xdfnii0lz+Ud5DbLTvQ0h/NE0Y34SRVvQTAs7WtagIc6OAM3jS2cTuPcIzr9mDQZCyZMWNkh3/LJ6hoYFS5jgpKY+wHoOXPpbwkOAb+axlGezNeND2q/sszAQMyu+tgBBRqzwWx4lSq2Y="]},{"alg":"RS256","kty":"RSA","use":"sig","n":"37TlCGT2IPDd7svv3EXlDi_rUTzEcSjUHQlA-QRUfrBqVG6ATfN-BEwcRCbbIDtA2LF1gqXgo20iYb4ywyLPy82o6qjRfGtgJs9W_0ssQ5WtZLgKkbkBjW9rDsYThplR4n6ZQ4cnIq5uFT4P9HKtz4VjX9bRR5gkfQCkBdf-xTpIVgo1PWyULslUsVEsnCX7rSG8d4oEsId08I53B7YqB0V69EfkIuXbTs2BSJN1f06RTBSZlIo-LleuBX78oWXpLvYv0P_jswu2Pgr3oGbtTCqaKBFrHp-8EM4lp4H3xq4kJ53soxPEZZ50wIu7mbUMCO33N3UqvJd993PowhAezw","e":"AQAB","kid":"qmPC82FfyJjfLp5jbKJ0m","x5t":"AtnCY_nt6ogDRLoP8HOQkQTtsx4","x5c":["MIIDEzCCAfugAwIBAgIJHP4VnJ3pgi9yMA0GCSqGSIb3DQEBCwUAMCcxJTAjBgNVBAMTHGZpcnN0Y2lyY2xlLWRldi5ldS5hdXRoMC5jb20wHhcNMjEwOTE1MDgwMTM3WhcNMzUwNTI1MDgwMTM3WjAnMSUwIwYDVQQDExxmaXJzdGNpcmNsZS1kZXYuZXUuYXV0aDAuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA37TlCGT2IPDd7svv3EXlDi/rUTzEcSjUHQlA+QRUfrBqVG6ATfN+BEwcRCbbIDtA2LF1gqXgo20iYb4ywyLPy82o6qjRfGtgJs9W/0ssQ5WtZLgKkbkBjW9rDsYThplR4n6ZQ4cnIq5uFT4P9HKtz4VjX9bRR5gkfQCkBdf+xTpIVgo1PWyULslUsVEsnCX7rSG8d4oEsId08I53B7YqB0V69EfkIuXbTs2BSJN1f06RTBSZlIo+LleuBX78oWXpLvYv0P/jswu2Pgr3oGbtTCqaKBFrHp+8EM4lp4H3xq4kJ53soxPEZZ50wIu7mbUMCO33N3UqvJd993PowhAezwIDAQABo0IwQDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBTmBAA49FoSa5MwREthI+ySzD/sqzAOBgNVHQ8BAf8EBAMCAoQwDQYJKoZIhvcNAQELBQADggEBADoZ+bNd9TnuULNVDsS6zv+BtvSvKE2lcIxaGf+Oubh1TwustHYV08zHJdKroFbEmQ6LIHxUVxrZN8WuwLOiD43A2cGifJA3dBpSE7OZ7FgET2eJfZShlO1jRY1QMLfOSrH9ciZsVyT34s2nTk0LDfxViGToQilulhkAMWOUWaSXWUorvSo3GZreSLFlqtSSj2R9tcxvhc0y9R98imqiA5HUVImhEThXn5Tdnbp2P1Yh3XCjjvFvlavIFUMxkVF/BNgdvfU7WROdhOV3DM4MT23bJa1p7R3qJ7ld7GwiETaomiSRGIDeOgelHFXJChgaPHQw12k693c486X6PJVGUw0="]}]}'
-  recorded_at: Thu, 17 Feb 2022 07:59:03 GMT
 - request:
     method: get
     uri: https://[AUTH0_DOMAIN]/api/v2/users/google-oauth2%7C101843459961769220909?include_fields=true

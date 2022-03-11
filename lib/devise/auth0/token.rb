@@ -60,7 +60,7 @@ module Devise
         @payload ||= JWT.decode(@auth, nil,
           true, # Verify the signature of this token
           algorithms: config.algorithm,
-          iss: "https://#{issuer}/",
+          iss: issuer,
           verify_iss: true,
           aud: config.aud,
           verify_aud: true) do |header|
@@ -85,11 +85,11 @@ module Devise
       end
 
       def issuer
-        config.domain.presence || config.original_domain.presence
+        "https://#{config.custom_domain.presence || config.domain.presence}/"
       end
 
       def jwks_hash
-        conn = ::Faraday.new("https://#{config.domain}") do |f|
+        conn = ::Faraday.new("https://#{config.custom_domain}") do |f|
           f.request(:retry, max: 3)
           f.adapter(::Faraday.default_adapter)
         end
