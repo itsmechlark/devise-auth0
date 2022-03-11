@@ -4,7 +4,7 @@ require_relative "lib/devise/auth0/version"
 
 Gem::Specification.new do |s|
   s.name = "devise-auth0"
-  s.version = Devise::Auth0::VERSION
+  s.version = Devise::Auth0.gem_version
   s.authors = ["First Circle Engineering"]
   s.email = ["tech@firstcircle.com"]
 

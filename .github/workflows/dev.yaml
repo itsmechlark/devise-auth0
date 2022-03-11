@@ -42,7 +42,7 @@ jobs:
               labels: ['wip']
             })
 
-  lint:
+  rubocop:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -52,7 +52,27 @@ jobs:
         ruby-version: '3.0'
         bundler-cache: true
     - name: Run RuboCop
-      run: bundle exec rubocop
+      run: bundle exec rubocop --parallel
+
+  codespell:
+    name: Check spelling all files with codespell
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8]
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install codespell
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Check spelling with codespell
+      run: codespell --ignore-words=codespell.txt || exit 1
 
   unit_test:
     runs-on: ubuntu-latest
