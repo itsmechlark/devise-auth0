@@ -44,7 +44,6 @@ jobs:
       run: bundle exec rubocop --parallel
 
   codespell:
-    name: Check spelling all files with codespell
     runs-on: ubuntu-latest
     strategy:
       matrix:
