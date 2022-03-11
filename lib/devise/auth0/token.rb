@@ -53,14 +53,14 @@ module Devise
       def scopes
         return [] if verify.nil?
 
-        verify[0]["scope"].split(" ")
+        verify[0]["scope"].to_s.split(" ")
       end
 
       def verify
         @payload ||= JWT.decode(@auth, nil,
           true, # Verify the signature of this token
           algorithms: config.algorithm,
-          iss: "https://#{config.domain}/",
+          iss: "https://#{issuer}/",
           verify_iss: true,
           aud: config.aud,
           verify_aud: true) do |header|
@@ -82,6 +82,10 @@ module Devise
 
       def client
         @resource_class.auth0_client
+      end
+
+      def issuer
+        config.domain.presence || config.original_domain.presence
       end
 
       def jwks_hash

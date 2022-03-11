@@ -18,7 +18,7 @@ module Devise
               config.client_secret,
               config.domain, {
                 authorize_params: {
-                  audience: config.aud,
+                  audience: config.aud.join(','),
                   scope: config.scope,
                 },
               })
