@@ -16,7 +16,7 @@ module Devise
             devise.omniauth(:auth0,
               config.client_id,
               config.client_secret,
-              config.domain, {
+              config.custom_domain, {
                 authorize_params: {
                   audience: config.aud.join(","),
                   scope: config.scope,
