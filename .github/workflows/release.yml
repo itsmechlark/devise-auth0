@@ -18,7 +18,7 @@ jobs:
         name: Validate Changelog
         with:
           token: ${{ secrets.DEVOPS_GITHUB_TOKEN }}
-          sources: "src/, package.json, yarn.lock"
+          sources: "app/, lib/, devise-auth0.gemspec"
       - name: Get Unreleased
         id: unreleased
         if: ${{ always() }}
@@ -97,7 +97,7 @@ jobs:
 
   release:
     runs-on: ubuntu-latest
-    needs: unit_test
+    needs: [check_changelog, unit_test]
     if: ${{ needs.check_changelog.outputs.status != 'unreleased' }}
     steps:
       - uses: actions/checkout@v2
