@@ -20,10 +20,10 @@ Gem::Specification.new do |s|
     "bug_tracker_uri" => "https://github.com/carabao-capital/devise-auth0/issues",
   }
 
-  s.files = Dir.glob("lib/**/*") + ["README.md", "LICENSE.md"]
+  s.files = Dir.glob("lib/**/*") + ["LICENSE.md"]
   s.test_files = %x(git ls-files -- spec/*).split("\n")
   s.require_paths = ["lib"]
-  s.extra_rdoc_files = ["LICENSE", "README.md"]
+  s.extra_rdoc_files = ["LICENSE.md"]
 
   s.add_runtime_dependency("auth0", "~> 5.6")
   s.add_runtime_dependency("devise", "~> 4.8")
