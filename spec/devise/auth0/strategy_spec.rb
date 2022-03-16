@@ -59,14 +59,15 @@ RSpec.describe(Devise::Strategies::Auth0) do
       let(:strategy) { described_class.new(env, :user) }
       let!(:user) do
         auth0_user_model.create(
-          uid: "google-oauth2|101843459961769220909",
+          provider: "google-oauth2",
+          uid: "101843459961769220909",
           email: Faker::Internet.unique.email,
           password: "password"
         )
       end
 
       before do
-        Timecop.freeze(Time.zone.at(1644312671))
+        Timecop.freeze(Time.zone.at(1646975954))
         VCR.use_cassette("auth0/user/google-oauth2|101843459961769220909") do
           strategy.authenticate!
         end

@@ -6,33 +6,33 @@ require "devise/auth0/token"
 RSpec.describe(Devise::Auth0::Token) do
   include_context("with fixtures")
 
-  before { Timecop.freeze(Time.zone.at(1644312671)) }
+  before { Timecop.freeze(Time.zone.at(1646975954)) }
 
   after { Timecop.return }
 
-  let(:token) { described_class.new(jwt_token) }
+  let(:token) { described_class.new(jwt_token, auth0_user_model) }
 
   describe ".parse" do
     subject(:parsed_token) do
       VCR.use_cassette("auth0/jwks") do
-        described_class.parse(jwt_token)
+        described_class.parse(jwt_token, auth0_user_model)
       end
     end
 
     it { is_expected.to(be_a(described_class)) }
   end
 
-  describe "#user_id" do
+  describe "#auth0_id" do
     it "returns sub if has payload" do
       allow(token).to(receive(:verify).and_return([{ "sub" => "auth0|12345" }]))
 
-      expect(token.user_id).to(eq("auth0|12345"))
+      expect(token.auth0_id).to(eq("auth0|12345"))
     end
 
     it "returns false if no payload" do
       allow(token).to(receive(:verify).and_return(nil))
 
-      expect(token.user_id).to(be_nil)
+      expect(token.auth0_id).to(be_nil)
     end
   end
 
@@ -49,11 +49,61 @@ RSpec.describe(Devise::Auth0::Token) do
       before do
         allow(token)
           .to(receive(:verify)
-          .and_return([{ "sub" => "12345@clients", "gty" => "client-credentials" }]))
+          .and_return([{ "azp" => "12345", "gty" => "client-credentials" }]))
       end
 
-      it { expect(user["user_id"]).to(eq("12345@clients")) }
-      it { expect(user["email"]).to(eq("12345@clients.#{::Devise::Auth0.config.domain}")) }
+      it { expect(user["user_id"]).to(eq("12345")) }
+      it { expect(user["email"]).to(eq("12345@#{::Devise.auth0.domain}")) }
+    end
+  end
+
+  describe "#bot?" do
+    before do
+      allow(token)
+        .to(receive(:verify)
+        .and_return([{}]))
+    end
+
+    it { expect(token).not_to(be_bot) }
+
+    context "when not verified" do
+      before do
+        allow(token)
+          .to(receive(:verify)
+          .and_return(nil))
+      end
+
+      it { expect(token).not_to(be_bot) }
+    end
+
+    context "when client credentials" do
+      before do
+        allow(token)
+          .to(receive(:verify)
+          .and_return([{ "gty" => "client-credentials" }]))
+      end
+
+      it { expect(token).to(be_bot) }
+    end
+  end
+
+  describe "#scopes" do
+    before do
+      allow(token)
+        .to(receive(:verify)
+        .and_return([{ "scope" => "read:users read:user/roles" }]))
+    end
+
+    it { expect(token.scopes).to(match_array(["read:users", "read:user/roles"])) }
+
+    context "when not verified" do
+      before do
+        allow(token)
+          .to(receive(:verify)
+          .and_return(nil))
+      end
+
+      it { expect(token.scopes).to(be_empty) }
     end
   end
 

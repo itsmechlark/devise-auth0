@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0.rc1] - 2022-03-11
+
 ### Added
 - Supports Bearer Authorization using Auth0 JWT & Access Tokens
 - Auto create authorized user when not found
+- Restrict user model to only certain email domains 

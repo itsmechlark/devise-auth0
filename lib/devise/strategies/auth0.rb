@@ -2,8 +2,8 @@
 
 require "devise/strategies/base"
 
-require_relative "helpers"
-require_relative "token"
+require_relative "../auth0/helpers"
+require_relative "../auth0/token"
 
 module Devise
   module Strategies
@@ -19,8 +19,10 @@ module Devise
       end
 
       def authenticate!
-        resource = token.valid? && mapping.to.from_auth0_token(token)
-        return success!(resource) if resource
+        if token.valid?
+          resource = mapping.to.from_auth0_token(token)
+          return success!(resource) if resource.persisted?
+        end
 
         fail!(:invalid)
       end
@@ -28,7 +30,7 @@ module Devise
       private
 
       def token
-        @token ||= ::Devise::Auth0::Token.parse(auth)
+        @token ||= mapping.to.parse_auth0_token(auth)
       end
 
       def auth

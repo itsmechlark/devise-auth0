@@ -18,9 +18,24 @@ AllCops:
     - spec/fixtures/rails_app/**/*
     - vendor/bundle/**/*
 
-Rails:
-  Enabled: true
-
 Metrics/BlockLength:
   Exclude:
     - "spec/**/*.rb"
+
+Rails:
+  Enabled: true
+
+Rails/DynamicFindBy:
+  Enabled: true
+  Exclude:
+    - "lib/devise/auth0/rails.rb"
+
+RSpec/AnyInstance:
+  Enabled: true
+  Exclude:
+    - "spec/devise/auth0/model_spec.rb"
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: true
+  Exclude:
+    - "spec/support/fixtures.rb"
