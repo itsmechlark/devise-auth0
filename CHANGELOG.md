@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [1.0.0.rc1] - 2022-03-11
+## [1.0.0-rc.1] - 2022-03-16
 
 ### Added
 - Supports Bearer Authorization using Auth0 JWT & Access Tokens
