@@ -195,12 +195,19 @@ RSpec.describe(Devise::Models::Auth0) do
         uid: auth0_user.uid,
         auth0_id: auth0_user.auth0_id,
         user: { email: Faker::Internet.unique.email },
-        scopes: []
+        scopes: ["openid", "profile", "email"],
+        permissions: ["read:leads", "create:leads", "delete:leads"],
+        bot?: false,
       )
     end
 
     it "finds record which has given `user_id` as `uid`" do
       expect(model.from_auth0_token(token)).to(eq(auth0_user))
+    end
+
+    it "sets scopes from permissions" do
+      expect(user.auth0_scopes).to(match_array(["openid", "profile", "email", "read:leads", "create:leads",
+                                                "delete:leads",]))
     end
 
     context "when email does match" do
@@ -214,6 +221,7 @@ RSpec.describe(Devise::Models::Auth0) do
           auth0_id: "google-oauth2|#{uid}",
           user: { "email" => auth0_user.email },
           scopes: [],
+          permissions: [],
           bot?: false
         )
       end
@@ -234,6 +242,7 @@ RSpec.describe(Devise::Models::Auth0) do
           auth0_id: "google-oauth2|#{uid}",
           user: { "email" => Faker::Internet.unique.email },
           scopes: [],
+          permissions: [],
           bot?: false
         )
       end
@@ -259,6 +268,7 @@ RSpec.describe(Devise::Models::Auth0) do
           auth0_id: "auth0|#{uid}",
           user: { "email" => "#{uid}@#{Devise.auth0.domain}" },
           scopes: [],
+          permissions: [],
           bot?: true
         )
       end

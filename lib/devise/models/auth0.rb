@@ -66,18 +66,6 @@ module Devise
         @auth0_scopes = scopes
       end
 
-      def auth0_id
-        "#{provider}|#{uid}"
-      end
-
-      def after_auth0_token_created(token)
-      end
-
-      def after_auth0_omniauth_created(auth)
-      end
-
-      private
-
       def auth0_scopes
         return @auth0_scopes unless @auth0_scopes.nil?
 
@@ -93,6 +81,16 @@ module Devise
             permission["permission_name"]
           end
         end
+      end
+
+      def auth0_id
+        "#{provider}|#{uid}"
+      end
+
+      def after_auth0_token_created(token)
+      end
+
+      def after_auth0_omniauth_created(auth)
       end
 
       module ClassMethods
@@ -114,6 +112,8 @@ module Devise
             user.after_auth0_token_created(token)
           end
           user.auth0_scopes = token.scopes
+          user.auth0_scopes.concat(token.permissions)
+          user.auth0_scopes.uniq!
           user
         end
 

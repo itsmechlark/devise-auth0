@@ -56,6 +56,12 @@ module Devise
         verify[0]["scope"].to_s.split(" ")
       end
 
+      def permissions
+        return [] if verify.nil?
+
+        verify[0]["permissions"].presence || []
+      end
+
       def verify
         @payload ||= JWT.decode(@auth, nil,
           true, # Verify the signature of this token
