@@ -249,4 +249,154 @@ http_interactions:
       string: '{"access_token":"eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlMYVlEMFR2VjdPLW16clFXeHhxTCJ9.eyJpc3MiOiJodHRwczovL2ZpcnN0Y2lyY2xlLWRldi5ldS5hdXRoMC5jb20vIiwic3ViIjoiSVBVbFgybHB5S2xJc043QnJiZkdHVXVpaEx0SlRqUUJAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZmlyc3RjaXJjbGUtZGV2LmV1LmF1dGgwLmNvbS9hcGkvdjIvIiwiaWF0IjoxNjQ1MDcyOTk3LCJleHAiOjE2NDUxNTkzOTcsImF6cCI6IklQVWxYMmxweUtsSXNON0JyYmZHR1V1aWhMdEpUalFCIiwic2NvcGUiOiJyZWFkOmNsaWVudF9ncmFudHMgcmVhZDp1c2VycyB1cGRhdGU6dXNlcnMgZGVsZXRlOnVzZXJzIGNyZWF0ZTp1c2VycyByZWFkOmdyYW50cyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.HHDUWF0kLWd48OoWL-bdx0YHxr4mWBsqzIjmwdLCtjLZWAONJB_4Ax9yE_HVvD1Y4YfXwcMDCgqZ_7zUCEE3o_tXe8KTo_MBqnI1nYoX5hRiEpmMfRVzmPH2NpZB4L6kScH8ZWMJGLM-neQ6ekfK1l7rWJQpSoU3ODDNB_d1JM9fScnI5lvXVQ7drO1LCyI4Wxe0Dhi7yEYzJ1M_o1o3eEs4vhhYqe92aBCWNfiXyaBii7ZBrlGScNU_nz_tDuoJ0M2lvB0TMiEb3W3QbGg0qsgozFhML6Q_k7AzXwOLeILTuJJPw6jFDJT6CcOoxcTlKURcAoliJhx5SAmioHwOsw","scope":"read:client_grants
         read:users update:users delete:users create:users read:grants","expires_in":86400,"token_type":"Bearer"}'
   recorded_at: Thu, 17 Feb 2022 04:43:17 GMT
+- request:
+    method: get
+    uri: https://[AUTH0_DOMAIN]/api/v2/users-by-email?email=someone@firstcircle.io
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.6.5p114
+      Content-Type:
+      - application/json
+      Auth0-Client:
+      - eyJuYW1lIjoicnVieS1hdXRoMCIsInZlcnNpb24iOiI1LjcuMCIsImVudiI6eyJydWJ5IjoiMi42LjUiLCJyYWlscyI6IjYuMS40LjYifX0=
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlMYVlEMFR2VjdPLW16clFXeHhxTCJ9.eyJpc3MiOiJodHRwczovL2ZpcnN0Y2lyY2xlLWRldi5ldS5hdXRoMC5jb20vIiwic3ViIjoid1dzSUtsU3hrb01sRFp1V1dMb2pHOWNUUmxIdzRTS3ZAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZmlyc3RjaXJjbGUtZGV2LmV1LmF1dGgwLmNvbS9hcGkvdjIvIiwiaWF0IjoxNjQ4NTU1NDgwLCJleHAiOjE2NDg2NDE4ODAsImF6cCI6IndXc0lLbFN4a29NbERadVdXTG9qRzljVFJsSHc0U0t2Iiwic2NvcGUiOiJyZWFkOmNsaWVudF9ncmFudHMgcmVhZDp1c2VycyBjcmVhdGU6dXNlcnMgcmVhZDpncmFudHMgdXBkYXRlOnVzZXJzIGRlbGV0ZTpncmFudHMiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMifQ.fDoXXVkXjF7abYX8oORkbxJt03OaEN8aaztQtynE0I3SVvKuUIXo5M5WZ5b4saYwsCELQRGSsKUPxwdAXJZo6WbytQtlWGBzHCwfG2G9TpJr_6VtTKwRwbSpUzoxhoK9hSsP-7J2KtfrK8aRLuBiJtrLwn7vnxiMJv2uVi23kg7Y5uVQ0eUPGIBke1Hg7wdqsdqDfEetz05eZJ3BWpvnn5_4fncjphxg8ZxOCVe9MebFkcUd171QL1UNAy1Q5m6zzzXCNQtrsG3q3MX6AnoDxoO6DHro2QdWog5e99CWVMZ0ge9OG28HSdmXdaU-9RX6rwKKhyjdN0M1T_Nrn1x0cw
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - "[AUTH0_DOMAIN]"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Mar 2022 12:04:41 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 6f38782c2df96c7b-SIN
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - origin,accept-encoding
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ot-Baggage-Auth0-Request-Id:
+      - 6f38782c2df96c7b
+      Ot-Tracer-Sampled:
+      - 'true'
+      Ot-Tracer-Spanid:
+      - 681f4e9133c3a6e3
+      Ot-Tracer-Traceid:
+      - 04d80ee52b11d2e2
+      X-Content-Type-Options:
+      - nosniff
+      X-Ratelimit-Limit:
+      - '40'
+      X-Ratelimit-Remaining:
+      - '39'
+      X-Ratelimit-Reset:
+      - '1648555482'
+      Set-Cookie:
+      - __cf_bm=bUIISc7l8HtFRusUWko2RQ5fjfXfwT_OomCZdi7e74E-1648555481-0-AWHz7eQCTxB3wHdiKBoHlYX5PX9fwFZEhpciiFjNBcngaqFM8uPtZvdhsrjOT8u4sO387HI+c40A3rmENjKdmBA=;
+        path=/; expires=Tue, 29-Mar-22 12:34:41 GMT; domain=.eu.auth0.com; HttpOnly;
+        Secure; SameSite=None
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '[{"blocked":false,"created_at":"2022-03-24T07:26:28.639Z","email":"someone@firstcircle.io","email_verified":true,"family_name":"First
+        Name377","given_name":"First Name377","identities":[{"connection":"email","user_id":"623c1d249c887ec85e9b10bc","provider":"email","isSocial":false},{"connection":"google-oauth2","user_id":"101843459961769220909","provider":"google-oauth2"},{"profileData":{"email":"someone@firstcircle.io","email_verified":true,"last_password_reset":"2022-03-29T09:22:22.188Z"},"connection":"Admins-Authentication","provider":"auth0","user_id":"623c1b06e2e825001af0c149","isSocial":false}],"name":"First
+        Name377 First Name377","nickname":"zerah.culvera","picture":"https://s.gravatar.com/avatar/11bd09d472b1b27a02f2fc48374eaf68?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Ffn.png","updated_at":"2022-03-29T09:22:53.818Z","user_id":"google-oauth2|101843459961769220909","app_metadata":{"skip_onboarding":true,"central-default":{"id":377,"type":"admin_user","created_at":"2019-12-03T10:09:33.543+08:00","updated_at":"2022-03-19T02:34:02.476+08:00"}},"last_ip":"136.158.57.96","last_login":"2022-03-29T09:22:53.818Z","logins_count":1}]'
+  recorded_at: Tue, 29 Mar 2022 12:04:41 GMT
+- request:
+    method: get
+    uri: https://[AUTH0_DOMAIN]/api/v2/users-by-email?email=unknown@firstcircle.io
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - "*/*"
+      User-Agent:
+      - rest-client/2.1.0 (linux-gnu x86_64) ruby/2.6.5p114
+      Content-Type:
+      - application/json
+      Auth0-Client:
+      - eyJuYW1lIjoicnVieS1hdXRoMCIsInZlcnNpb24iOiI1LjcuMCIsImVudiI6eyJydWJ5IjoiMi42LjUiLCJyYWlscyI6IjYuMS40LjYifX0=
+      Authorization:
+      - Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImlMYVlEMFR2VjdPLW16clFXeHhxTCJ9.eyJpc3MiOiJodHRwczovL2ZpcnN0Y2lyY2xlLWRldi5ldS5hdXRoMC5jb20vIiwic3ViIjoid1dzSUtsU3hrb01sRFp1V1dMb2pHOWNUUmxIdzRTS3ZAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vZmlyc3RjaXJjbGUtZGV2LmV1LmF1dGgwLmNvbS9hcGkvdjIvIiwiaWF0IjoxNjQ4NTU1NDgwLCJleHAiOjE2NDg2NDE4ODAsImF6cCI6IndXc0lLbFN4a29NbERadVdXTG9qRzljVFJsSHc0U0t2Iiwic2NvcGUiOiJyZWFkOmNsaWVudF9ncmFudHMgcmVhZDp1c2VycyBjcmVhdGU6dXNlcnMgcmVhZDpncmFudHMgdXBkYXRlOnVzZXJzIGRlbGV0ZTpncmFudHMiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMifQ.fDoXXVkXjF7abYX8oORkbxJt03OaEN8aaztQtynE0I3SVvKuUIXo5M5WZ5b4saYwsCELQRGSsKUPxwdAXJZo6WbytQtlWGBzHCwfG2G9TpJr_6VtTKwRwbSpUzoxhoK9hSsP-7J2KtfrK8aRLuBiJtrLwn7vnxiMJv2uVi23kg7Y5uVQ0eUPGIBke1Hg7wdqsdqDfEetz05eZJ3BWpvnn5_4fncjphxg8ZxOCVe9MebFkcUd171QL1UNAy1Q5m6zzzXCNQtrsG3q3MX6AnoDxoO6DHro2QdWog5e99CWVMZ0ge9OG28HSdmXdaU-9RX6rwKKhyjdN0M1T_Nrn1x0cw
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Host:
+      - "[AUTH0_DOMAIN]"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 29 Mar 2022 12:04:41 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - 6f38782c2df96c7b-SIN
+      Cache-Control:
+      - no-cache
+      Strict-Transport-Security:
+      - max-age=31536000
+      Vary:
+      - origin,accept-encoding
+      Cf-Cache-Status:
+      - DYNAMIC
+      Expect-Ct:
+      - max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+      Ot-Baggage-Auth0-Request-Id:
+      - 6f38782c2df96c7b
+      Ot-Tracer-Sampled:
+      - 'true'
+      Ot-Tracer-Spanid:
+      - 681f4e9133c3a6e3
+      Ot-Tracer-Traceid:
+      - 04d80ee52b11d2e2
+      X-Content-Type-Options:
+      - nosniff
+      X-Ratelimit-Limit:
+      - '40'
+      X-Ratelimit-Remaining:
+      - '39'
+      X-Ratelimit-Reset:
+      - '1648555482'
+      Set-Cookie:
+      - __cf_bm=bUIISc7l8HtFRusUWko2RQ5fjfXfwT_OomCZdi7e74E-1648555481-0-AWHz7eQCTxB3wHdiKBoHlYX5PX9fwFZEhpciiFjNBcngaqFM8uPtZvdhsrjOT8u4sO387HI+c40A3rmENjKdmBA=;
+        path=/; expires=Tue, 29-Mar-22 12:34:41 GMT; domain=.eu.auth0.com; HttpOnly;
+        Secure; SameSite=None
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400, h3-29=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '[]'
+  recorded_at: Tue, 29 Mar 2022 12:04:41 GMT
 recorded_with: VCR 6.0.0

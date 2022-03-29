@@ -39,7 +39,11 @@ ActiveRecord::Migration.maintain_test_schema!
 VCR.configure do |config|
   config.default_cassette_options = {
     allow_playback_repeats: true,
-    match_requests_on: [:method, :uri],
+    match_requests_on: [
+      :method,
+      :uri,
+      VCR.request_matchers.uri_without_param(:email),
+    ],
   }
   config.allow_http_connections_when_no_cassette = false
   config.cassette_library_dir = "spec/fixtures/vcr_cassettes"
