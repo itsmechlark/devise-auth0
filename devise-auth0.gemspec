@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
     "bug_tracker_uri" => "https://github.com/carabao-capital/devise-auth0/issues",
   }
 
-  s.files = Dir.glob("lib/**/*") + ["LICENSE.md"]
+  s.files = Dir["{app,lib}/**/*", "CHANGELOG.md", "LICENSE.md"]
   s.test_files = %x(git ls-files -- spec/*).split("\n")
   s.require_paths = ["lib"]
   s.extra_rdoc_files = ["LICENSE.md"]
