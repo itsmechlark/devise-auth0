@@ -90,7 +90,25 @@ module Devise
       def after_auth0_token_created(token)
       end
 
+      def after_auth0_token(token)
+        set_auth_id(token.provider, token.uid)
+      end
+
       def after_auth0_omniauth_created(auth)
+      end
+
+      def after_auth0_omniauth(auth)
+        set_auth_id(auth.provider, auth.uid)
+      end
+
+      private
+
+      def set_auth_id(provider, uid)
+        return if self.provider == provider && self.uid == uid
+
+        self.provider = provider
+        self.uid = uid.include?("|") ? uid.split("|").last : uid
+        save
       end
 
       module ClassMethods
@@ -114,6 +132,7 @@ module Devise
           user.auth0_scopes = token.scopes
           user.auth0_scopes.concat(token.permissions)
           user.auth0_scopes.uniq!
+          user.after_auth0_token(token)
           user
         end
 
@@ -125,7 +144,7 @@ module Devise
           return unless auth0_config.omniauth
 
           uid = auth.uid.include?("|") ? auth.uid.split("|").last : auth.uid
-          where(
+          user = where(
             auth0_where_conditions(
               provider: auth.provider,
               uid: uid,
@@ -138,6 +157,8 @@ module Devise
             user.password = Devise.friendly_token[0, 20] if user.respond_to?(:password=)
             user.after_auth0_omniauth_created(auth)
           end
+          user.after_auth0_omniauth(auth)
+          user
         end
 
         def auth0_where_conditions(provider:, uid:, email: nil)

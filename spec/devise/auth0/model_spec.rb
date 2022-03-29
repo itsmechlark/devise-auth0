@@ -186,6 +186,24 @@ RSpec.describe(Devise::Models::Auth0) do
     end
   end
 
+  describe "#set_auth_id" do
+    subject(:user) { auth0_user }
+
+    let(:google) { Faker::Omniauth.google }
+
+    it "sets auth0_id when not match" do
+      user.send(:set_auth_id, google[:provider], google[:uid])
+
+      expect(user.auth0_id).to(eq("#{google[:provider]}|#{google[:uid]}"))
+    end
+
+    it "no call save when match" do
+      expect do
+        user.send(:set_auth_id, user.provider, user.uid)
+      end.not_to(change(user, :updated_at))
+    end
+  end
+
   describe(".from_auth0_token(token)") do
     let(:user) { model.from_auth0_token(token) }
     let(:token) do
@@ -211,14 +229,14 @@ RSpec.describe(Devise::Models::Auth0) do
     end
 
     context "when email does match" do
+      let(:uid) { Faker::Internet.unique.uuid }
+      let(:auth0_id) { "google-oauth2|#{uid}" }
       let(:token) do
-        uid = Faker::Internet.unique.uuid
-
         instance_double(
           "Token",
           provider: "google-oauth2",
           uid: uid,
-          auth0_id: "google-oauth2|#{uid}",
+          auth0_id: auth0_id,
           user: { "email" => auth0_user.email },
           scopes: [],
           permissions: [],
@@ -228,7 +246,7 @@ RSpec.describe(Devise::Models::Auth0) do
 
       it { expect(user).to(be_persisted) }
       it { expect(user.email).to(eq(token.user["email"])) }
-      it { expect(user.auth0_id).to(eq(auth0_user.auth0_id)) }
+      it { expect(user.auth0_id).to(eq(auth0_id)) }
     end
 
     context "when uid does not match" do
@@ -253,6 +271,11 @@ RSpec.describe(Devise::Models::Auth0) do
 
       it "call #after_auth0_token_created" do
         expect_any_instance_of(model).to(receive(:after_auth0_token_created).with(token))
+        model.from_auth0_token(token)
+      end
+
+      it "call #after_auth0_token" do
+        expect_any_instance_of(model).to(receive(:after_auth0_token).with(token))
         model.from_auth0_token(token)
       end
     end
@@ -302,9 +325,8 @@ RSpec.describe(Devise::Models::Auth0) do
     end
 
     context "when email does match" do
+      let(:uid) { Faker::Internet.unique.uuid }
       let(:auth) do
-        uid = Faker::Internet.unique.uuid
-
         info = instance_double(
           "AuthInfo",
           email: auth0_admin_user.email
@@ -320,7 +342,7 @@ RSpec.describe(Devise::Models::Auth0) do
 
       it { expect(user).to(be_persisted) }
       it { expect(user.email).to(eq(auth.info.email)) }
-      it { expect(user.auth0_id).to(eq(auth0_admin_user.auth0_id)) }
+      it { expect(user.auth0_id).to(eq("auth0|#{uid}")) }
     end
 
     context "when uid does not match" do
@@ -347,6 +369,11 @@ RSpec.describe(Devise::Models::Auth0) do
 
       it "call #after_auth0_omniauth_created" do
         expect_any_instance_of(model).to(receive(:after_auth0_omniauth_created).with(auth))
+        model.from_auth0_omniauth(auth)
+      end
+
+      it "call #after_auth0_omniauth" do
+        expect_any_instance_of(model).to(receive(:after_auth0_omniauth).with(auth))
         model.from_auth0_omniauth(auth)
       end
     end
