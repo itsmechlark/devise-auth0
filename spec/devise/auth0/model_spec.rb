@@ -156,13 +156,33 @@ RSpec.describe(Devise::Models::Auth0) do
         auth0_user_model.create(
           provider: "google-oauth2",
           uid: "101843459961769220909",
-          email: Faker::Internet.unique.email,
+          email: "someone@firstcircle.io",
           password: "password",
           bot: false
         )
       end
 
       it { is_expected.to(match_array(["create:leads", "delete:leads"])) }
+    end
+
+    context "when unknown user email" do
+      subject(:scopes) do
+        VCR.use_cassette("auth0/user/google-oauth2|101843459961769220909/permissions") do
+          user.send(:auth0_scopes)
+        end
+      end
+
+      let(:user) do
+        auth0_user_model.create(
+          provider: "google-oauth2",
+          uid: "101843459961769220909",
+          email: "unknown@firstcircle.io",
+          password: "password",
+          bot: false
+        )
+      end
+
+      it { is_expected.to(be_empty) }
     end
 
     context "when bot" do

@@ -75,7 +75,12 @@ module Devise
             audience: self.class.auth0_config.aud
           ).first.try(:[], "scope")
         else
-          self.class.auth0_client.get_user_permissions(auth0_id).select do |permission|
+          user = self.class.auth0_client.users_by_email(email).find do |u|
+            u["identities"].any? { |i| i["provider"] == provider && i["user_id"] == uid }
+          end
+          return [] if user.nil?
+
+          self.class.auth0_client.get_user_permissions(user["user_id"]).select do |permission|
             self.class.auth0_config.aud.include?(permission["resource_server_identifier"])
           end.map do |permission|
             permission["permission_name"]
