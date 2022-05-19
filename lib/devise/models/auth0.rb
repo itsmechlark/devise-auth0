@@ -76,7 +76,7 @@ module Devise
             ).first.try(:[], "scope")
           else
             user = self.class.auth0_client.users_by_email(email).find do |u|
-              u["identities"].any? { |i| i["provider"] == provider && i["user_id"] == uid }
+              u["identities"].any? { |i| i["user_id"] == uid }
             end
             return [] if user.nil?
 
