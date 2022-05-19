@@ -30,6 +30,9 @@ Rails/DynamicFindBy:
   Exclude:
     - "lib/devise/auth0/rails.rb"
 
+Rails/I18nLocaleTexts:
+  Enabled: false
+
 RSpec/AnyInstance:
   Enabled: true
   Exclude:
@@ -39,3 +42,6 @@ RSpec/MultipleMemoizedHelpers:
   Enabled: true
   Exclude:
     - "spec/support/fixtures.rb"
+
+RSpec/VerifiedDoubleReference:
+  Enabled: false

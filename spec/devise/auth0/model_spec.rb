@@ -385,7 +385,7 @@ RSpec.describe(Devise::Models::Auth0) do
         )
 
         instance_double(
-          Auth,
+          "Auth",
           provider: "auth0",
           uid: uid,
           info: info

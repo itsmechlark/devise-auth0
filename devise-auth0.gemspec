@@ -48,7 +48,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rubocop-rails")
   s.add_development_dependency("rubocop-rake")
   s.add_development_dependency("rubocop-rspec")
-  s.add_development_dependency("rubocop-shopify", "~> 2.4.0")
+  s.add_development_dependency("rubocop-shopify", "~> 2.6.0")
   s.add_development_dependency("simplecov", ">= 0.21.2")
   s.add_development_dependency("timecop")
   s.add_development_dependency("vcr", "~> 6.0")
