@@ -63,27 +63,28 @@ module Devise
       end
 
       def auth0_scopes=(scopes)
-        @auth0_scopes = scopes
+        ::Devise.auth0.cache.write("devise-auth0/#{auth0_id}/scopes", scopes,
+          expires_in: ::Devise.auth0.cache_expires_in)
       end
 
       def auth0_scopes
-        return @auth0_scopes unless @auth0_scopes.nil?
+        ::Devise.auth0.cache.fetch("devise-auth0/#{auth0_id}/scopes", expires_in: ::Devise.auth0.cache_expires_in) do
+          if bot?
+            self.class.auth0_client.client_grants(
+              client_id: uid,
+              audience: self.class.auth0_config.aud
+            ).first.try(:[], "scope")
+          else
+            user = self.class.auth0_client.users_by_email(email).find do |u|
+              u["identities"].any? { |i| i["provider"] == provider && i["user_id"] == uid }
+            end
+            return [] if user.nil?
 
-        @auth0_scopes ||= if bot?
-          self.class.auth0_client.client_grants(
-            client_id: uid,
-            audience: self.class.auth0_config.aud
-          ).first.try(:[], "scope")
-        else
-          user = self.class.auth0_client.users_by_email(email).find do |u|
-            u["identities"].any? { |i| i["provider"] == provider && i["user_id"] == uid }
-          end
-          return [] if user.nil?
-
-          self.class.auth0_client.get_user_permissions(user["user_id"]).select do |permission|
-            self.class.auth0_config.aud.include?(permission["resource_server_identifier"])
-          end.map do |permission|
-            permission["permission_name"]
+            self.class.auth0_client.get_user_permissions(user["user_id"]).select do |permission|
+              self.class.auth0_config.aud.include?(permission["resource_server_identifier"])
+            end.map do |permission|
+              permission["permission_name"]
+            end
           end
         end
       end
@@ -134,9 +135,7 @@ module Devise
             user.bot = token.bot? if user.respond_to?(:bot=)
             user.after_auth0_token_created(token)
           end
-          user.auth0_scopes = token.scopes
-          user.auth0_scopes.concat(token.permissions)
-          user.auth0_scopes.uniq!
+          user.auth0_scopes = token.scopes.dup.concat(token.permissions).uniq
           user.after_auth0_token(token)
           user
         end

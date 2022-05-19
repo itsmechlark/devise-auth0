@@ -9,6 +9,8 @@ RSpec.describe(Devise::Models::Auth0) do
   let(:model) { auth0_user_model }
   let(:user) { auth0_user }
 
+  before { Devise.auth0.cache.clear }
+
   describe ".required_fields" do
     it { expect(described_class.required_fields(model)).to(eq([])) }
   end
@@ -145,6 +147,14 @@ RSpec.describe(Devise::Models::Auth0) do
   end
 
   describe "#auth0_scopes" do
+    context "when cache" do
+      before { user.auth0_scopes = ["read:users", "update", "read:user/roles"] }
+
+      it "returns cached value" do
+        expect(user.auth0_scopes).to(eq(["read:users", "update", "read:user/roles"]))
+      end
+    end
+
     context "when user" do
       subject(:scopes) do
         VCR.use_cassette("auth0/user/google-oauth2|101843459961769220909/permissions") do

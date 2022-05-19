@@ -61,7 +61,7 @@ VCR.configure do |config|
     "AUTH0_CLIENT_ID",
     "AUTH0_CLIENT_SECRET",
   ].each do |var|
-    config.filter_sensitive_data("[#{var}]") { ENV[var] }
+    config.filter_sensitive_data("[#{var}]") { ENV.fetch(var, nil) }
   end
 end
 

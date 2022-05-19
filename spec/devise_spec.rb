@@ -32,19 +32,19 @@ RSpec.describe(Devise) do
     end
 
     it "defaults to ENV['AUTH0_CLIENT_ID'] for client_id" do
-      expect(config.client_id).to(eq(ENV["AUTH0_CLIENT_ID"]))
+      expect(config.client_id).to(eq(ENV.fetch("AUTH0_CLIENT_ID", nil)))
     end
 
     it "defaults to ENV['AUTH0_CLIENT_SECRET'] for client_secret" do
-      expect(config.client_secret).to(eq(ENV["AUTH0_CLIENT_SECRET"]))
+      expect(config.client_secret).to(eq(ENV.fetch("AUTH0_CLIENT_SECRET", nil)))
     end
 
     it "defaults to ENV['AUTH0_CUSTOM_DOMAIN'] for custom_domain" do
-      expect(config.custom_domain).to(eq(ENV["AUTH0_CUSTOM_DOMAIN"]))
+      expect(config.custom_domain).to(eq(ENV.fetch("AUTH0_CUSTOM_DOMAIN", nil)))
     end
 
     it "defaults to ENV['AUTH0_DOMAIN'] for domain" do
-      expect(config.domain).to(eq(ENV["AUTH0_DOMAIN"]))
+      expect(config.domain).to(eq(ENV.fetch("AUTH0_DOMAIN", nil)))
     end
 
     it "defaults to false for omniauth" do

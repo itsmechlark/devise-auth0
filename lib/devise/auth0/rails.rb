@@ -9,6 +9,10 @@ require "devise/auth0/controllers/helpers"
 module Devise
   module Auth0
     class Engine < ::Rails::Engine
+      initializer "devise.auth0.cache", after: "initialize_cache" do |_app|
+        Devise.auth0.cache = Rails.cache
+      end
+
       initializer "devise.auth0", before: "devise.omniauth" do |_app|
         config = Devise.auth0
         if config.omniauth

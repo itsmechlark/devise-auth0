@@ -32,7 +32,7 @@ RSpec.describe(Devise::Strategies::Auth0) do
 
   describe "#store?" do
     it "returns false" do
-      expect(described_class.new({}).store?).to(eq(false))
+      expect(described_class.new({}).store?).to(be(false))
     end
   end
 

@@ -26,6 +26,7 @@ module Devise
           if cannot?(*args)
             raise AccessDenied.new(message, *args)
           end
+
           args
         end
 
