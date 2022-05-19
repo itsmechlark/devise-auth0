@@ -38,6 +38,8 @@ module Devise
     setting(:scope, default: "openid")
     setting(:email_domains_allowlist, default: [])
     setting(:email_domains_blocklist, default: [])
+    setting(:cache)
+    setting(:cache_expires_in, default: 15.minutes)
 
     def self.logout(record)
       record.class.auth0_client.grants(user_id: record.auth0_id).each do |grant|
