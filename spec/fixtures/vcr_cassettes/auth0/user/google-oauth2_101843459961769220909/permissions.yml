@@ -87,7 +87,7 @@ http_interactions:
   recorded_at: Thu, 17 Feb 2022 04:14:49 GMT
 - request:
     method: get
-    uri: https://[AUTH0_DOMAIN]/api/v2/users/google-oauth2%7C101843459961769220909/permissions
+    uri: https://[AUTH0_DOMAIN]/api/v2/users/google-oauth2%7C101843459961769220909/permissions?include_totals=true&page=0&per_page=100
     body:
       encoding: US-ASCII
       string: ''
@@ -157,10 +157,10 @@ http_interactions:
       - h3=":443"; ma=86400, h3-29=":443"; ma=86400
     body:
       encoding: ASCII-8BIT
-      string: '[{"permission_name":"create:leads","description":"Create Leads","resource_server_name":"rails-api-auth-sample","resource_server_identifier":"[AUTH0_AUDIENCE]","sources":[{"source_id":"","source_name":"","source_type":"DIRECT"}]},{"permission_name":"delete:leads","description":"Delete
+      string: '{"permissions":[{"permission_name":"create:leads","description":"Create Leads","resource_server_name":"rails-api-auth-sample","resource_server_identifier":"[AUTH0_AUDIENCE]","sources":[{"source_id":"","source_name":"","source_type":"DIRECT"}]},{"permission_name":"delete:leads","description":"Delete
         Leads","resource_server_name":"rails-api-auth-sample","resource_server_identifier":"[AUTH0_AUDIENCE]","sources":[{"source_id":"","source_name":"","source_type":"DIRECT"}]},{"permission_name":"read:leads","description":"Read
         Leads","resource_server_name":"rails-api-auth-sample","resource_server_identifier":"https://some-audience.example.com","sources":[{"source_id":"","source_name":"","source_type":"DIRECT"}]},{"permission_name":"update:leads","description":"Update
-        Leads","resource_server_name":"rails-api-auth-sample","resource_server_identifier":"https://some-audience.example.com","sources":[{"source_id":"","source_name":"","source_type":"DIRECT"}]}]'
+        Leads","resource_server_name":"rails-api-auth-sample","resource_server_identifier":"https://some-audience.example.com","sources":[{"source_id":"","source_name":"","source_type":"DIRECT"}]}],"start":0,"limit":100,"total":4}'
   recorded_at: Thu, 17 Feb 2022 04:14:50 GMT
 - request:
     method: post
