@@ -80,11 +80,26 @@ module Devise
             end
             return [] if user.nil?
 
-            self.class.auth0_client.get_user_permissions(user["user_id"]).select do |permission|
-              self.class.auth0_config.aud.include?(permission["resource_server_identifier"])
-            end.map do |permission|
-              permission["permission_name"]
+            permissions = []
+            page = 0
+            loop do
+              response_data = self.class.auth0_client
+                .get_user_permissions(
+                  user["user_id"],
+                  { page: page, per_page: 100, include_totals: true }
+                )
+
+              response_data["permissions"].select do |permission|
+                self.class.auth0_config.aud.include?(permission["resource_server_identifier"])
+              end.each do |permission|
+                permissions << permission["permission_name"]
+              end
+
+              break if response_data["start"] / 100 == response_data["total"] / 100
+
+              page += 1
             end
+            permissions
           end
         end
       end
