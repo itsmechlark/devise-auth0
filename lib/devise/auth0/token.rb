@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "faraday"
+require "faraday/http_cache"
 require "jwt"
 
 module Devise
@@ -40,7 +41,9 @@ module Devise
             "email" => "#{uid}@#{config.domain}",
           }
         else
-          client.user(auth0_id)
+          ::Devise.auth0.cache.fetch("devise-auth0/#{auth0_id}", expires_in: ::Devise.auth0.cache_expires_in) do
+            client.user(auth0_id)
+          end
         end
       end
 
@@ -96,6 +99,7 @@ module Devise
 
       def jwks_hash
         conn = ::Faraday.new("https://#{config.custom_domain}") do |f|
+          f.use(:http_cache, store: ::Devise.auth0.cache)
           f.request(:retry, max: 3)
           f.adapter(::Faraday.default_adapter)
         end

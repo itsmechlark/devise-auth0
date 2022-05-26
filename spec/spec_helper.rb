@@ -83,6 +83,7 @@ RSpec.configure do |config|
   config.before do
     WebMock.reset!
     WebMock.disable_net_connect!
+    Devise.auth0.cache.clear
   end
 
   config.include(Devise::Test::ControllerHelpers, type: :controller)
