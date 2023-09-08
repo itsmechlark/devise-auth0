@@ -1,3 +1,35 @@
 {
-    "bootstrap-sha": "e37cf205a2dce2de7254a61bc00cda96a5255be7"
+    "bootstrap-sha": "e37cf205a2dce2de7254a61bc00cda96a5255be7",
+    "changelog-types": [
+        {
+            "type": "feat",
+            "section": "Features",
+            "hidden": false
+        },
+        {
+            "type": "fix",
+            "section": "Bug Fixes",
+            "hidden": false
+        },
+        {
+            "type": "docs",
+            "section": "Documentation",
+            "hidden": false
+        },
+        {
+            "type": "test",
+            "section": "Tests",
+            "hidden": false
+        },
+        {
+            "type": "chore",
+            "section": "Miscellaneous",
+            "hidden": false
+        },
+        {
+            "type": "ci",
+            "section": "Miscellaneous",
+            "hidden": false
+        }
+    ]
 }
