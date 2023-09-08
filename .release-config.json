@@ -1,6 +1,6 @@
 {
     "bootstrap-sha": "e37cf205a2dce2de7254a61bc00cda96a5255be7",
-    "changelog-types": [
+    "changelog-sections": [
         {
             "type": "feat",
             "section": "Features",
