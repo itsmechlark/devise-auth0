@@ -1,0 +1,30 @@
+# Changelog
+
+## 1.0.0 (2023-09-08)
+
+
+### Tests
+
+* Fixes rspec-rails issues on rails edge ([ea4a050](https://github.com/itsmechlark/devise-auth0/commit/ea4a050528196936960d38b29edfb36a6e6cfcf1))
+
+
+### Miscellaneous
+
+* Bump changelog-enforcer to v3 ([5ffcab8](https://github.com/itsmechlark/devise-auth0/commit/5ffcab87952644b40cf73f45bce8cb2bd82ab534))
+* Bump rubocop-shopify to v2.14 ([9102709](https://github.com/itsmechlark/devise-auth0/commit/91027094bbc243ef05fb10bfe2b9da91189ca8a4))
+* Change Rubocop code scanning name ([ccae036](https://github.com/itsmechlark/devise-auth0/commit/ccae036e25f8f5d3d9fe0341e81d6b5b53af2df9))
+* CI/CD workflow ([b82655d](https://github.com/itsmechlark/devise-auth0/commit/b82655d9a7af844f1a62d558e65799ef796951fc))
+* Code scanning ([a2f9d1b](https://github.com/itsmechlark/devise-auth0/commit/a2f9d1b98994be941abfdba41346976cb717ba5a))
+* Configure version file on release config ([53b3b5b](https://github.com/itsmechlark/devise-auth0/commit/53b3b5b4b88bc52bddee7bcee4cba1e889d21eda))
+* Fixes Code Scanning permissions ([765f698](https://github.com/itsmechlark/devise-auth0/commit/765f698abe70f30a16b84549bb6256c22379d0fd))
+* Fixes release please config ([fb8aba4](https://github.com/itsmechlark/devise-auth0/commit/fb8aba487088409c783c7022845be9677e22dd04))
+* Fixes rubocop lint ([e02858b](https://github.com/itsmechlark/devise-auth0/commit/e02858b561f3d99691524795d43ae84fd5d8b978))
+* Install bundler on DevContainer startup ([9ad89e4](https://github.com/itsmechlark/devise-auth0/commit/9ad89e43b1b1a99f06250c7bdc5b6006cd505cca))
+* Move changelog type to release config ([01b4d9e](https://github.com/itsmechlark/devise-auth0/commit/01b4d9e02c981a3adc6c69fd64e9331838c3f618))
+* Release Please config ([08af26d](https://github.com/itsmechlark/devise-auth0/commit/08af26d4002d3e89cb210cabd89ea768039193bc))
+* Remove changelog ([bb7befe](https://github.com/itsmechlark/devise-auth0/commit/bb7befec90baad2c9f6f4671cb830a9e42491e11))
+* Remove old changelog ([fae0a6c](https://github.com/itsmechlark/devise-auth0/commit/fae0a6cdad32a043c53820c78277df2c6acc872a))
+* Support DevContainers ([5b937c9](https://github.com/itsmechlark/devise-auth0/commit/5b937c9696fea630eabaa9f4d745e4c64418e753))
+* Test against Ruby 3.2 ([185bae5](https://github.com/itsmechlark/devise-auth0/commit/185bae5d12b17409e6ed62d0aa7be9870ca9c424))
+* Update Changelog ([6df1d33](https://github.com/itsmechlark/devise-auth0/commit/6df1d33cf6810b752efc5bc4bf6d3f8691117847))
+* Use Python 3.8 for codespell ([a6a8f35](https://github.com/itsmechlark/devise-auth0/commit/a6a8f3556ae54dd1ed0608eaa431772ef2ff1977))
