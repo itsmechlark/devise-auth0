@@ -62,3 +62,6 @@ gemfiles/*.lock
 /spec/fixtures/rails_app/log/*
 /spec/fixtures/rails_app/tmp/*
 *.sqlite3
+
+rubocop.sarif
+brakeman.sarif.json

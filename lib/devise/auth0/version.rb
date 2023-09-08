@@ -2,7 +2,7 @@
 
 module Devise
   module Auth0
-    VERSION = "1.0.0".freeze
+    VERSION = "1.0.0"
 
     class << self
       def gem_version

@@ -37,6 +37,7 @@ Gem::Specification.new do |s|
 
   s.add_development_dependency("appraisal", "~> 2.4")
   s.add_development_dependency("bundler", "~> 2.0")
+  s.add_development_dependency("code-scanning-rubocop")
   s.add_development_dependency("dotenv")
   s.add_development_dependency("faker", "~> 2.0")
   s.add_development_dependency("multi_json")
