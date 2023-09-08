@@ -12,6 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Use Python 3.8 for codespell
 - Bump rubocop-shopify to v2.14
+- Bump changelog-enforcer to v3
 ### Fixed
 - Fixes rubocop lint
 
