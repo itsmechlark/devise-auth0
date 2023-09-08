@@ -31,5 +31,6 @@
             "section": "Miscellaneous",
             "hidden": false
         }
-    ]
+    ],
+    "version-file": "lib/devise/auth0/version.rb"
 }

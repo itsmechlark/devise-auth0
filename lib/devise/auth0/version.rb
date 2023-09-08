@@ -2,19 +2,12 @@
 
 module Devise
   module Auth0
+    VERSION = "1.0.0".freeze
+
     class << self
       def gem_version
-        Gem::Version.new(VERSION::STRING)
+        Gem::Version.new(VERSION)
       end
-    end
-
-    module VERSION
-      MAJOR = 1
-      MINOR = 0
-      TINY  = 0
-      PRE   = "rc10"
-
-      STRING = [MAJOR, MINOR, TINY, PRE].compact.join(".")
     end
   end
 end
