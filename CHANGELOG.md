@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.0.1](https://github.com/itsmechlark/devise-auth0/compare/v1.0.0...v1.0.1) (2023-09-08)
+
+
+### Miscellaneous
+
+* Configure Dependabot ([eebdd7d](https://github.com/itsmechlark/devise-auth0/commit/eebdd7d46f1521a53b712353fda0a3635d640ff4))
+* Configure Dependabot ([f87e567](https://github.com/itsmechlark/devise-auth0/commit/f87e56720d2a4d113fabddde38dc173d4867c784))
+* Move Release Please CI config to json ([22e6727](https://github.com/itsmechlark/devise-auth0/commit/22e672730ca2df32fd00ebdb2d4b60e14a82f1aa))
+* Move Release Please config to CI ([ee29516](https://github.com/itsmechlark/devise-auth0/commit/ee29516ea8552e4e4a60e7d1faff3fc33534bbc9))
+
 ## 1.0.0 (2023-09-08)
 
 
