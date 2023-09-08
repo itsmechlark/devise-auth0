@@ -53,7 +53,7 @@ RSpec.describe(Devise::Auth0::Token) do
       end
 
       it { expect(user["user_id"]).to(eq("12345")) }
-      it { expect(user["email"]).to(eq("12345@#{::Devise.auth0.domain}")) }
+      it { expect(user["email"]).to(eq("12345@#{Devise.auth0.domain}")) }
     end
   end
 
@@ -94,7 +94,7 @@ RSpec.describe(Devise::Auth0::Token) do
         .and_return([{ "scope" => "read:users read:user/roles" }]))
     end
 
-    it { expect(token.scopes).to(match_array(["read:users", "read:user/roles"])) }
+    it { expect(token.scopes).to(contain_exactly("read:users", "read:user/roles")) }
 
     context "when not verified" do
       before do

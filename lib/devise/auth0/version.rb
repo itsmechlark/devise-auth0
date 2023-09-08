@@ -2,8 +2,10 @@
 
 module Devise
   module Auth0
-    def self.gem_version
-      Gem::Version.new(VERSION::STRING)
+    class << self
+      def gem_version
+        Gem::Version.new(VERSION::STRING)
+      end
     end
 
     module VERSION

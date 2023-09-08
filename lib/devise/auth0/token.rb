@@ -8,10 +8,12 @@ module Devise
   module Auth0
     # Helpers to parse token from a request and to a response
     class Token
-      def self.parse(auth, resource_class)
-        token = new(auth, resource_class)
-        token.verify
-        token
+      class << self
+        def parse(auth, resource_class)
+          token = new(auth, resource_class)
+          token.verify
+          token
+        end
       end
 
       def initialize(auth, resource_class)
@@ -66,13 +68,16 @@ module Devise
       end
 
       def verify
-        @payload ||= JWT.decode(@auth, nil,
+        @payload ||= JWT.decode(
+          @auth,
+          nil,
           true, # Verify the signature of this token
           algorithms: config.algorithm,
           iss: issuer,
           verify_iss: true,
           aud: config.aud,
-          verify_aud: true) do |header|
+          verify_aud: true,
+        ) do |header|
           jwks_hash[header["kid"]]
         end
       rescue JWT::DecodeError
@@ -110,7 +115,7 @@ module Devise
             [
               k["kid"],
               OpenSSL::X509::Certificate.new(
-                Base64.decode64(k["x5c"].first)
+                Base64.decode64(k["x5c"].first),
               ).public_key,
             ]
           end

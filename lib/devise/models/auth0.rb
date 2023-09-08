@@ -16,8 +16,10 @@ module Devise
         end
       end
 
-      def self.required_fields(klass)
-        []
+      class << self
+        def required_fields(klass)
+          []
+        end
       end
 
       def email_domain_allowed
@@ -63,8 +65,11 @@ module Devise
       end
 
       def auth0_scopes=(scopes)
-        ::Devise.auth0.cache.write("devise-auth0/#{auth0_id}/scopes", scopes,
-          expires_in: ::Devise.auth0.cache_expires_in)
+        ::Devise.auth0.cache.write(
+          "devise-auth0/#{auth0_id}/scopes",
+          scopes,
+          expires_in: ::Devise.auth0.cache_expires_in,
+        )
       end
 
       def auth0_scopes
@@ -72,7 +77,7 @@ module Devise
           if bot?
             self.class.auth0_client.client_grants(
               client_id: uid,
-              audience: self.class.auth0_config.aud
+              audience: self.class.auth0_config.aud,
             ).first.try(:[], "scope")
           else
             user = self.class.auth0_client.users_by_email(email).find do |u|
@@ -86,7 +91,7 @@ module Devise
               response_data = self.class.auth0_client
                 .get_user_permissions(
                   user["user_id"],
-                  { page: page, per_page: 100, include_totals: true }
+                  { page: page, per_page: 100, include_totals: true },
                 )
 
               response_data["permissions"].select do |permission|
@@ -140,8 +145,8 @@ module Devise
             auth0_where_conditions(
               provider: token.provider,
               uid: token.uid,
-              email: token.user["email"]
-            )
+              email: token.user["email"],
+            ),
           ).first_or_create do |user|
             user.provider = token.provider
             user.uid = token.uid
@@ -167,8 +172,8 @@ module Devise
             auth0_where_conditions(
               provider: auth.provider,
               uid: uid,
-              email: auth.info.email
-            )
+              email: auth.info.email,
+            ),
           ).first_or_create do |user|
             user.provider = auth.provider
             user.uid = uid

@@ -65,14 +65,16 @@ RSpec.describe(Devise) do
         provider: "google-oauth2",
         uid: "114473891729720308813",
         email: Faker::Internet.unique.email,
-        password: "password"
+        password: "password",
       )
     end
 
+    # rubocop:disable RSpec/NoExpectationExample
     it "deletes all grants for the user" do
       VCR.use_cassette("auth0/user/google-oauth2|101843459961769220909/logout") do
         described_class::Auth0.logout(user)
       end
     end
+    # rubocop:enable RSpec/NoExpectationExample
   end
 end

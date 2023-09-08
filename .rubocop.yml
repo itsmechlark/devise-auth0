@@ -30,6 +30,16 @@ Rails/DynamicFindBy:
   Exclude:
     - "lib/devise/auth0/rails.rb"
 
+RSpec/DescribeClass:
+  Exclude:
+    - "spec/integration/logout_spec.rb"
+    - "spec/integration/omniauth_spec.rb"
+
+RSpec/FilePath:
+  Exclude:
+    - "spec/devise/auth0/**/*.rb"
+    - "spec/integration/strategy_spec.rb"
+
 Rails/I18nLocaleTexts:
   Enabled: false
 
@@ -42,6 +52,10 @@ RSpec/MultipleMemoizedHelpers:
   Enabled: true
   Exclude:
     - "spec/support/fixtures.rb"
+
+RSpec/Rails/InferredSpecType:
+  Exclude:
+    - "spec/integration/*.rb"
 
 RSpec/VerifiedDoubleReference:
   Enabled: false

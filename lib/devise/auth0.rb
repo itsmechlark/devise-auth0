@@ -8,10 +8,12 @@ require "devise/auth0/client"
 # Authentication library
 module Devise
   # Yields to Devise::Auth0.config
-  def self.auth0
-    return Devise::Auth0.config unless block_given?
+  class << self
+    def auth0
+      return Devise::Auth0.config unless block_given?
 
-    yield(Devise::Auth0.config)
+      yield(Devise::Auth0.config)
+    end
   end
 
   module Models
@@ -27,9 +29,11 @@ module Devise
     extend ::Dry::Configurable
 
     setting(:algorithm, default: "RS256")
-    setting(:aud,
+    setting(
+      :aud,
       default: ENV["AUTH0_AUDIENCE"].presence,
-      constructor: ->(aud) { aud.is_a?(Array) ? aud : aud.to_s.split(",") })
+      constructor: ->(aud) { aud.is_a?(Array) ? aud : aud.to_s.split(",") },
+    )
     setting(:client_id, default: ENV["AUTH0_CLIENT_ID"].presence)
     setting(:client_secret, default: ENV["AUTH0_CLIENT_SECRET"].presence)
     setting(:custom_domain, default: ENV["AUTH0_CUSTOM_DOMAIN"].presence)
@@ -41,9 +45,11 @@ module Devise
     setting(:cache)
     setting(:cache_expires_in, default: 15.minutes)
 
-    def self.logout(record)
-      record.class.auth0_client.grants(user_id: record.auth0_id).each do |grant|
-        record.class.auth0_client.delete_grant(grant["id"], record.auth0_id)
+    class << self
+      def logout(record)
+        record.class.auth0_client.grants(user_id: record.auth0_id).each do |grant|
+          record.class.auth0_client.delete_grant(grant["id"], record.auth0_id)
+        end
       end
     end
   end

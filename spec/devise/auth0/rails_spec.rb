@@ -3,7 +3,6 @@
 require "spec_helper"
 require "devise/auth0/rails"
 
-# rubocop:disable RSpec/FilePath
 RSpec.describe(Devise::Auth0::Engine) do
   subject(:initializer) do
     described_class.initializers.detect do |initializer|

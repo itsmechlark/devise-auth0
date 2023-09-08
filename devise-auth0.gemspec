@@ -21,7 +21,6 @@ Gem::Specification.new do |s|
   }
 
   s.files = Dir["{app,lib}/**/*", "CHANGELOG.md", "LICENSE.md"]
-  s.test_files = %x(git ls-files -- spec/*).split("\n")
   s.require_paths = ["lib"]
   s.extra_rdoc_files = ["LICENSE.md"]
 

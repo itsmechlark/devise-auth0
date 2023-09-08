@@ -17,15 +17,18 @@ module Devise
         config = Devise.auth0
         if config.omniauth
           Devise.setup do |devise|
-            devise.omniauth(:auth0,
+            devise.omniauth(
+              :auth0,
               config.client_id,
               config.client_secret,
-              config.custom_domain, {
+              config.custom_domain,
+              {
                 authorize_params: {
                   audience: config.aud.join(","),
                   scope: config.scope,
                 },
-              })
+              },
+            )
           end
 
           # Patches the existing devise failure app to ensure a right mapping is used.

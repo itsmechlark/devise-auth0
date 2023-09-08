@@ -12,7 +12,7 @@ RSpec.shared_context("with fixtures") do
       provider: "auth0",
       uid: uid,
       email: auth0_admin_user_email,
-      password: "password"
+      password: "password",
     )
   end
 
@@ -24,7 +24,7 @@ RSpec.shared_context("with fixtures") do
       provider: "auth0",
       uid: uid,
       email: Faker::Internet.unique.email,
-      password: "password"
+      password: "password",
     )
   end
 

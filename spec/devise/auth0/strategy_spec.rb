@@ -2,11 +2,10 @@
 
 require "spec_helper"
 
-# rubocop:disable RSpec/FilePath
 RSpec.describe(Devise::Strategies::Auth0) do
   it "adds to Warden with auth0 name" do
     expect(Warden::Strategies._strategies).to(include(
-      auth0: described_class
+      auth0: described_class,
     ))
   end
 
@@ -62,7 +61,7 @@ RSpec.describe(Devise::Strategies::Auth0) do
           provider: "google-oauth2",
           uid: "101843459961769220909",
           email: Faker::Internet.unique.email,
-          password: "password"
+          password: "password",
         )
       end
 

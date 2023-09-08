@@ -2,7 +2,6 @@
 
 require "spec_helper"
 
-# rubocop:disable RSpec/FilePath
 RSpec.describe(Devise::Models::Auth0) do
   include_context("with fixtures")
 
@@ -22,7 +21,7 @@ RSpec.describe(Devise::Models::Auth0) do
           provider: "auth0",
           uid: Faker::Internet.unique.uuid,
           email: Faker::Internet.unique.email,
-          password: "password"
+          password: "password",
         )
       end
 
@@ -40,7 +39,7 @@ RSpec.describe(Devise::Models::Auth0) do
           provider: "auth0",
           uid: Faker::Internet.unique.uuid,
           email: auth0_admin_user_email,
-          password: "password"
+          password: "password",
         )
       end
 
@@ -53,7 +52,7 @@ RSpec.describe(Devise::Models::Auth0) do
           provider: "auth0",
           uid: Faker::Internet.unique.uuid,
           email: Faker::Internet.unique.email,
-          password: "password"
+          password: "password",
         )
       end
 
@@ -72,7 +71,7 @@ RSpec.describe(Devise::Models::Auth0) do
           provider: "auth0",
           uid: Faker::Internet.unique.uuid,
           email: auth0_admin_user_email,
-          password: "password"
+          password: "password",
         )
       end
 
@@ -90,7 +89,7 @@ RSpec.describe(Devise::Models::Auth0) do
           provider: "auth0",
           uid: Faker::Internet.unique.uuid,
           email: Faker::Internet.unique.email,
-          password: "password"
+          password: "password",
         )
       end
 
@@ -103,7 +102,7 @@ RSpec.describe(Devise::Models::Auth0) do
           provider: "auth0",
           uid: Faker::Internet.unique.uuid,
           email: auth0_admin_user_email,
-          password: "password"
+          password: "password",
         )
       end
 
@@ -166,11 +165,11 @@ RSpec.describe(Devise::Models::Auth0) do
           uid: "101843459961769220909",
           email: "someone@firstcircle.io",
           password: "password",
-          bot: false
+          bot: false,
         )
       end
 
-      it { is_expected.to(match_array(["create:leads", "delete:leads"])) }
+      it { is_expected.to(contain_exactly("create:leads", "delete:leads")) }
     end
 
     context "when unknown user email" do
@@ -186,7 +185,7 @@ RSpec.describe(Devise::Models::Auth0) do
           uid: "101843459961769220909",
           email: "unknown@firstcircle.io",
           password: "password",
-          bot: false
+          bot: false,
         )
       end
 
@@ -206,11 +205,11 @@ RSpec.describe(Devise::Models::Auth0) do
           uid: "UDuyRC6XeVr9eCPIrOP0dgIL0xTLs33f",
           email: Faker::Internet.unique.email,
           password: "password",
-          bot: true
+          bot: true,
         )
       end
 
-      it { is_expected.to(match_array(["read:leads"])) }
+      it { is_expected.to(contain_exactly("read:leads")) }
     end
   end
 
@@ -252,8 +251,9 @@ RSpec.describe(Devise::Models::Auth0) do
     end
 
     it "sets scopes from permissions" do
-      expect(user.auth0_scopes).to(match_array(["openid", "profile", "email", "read:leads", "create:leads",
-                                                "delete:leads",]))
+      expect(user.auth0_scopes).to(
+        contain_exactly("openid", "profile", "email", "read:leads", "create:leads", "delete:leads"),
+      )
     end
 
     context "when email does match" do
@@ -268,7 +268,7 @@ RSpec.describe(Devise::Models::Auth0) do
           user: { "email" => auth0_user.email },
           scopes: [],
           permissions: [],
-          bot?: false
+          bot?: false,
         )
       end
 
@@ -289,7 +289,7 @@ RSpec.describe(Devise::Models::Auth0) do
           user: { "email" => Faker::Internet.unique.email },
           scopes: [],
           permissions: [],
-          bot?: false
+          bot?: false,
         )
       end
 
@@ -320,7 +320,7 @@ RSpec.describe(Devise::Models::Auth0) do
           user: { "email" => "#{uid}@#{Devise.auth0.domain}" },
           scopes: [],
           permissions: [],
-          bot?: true
+          bot?: true,
         )
       end
 
@@ -337,14 +337,14 @@ RSpec.describe(Devise::Models::Auth0) do
     let(:auth) do
       info = instance_double(
         "AuthInfo",
-        email: auth0_admin_user.email
+        email: auth0_admin_user.email,
       )
 
       instance_double(
         "Auth",
         provider: auth0_admin_user.provider,
         uid: "auth0|#{auth0_admin_user.uid}",
-        info: info
+        info: info,
       )
     end
 
@@ -357,14 +357,14 @@ RSpec.describe(Devise::Models::Auth0) do
       let(:auth) do
         info = instance_double(
           "AuthInfo",
-          email: auth0_admin_user.email
+          email: auth0_admin_user.email,
         )
 
         instance_double(
           "Auth",
           provider: "auth0",
           uid: "auth0|#{uid}",
-          info: info
+          info: info,
         )
       end
 
@@ -379,14 +379,14 @@ RSpec.describe(Devise::Models::Auth0) do
 
         info = instance_double(
           "AuthInfo",
-          email: auth0_admin_user_email
+          email: auth0_admin_user_email,
         )
 
         instance_double(
           "Auth",
           provider: "auth0",
           uid: uid,
-          info: info
+          info: info,
         )
       end
 
