@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Bump changelog-enforcer to v3
 ### Fixed
 - Fixes rubocop lint
+- CI/CD workflow
 
 ## [1.0.0-rc.10] - 2022-05-26
 ### Changed

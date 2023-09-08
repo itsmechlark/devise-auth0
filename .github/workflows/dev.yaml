@@ -4,9 +4,16 @@ on:
   pull_request:
     types: [opened, reopened, synchronize]
 
+permissions:
+  contents: read
+
 jobs:
   setup_pr:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
     # Dependabot no longer have access to secrets unless we move to pull_request_target.
     # Read more: https://github.blog/changelog/2021-02-19-github-actions-workflows-triggered-by-dependabot-prs-will-run-with-read-only-permissions
     if: ${{ github.actor != 'dependabot[bot]' }}
@@ -18,7 +25,7 @@ jobs:
         with:
           # Fallback to github action token with limited access
           # when DevOps token isn't available this happens on dependabot.
-          github-token: ${{secrets.DEVOPS_GITHUB_TOKEN || github.token}}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             github.issues.removeLabel({
               issue_number: context.issue.number,
@@ -33,7 +40,7 @@ jobs:
         with:
           # Fallback to github action token with limited access
           # when DevOps token isn't available this happens on dependabot.
-          github-token: ${{secrets.DEVOPS_GITHUB_TOKEN || github.token}}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             github.issues.addLabels({
               issue_number: context.issue.number,
@@ -45,7 +52,7 @@ jobs:
   rubocop:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
@@ -57,9 +64,9 @@ jobs:
   codespell:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: 3.8
     - name: Install dependencies
@@ -92,7 +99,7 @@ jobs:
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
