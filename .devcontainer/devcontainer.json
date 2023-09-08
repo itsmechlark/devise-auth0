@@ -1,0 +1,54 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/typescript-node
+{
+	"name": "Devise Auth0",
+	"image": "mcr.microsoft.com/devcontainers/ruby:3-bullseye",
+	"features": {
+		"ghcr.io/devcontainers/features/java:latest": {},
+		"ghcr.io/devcontainers/features/github-cli:latest": {},
+		"ghcr.io/devcontainers/features/git-lfs:latest": {},
+		"ghcr.io/devcontainers/features/ruby:latest": {
+			"version": "3.2"
+		}
+	},
+	"mounts": [
+		"type=volume,target=${containerWorkspaceFolder}/coverage",
+		"type=volume,target=${containerWorkspaceFolder}/vendor/bundle"
+	],
+	"runArgs": [
+		"--env-file",
+		".env"
+	],
+
+	// Configure tool-specific properties.
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"github.copilot",
+				"github.copilot-chat",
+				"github.heygithub",
+				"github.remotehub",
+				"github.vscode-codeql",
+				"github.vscode-github-actions",
+				"github.vscode-pull-request-github",
+				"rebornix.Ruby",
+				"shopify.ruby-lsp",
+				"visualstudioexptteam.vscodeintellicode",
+				"ms-vsliveshare.vsliveshare"
+			]
+		}
+	},
+
+	"remoteEnv": {
+		"BUNDLE_PATH": "${containerWorkspaceFolder}/vendor/bundle"
+	},
+
+	"onCreateCommand": "sudo chown -R vscode:vscode ${containerWorkspaceFolder}/coverage ${containerWorkspaceFolder}/vendor/bundle",
+	"postStartCommand": "bundle install --jobs=3 --retry=3",
+
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode",
+	"updateRemoteUserUID": true
+}
