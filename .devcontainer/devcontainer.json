@@ -46,7 +46,7 @@
 	},
 
 	"onCreateCommand": "sudo chown -R vscode:vscode ${containerWorkspaceFolder}/coverage ${containerWorkspaceFolder}/vendor/bundle",
-	"postStartCommand": "bundle install --jobs=3 --retry=3",
+	"postStartCommand": "gem install bundler:2.3.6 && bundle install --jobs=3 --retry=3",
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode",
