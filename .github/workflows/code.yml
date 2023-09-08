@@ -8,15 +8,16 @@ on:
   schedule:
     - cron: '37 15 * * 3'
 
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
 jobs:
   codeql:
     name: CodeQL Scan
     runs-on: ubuntu-latest
     timeout-minutes: 360
-    permissions:
-      actions: read
-      contents: read
-      security-events: write
 
     steps:
     - name: Checkout repository
@@ -67,10 +68,6 @@ jobs:
 #   brakeman-scan:
 #     name: Brakeman Scan
 #     runs-on: ubuntu-latest
-#     permissions:
-#       contents: read
-#       security-events: write
-#       actions: read
 
 #     steps:
 #     - name: Checkout
