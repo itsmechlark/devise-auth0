@@ -145,7 +145,7 @@ GEM
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
     erubi (1.12.0)
-    faker (2.21.0)
+    faker (3.2.1)
       i18n (>= 1.8.11, < 2)
     faraday (1.10.3)
       faraday-em_http (~> 1.0)
@@ -408,7 +408,7 @@ DEPENDENCIES
   code-scanning-rubocop
   devise_auth0!
   dotenv
-  faker (~> 2.0)
+  faker (~> 3.2)
   multi_json
   multipart-parser (~> 0.1.1)
   pry-byebug (~> 3.7)
