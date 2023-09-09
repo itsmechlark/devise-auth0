@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
     "changelog_uri" => "https://github.com/itsmechlark/devise_auth0/releases/tag/v#{s.version}",
     "source_code_uri" => "https://github.com/itsmechlark/devise_auth0/tree/v#{s.version}",
     "bug_tracker_uri" => "https://github.com/itsmechlark/devise_auth0/issues",
+    "github_repo" => "https://github.com/itsmechlark/devise_auth0",
   }
 
   s.files = Dir["{app,lib}/**/*", "CHANGELOG.md", "LICENSE.md"]
