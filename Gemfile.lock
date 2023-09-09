@@ -371,7 +371,7 @@ GEM
     syntax_tree (6.1.1)
       prettier_print (>= 1.2.0)
     thor (1.2.2)
-    timecop (0.9.5)
+    timecop (0.9.8)
     timeout (0.4.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
