@@ -11,12 +11,12 @@ permissions:
 jobs:
   rubocop:
     runs-on: ubuntu-latest
-    env:
-      BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/rails_6.1_stable.gemfile
     steps:
     - uses: actions/checkout@v4
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
+      env:
+        BUNDLE_DEPLOYMENT: false
       with:
         ruby-version: '3.0'
         bundler-cache: true
