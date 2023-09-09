@@ -93,6 +93,7 @@ PATH
       dry-configurable (>= 0.13, < 2.0)
       faraday (>= 1.10, < 2.8)
       faraday-http-cache
+      faraday-retry
       jwt (~> 2.3)
       mail
       net-smtp
@@ -153,6 +154,8 @@ GEM
     faraday-http-cache (2.5.0)
       faraday (>= 0.8)
     faraday-net_http (3.0.2)
+    faraday-retry (2.2.0)
+      faraday (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashdiff (1.0.1)

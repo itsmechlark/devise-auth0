@@ -2,6 +2,7 @@
 
 require "faraday"
 require "faraday/http_cache"
+require "faraday/retry"
 require "jwt"
 
 module Devise
