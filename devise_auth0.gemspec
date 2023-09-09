@@ -3,21 +3,21 @@
 require_relative "lib/devise/auth0/version"
 
 Gem::Specification.new do |s|
-  s.name = "devise-auth0"
+  s.name = "devise_auth0"
   s.version = Devise::Auth0.gem_version
-  s.authors = ["First Circle Engineering"]
-  s.email = ["tech@firstcircle.com"]
+  s.authors = ["John Chlark Sumatra"]
+  s.email = ["clark@sumatra.com.ph"]
 
   s.summary = "Auth0 authentication for devise"
   s.description = "Auth0 authentication for devise"
-  s.homepage = "https://github.com/carabao-capital/devise-auth0"
+  s.homepage = "https://github.com/itsmechlark/devise_auth0"
   s.license = "MIT"
 
   s.metadata = {
     "homepage_uri" => s.homepage,
-    "changelog_uri" => "https://github.com/carabao-capital/devise-auth0/releases/tag/v#{s.version}",
-    "source_code_uri" => "https://github.com/carabao-capital/devise-auth0/tree/v#{s.version}",
-    "bug_tracker_uri" => "https://github.com/carabao-capital/devise-auth0/issues",
+    "changelog_uri" => "https://github.com/itsmechlark/devise_auth0/releases/tag/v#{s.version}",
+    "source_code_uri" => "https://github.com/itsmechlark/devise_auth0/tree/v#{s.version}",
+    "bug_tracker_uri" => "https://github.com/itsmechlark/devise_auth0/issues",
   }
 
   s.files = Dir["{app,lib}/**/*", "CHANGELOG.md", "LICENSE.md"]

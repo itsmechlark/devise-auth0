@@ -87,7 +87,7 @@ GIT
 PATH
   remote: .
   specs:
-    devise-auth0 (1.0.1)
+    devise_auth0 (1.0.1)
       auth0 (~> 5.6)
       devise (~> 4.8)
       dry-configurable (~> 0.13)
@@ -392,7 +392,7 @@ DEPENDENCIES
   appraisal (~> 2.4)
   bundler (~> 2.0)
   code-scanning-rubocop
-  devise-auth0!
+  devise_auth0!
   dotenv
   faker (~> 2.0)
   multi_json
