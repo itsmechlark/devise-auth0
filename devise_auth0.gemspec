@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency("auth0", "~> 5.6")
   s.add_runtime_dependency("devise", "~> 4.8")
-  s.add_runtime_dependency("dry-configurable", "~> 0.13")
+  s.add_runtime_dependency("dry-configurable", ">= 0.13", "< 2.0")
   s.add_runtime_dependency("faraday", "~> 1.10.0")
   s.add_runtime_dependency("faraday-http-cache")
   s.add_runtime_dependency("jwt", "~> 2.3")
