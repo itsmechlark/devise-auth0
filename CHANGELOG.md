@@ -1,5 +1,37 @@
 # Changelog
 
+## [1.1.0](https://github.com/itsmechlark/devise_auth0/compare/v1.0.2...v1.1.0) (2023-09-09)
+
+
+### Features
+
+* **deps:** Bump mail from 2.7.1 to 2.8.1 ([d8e8864](https://github.com/itsmechlark/devise_auth0/commit/d8e8864262f740c8a03e84b6a785fe510b3b12c4))
+* **deps:** Bump rails from `3b999e9` to `90b0266` ([c08525f](https://github.com/itsmechlark/devise_auth0/commit/c08525ffe74afffc8f94bb3152a906da3528509c))
+* **deps:** Bump sqlite3 from 1.4.2 to 1.6.4 ([02f6a87](https://github.com/itsmechlark/devise_auth0/commit/02f6a87c58c3c60a19de883474bae693b45f9505))
+* **deps:** Update dry-configurable requirement from ~&gt; 0.13 to >= 0.13, &lt; 2.0 ([30ef6e6](https://github.com/itsmechlark/devise_auth0/commit/30ef6e6582e1b09e5360d553199af47ba3fdeefe))
+* **deps:** Update faraday requirement from ~&gt; 1.10.0 to >= 1.10, &lt; 2.8 ([b3b9aae](https://github.com/itsmechlark/devise_auth0/commit/b3b9aae887c4518385aeb174cf953a077d02eac4))
+
+
+### Bug Fixes
+
+* **deps:** Retry support for Faraday ([a7d1f25](https://github.com/itsmechlark/devise_auth0/commit/a7d1f254987510abfa1a9451f46f948041e38bb9))
+* Force rebuild release ([d7d34a7](https://github.com/itsmechlark/devise_auth0/commit/d7d34a7aa2d4de23ecc286192612385b0a76d126))
+
+
+### Miscellaneous
+
+* **deps:** Bump appraisal from 2.4.1 to 2.5.0 ([f18b711](https://github.com/itsmechlark/devise_auth0/commit/f18b71149f89fa86788695db05556737b82b2e5b))
+* **deps:** Bump dotenv from 2.7.6 to 2.8.1 ([3d93433](https://github.com/itsmechlark/devise_auth0/commit/3d934339a13e738f783fdf9cb9f29dd2388c001c))
+* **deps:** Bump pry-byebug from 3.9.0 to 3.10.1 ([4e3db44](https://github.com/itsmechlark/devise_auth0/commit/4e3db442ffb11502df41a3f4ca382829d3659f98))
+* **deps:** Bump rubocop-rspec from 2.23.2 to 2.24.0 ([7379974](https://github.com/itsmechlark/devise_auth0/commit/7379974defcb8a7f19ede23f405604427153f483))
+* **deps:** Bump simplecov from 0.21.2 to 0.22.0 ([b774763](https://github.com/itsmechlark/devise_auth0/commit/b774763e9773306f800723570e716e56e5ab6956))
+* **deps:** Bump timecop from 0.9.5 to 0.9.8 ([a506085](https://github.com/itsmechlark/devise_auth0/commit/a5060852a4cc177980c87a741f7d5bb260a83218))
+* **deps:** Bump vcr from 6.1.0 to 6.2.0 ([2a65128](https://github.com/itsmechlark/devise_auth0/commit/2a65128c7c4c4ef0ceb4e374a0de4d5ed80ddac8))
+* **deps:** Bump webmock from 3.14.0 to 3.19.1 ([ebff98a](https://github.com/itsmechlark/devise_auth0/commit/ebff98ade34b1fa6aa4cd0fbd5e45fa55c54e898))
+* **deps:** Update faker requirement from ~&gt; 2.0 to ~> 3.2 ([b558c84](https://github.com/itsmechlark/devise_auth0/commit/b558c84573cd1e40897ed62a617340d1bcf596af))
+* Fixes rubocop config issues on RSpec ([706c766](https://github.com/itsmechlark/devise_auth0/commit/706c766c9e061cb79e9e84e47cb388f438e9aeb7))
+* Link Github Package to Repo ([05dbc7d](https://github.com/itsmechlark/devise_auth0/commit/05dbc7d2e7279b53d52d902fa1308379b67cf028))
+
 ## [1.0.2](https://github.com/itsmechlark/devise_auth0/compare/v1.0.1...v1.0.2) (2023-09-09)
 
 
