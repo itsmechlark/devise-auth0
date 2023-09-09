@@ -54,6 +54,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency("rubocop-rspec")
   s.add_development_dependency("rubocop-shopify", "~> 2.14")
   s.add_development_dependency("simplecov", ">= 0.21.2")
+  s.add_development_dependency("simplecov-lcov")
   s.add_development_dependency("timecop")
   s.add_development_dependency("vcr", "~> 6.0")
   s.add_development_dependency("webmock", "~> 3.4")

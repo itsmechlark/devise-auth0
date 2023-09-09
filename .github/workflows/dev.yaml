@@ -120,3 +120,22 @@ jobs:
       run: git config --global init.defaultBranch main
     - name: Run RSpec
       run: bundle exec rspec
+
+    - name: Coveralls Parallel
+      uses: coverallsapp/github-action@v2
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        flag-name: unit-ruby-${{matrix.ruby }}-${{ matrix.gemfile }}
+        parallel: true
+        path-to-lcov: ./coverage/lcov/devise_auth0.lcov
+
+  finish:
+    needs: unit_test
+    runs-on: ubuntu-latest
+    steps:
+    - name: Upload coverage to Coveralls
+      uses: coverallsapp/github-action@v2
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        parallel-finished: true
+        file: ./coverage/lcov/devise_auth0.lcov

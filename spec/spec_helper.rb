@@ -2,6 +2,12 @@
 
 require "simplecov"
 
+if ENV["CI"]
+  require "simplecov-lcov"
+  SimpleCov.formatter = SimpleCov::Formatter::LcovFormatter
+  SimpleCov::Formatter::LcovFormatter.config.report_with_single_file = true
+end
+
 SimpleCov.start("rails") do
   add_filter "/lib/devise/auth0/version.rb"
   add_filter "/spec/"

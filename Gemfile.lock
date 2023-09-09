@@ -87,7 +87,7 @@ GIT
 PATH
   remote: .
   specs:
-    devise_auth0 (1.0.2)
+    devise_auth0 (1.1.0)
       auth0 (~> 5.6)
       devise (~> 4.8)
       dry-configurable (>= 0.13, < 2.0)
@@ -333,6 +333,7 @@ GEM
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
     simplecov-html (0.12.3)
+    simplecov-lcov (0.8.0)
     simplecov_json_formatter (0.1.4)
     snaky_hash (2.0.1)
       hashie
@@ -406,6 +407,7 @@ DEPENDENCIES
   rubocop-shopify (~> 2.14)
   ruby-lsp
   simplecov (>= 0.21.2)
+  simplecov-lcov
   sqlite3
   timecop
   vcr (~> 6.0)
