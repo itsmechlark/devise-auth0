@@ -9,8 +9,8 @@ updates:
       timezone: 'Asia/Manila'
     open-pull-requests-limit: 99
     commit-message:
-      prefix: 'feat(deps):'
-      prefix-development: 'chore(deps):'
+      prefix: 'feat'
+      prefix-development: 'chore'
       include: 'scope'
 
   - package-ecosystem: github-actions
@@ -21,6 +21,6 @@ updates:
       time: '20:00'
       timezone: 'Asia/Manila'
     commit-message:
-      prefix: 'ci(deps):'
-      prefix-development: 'ci(deps-dev):'
+      prefix: 'ci'
+      prefix-development: 'ci'
       include: 'scope'
