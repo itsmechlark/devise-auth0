@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.0.2](https://github.com/itsmechlark/devise_auth0/compare/v1.0.1...v1.0.2) (2023-09-09)
+
+
+### Miscellaneous
+
+* Disable Bundle Deployment ([6321abb](https://github.com/itsmechlark/devise_auth0/commit/6321abb5c357fd701a328a9e329498d3c29324ad))
+* Fixes gem dependencies ([a96637c](https://github.com/itsmechlark/devise_auth0/commit/a96637cbf8390b1e04ef92ab3392f7a29ed4840b))
+* Fixes gem dependencies ([8f0e06c](https://github.com/itsmechlark/devise_auth0/commit/8f0e06c07e89a6ac0840bc079693ac77ef11c147))
+* Fixes ruby install ([b552599](https://github.com/itsmechlark/devise_auth0/commit/b552599a46eb1e18398fea76f2906c2fc3eef82c))
+* Publish to RubyGems ([3ae924a](https://github.com/itsmechlark/devise_auth0/commit/3ae924a7cb6679d03fbed69e30ba64592e853786))
+* Rename to devise_auth0 ([13d7d2b](https://github.com/itsmechlark/devise_auth0/commit/13d7d2b54e7ecfb79ac5a776f9c30e1fcc0b90ba))
+
 ## [1.0.1](https://github.com/itsmechlark/devise-auth0/compare/v1.0.0...v1.0.1) (2023-09-08)
 
 
