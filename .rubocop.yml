@@ -36,7 +36,7 @@ RSpec/DescribeClass:
     - "spec/integration/logout_spec.rb"
     - "spec/integration/omniauth_spec.rb"
 
-RSpec/FilePath:
+RSpec/SpecFilePathFormat:
   Exclude:
     - "spec/devise/auth0/**/*.rb"
     - "spec/integration/strategy_spec.rb"
