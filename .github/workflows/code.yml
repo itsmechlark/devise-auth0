@@ -48,14 +48,19 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
 
+    - uses: actions/cache@v3
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: '3.0'
-        bundler-cache: true
-
+        bundler-cache: false
     - name: Install dependencies
-      run: bundle install
+      run: bundle install --jobs 4 --retry 3  
 
     - name: Rubocop run
       run: |

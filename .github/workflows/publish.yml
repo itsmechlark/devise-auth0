@@ -13,13 +13,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+
+    - uses: actions/cache@v3
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gems-
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
-      env:
-        BUNDLE_DEPLOYMENT: false
       with:
         ruby-version: '3.0'
-        bundler-cache: true
+        bundler-cache: false
+    - name: Install dependencies
+      run: bundle install --jobs 4 --retry 3  
 
     - name: Publish to GPR
       run: |
