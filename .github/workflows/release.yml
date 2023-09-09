@@ -95,7 +95,7 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         id: release
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.DEVOPS_TOKEN }}
           release-type: ruby
           version-file: lib/devise/auth0/version.rb
           changelog-types: '[{"type":"feat","section":"Features","hidden":false},{"type":"fix","section":"Bug Fixes","hidden":false},{"type":"perf","section":"Performance Improvements","hidden":false},{"type":"docs","section":"Documentation","hidden":true},{"type":"test","section":"Tests","hidden":false},{"type":"chore","section":"Miscellaneous","hidden":false},{"type":"ci","section":"Miscellaneous","hidden":true}]'
@@ -106,7 +106,7 @@ jobs:
         env:
           MAJOR_VERSION: ${{ steps.release.outputs.major }}
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.DEVOPS_TOKEN }}
           script: |
             github.rest.git.updateRef({
               owner: context.repo.owner,
