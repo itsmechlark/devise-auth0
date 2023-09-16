@@ -321,11 +321,11 @@ GEM
       rubocop-factory_bot (~> 2.22)
     rubocop-shopify (2.14.0)
       rubocop (~> 1.51)
-    ruby-lsp (0.9.4)
+    ruby-lsp (0.10.1)
       language_server-protocol (~> 3.17.0)
       sorbet-runtime
       syntax_tree (>= 6.1.1, < 7)
-      yarp (>= 0.9, < 0.11)
+      yarp (>= 0.11, < 0.12)
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
     simplecov (0.22.0)
@@ -338,7 +338,7 @@ GEM
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
-    sorbet-runtime (0.5.11010)
+    sorbet-runtime (0.5.11024)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -374,7 +374,7 @@ GEM
     websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
-    yarp (0.10.0)
+    yarp (0.11.0)
     zache (0.13.1)
     zeitwerk (2.6.11)
 
