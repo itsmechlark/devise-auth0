@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 90b0266e9bfaaadbd2d249ad2eeec042077a0063
+  revision: 1540cb381b4c78f1bcd7e081717a9e0a6706a9d8
   branch: 6-1-stable
   specs:
     actioncable (6.1.7.6)
@@ -187,14 +187,14 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-parser (0.1.1)
-    net-imap (0.3.7)
+    net-imap (0.4.0)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
     net-protocol (0.2.1)
       timeout
-    net-smtp (0.3.3)
+    net-smtp (0.4.0)
       net-protocol
     netrc (0.11.0)
     nio4r (2.5.9)
@@ -376,7 +376,7 @@ GEM
     websocket-extensions (0.1.5)
     yarp (0.10.0)
     zache (0.13.1)
-    zeitwerk (2.6.11)
+    zeitwerk (2.6.12)
 
 PLATFORMS
   aarch64-linux
