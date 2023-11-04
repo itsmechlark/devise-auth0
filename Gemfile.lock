@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/rails/rails.git
-  revision: 90b0266e9bfaaadbd2d249ad2eeec042077a0063
+  revision: 6b6311f6fe0d64f64b580980a1c4de639c62b05a
   branch: 6-1-stable
   specs:
     actioncable (6.1.7.6)
@@ -168,7 +168,7 @@ GEM
     json (2.6.3)
     jwt (2.7.1)
     language_server-protocol (3.17.0.3)
-    loofah (2.21.3)
+    loofah (2.21.4)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -182,19 +182,19 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2023.0808)
     mini_mime (1.1.5)
-    mini_portile2 (2.8.4)
+    mini_portile2 (2.8.5)
     minitest (5.20.0)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-parser (0.1.1)
-    net-imap (0.3.7)
+    net-imap (0.4.4)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
     net-protocol (0.2.1)
       timeout
-    net-smtp (0.3.3)
+    net-smtp (0.4.0)
       net-protocol
     netrc (0.11.0)
     nio4r (2.5.9)
@@ -242,7 +242,7 @@ GEM
       byebug (~> 11.0)
       pry (>= 0.13, < 0.15)
     public_suffix (5.0.3)
-    racc (1.7.1)
+    racc (1.7.3)
     rack (2.2.8)
     rack-protection (3.1.0)
       rack (~> 2.2, >= 2.2.4)
@@ -354,7 +354,7 @@ GEM
     sqlite3 (1.6.4-x86_64-linux)
     syntax_tree (6.1.1)
       prettier_print (>= 1.2.0)
-    thor (1.2.2)
+    thor (1.3.0)
     timecop (0.9.8)
     timeout (0.4.0)
     tzinfo (2.0.6)
@@ -376,7 +376,7 @@ GEM
     websocket-extensions (0.1.5)
     yarp (0.10.0)
     zache (0.13.1)
-    zeitwerk (2.6.11)
+    zeitwerk (2.6.12)
 
 PLATFORMS
   aarch64-linux
