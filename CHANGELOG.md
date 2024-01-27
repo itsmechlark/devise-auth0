@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/itsmechlark/devise_auth0/compare/v1.1.0...v1.2.0) (2024-01-27)
+
+
+### Features
+
+* **deps:** Bump auth0 from 5.14.1 to 5.16.0 ([a0d0d5d](https://github.com/itsmechlark/devise_auth0/commit/a0d0d5df8b371e1a02b33839a7440dcad1dc2bc6))
+* **deps:** Bump devise from 4.9.2 to 4.9.3 ([b0d6ae5](https://github.com/itsmechlark/devise_auth0/commit/b0d6ae5f41e5893739cd20e3513b151b43d2bb29))
+* **deps:** Bump net-smtp from 0.3.3 to 0.4.0 ([642bfe1](https://github.com/itsmechlark/devise_auth0/commit/642bfe12fb6cfdf6e5934b5e8cf5c15091037802))
+* **deps:** bump rails from `90b0266` to `517ff4b` ([48b2b41](https://github.com/itsmechlark/devise_auth0/commit/48b2b415d24f777f6470ecdb29af502820ab8a2d))
+* **deps:** bump ruby-lsp from 0.9.4 to 0.13.4 ([faa4577](https://github.com/itsmechlark/devise_auth0/commit/faa457770dec68ecebfa7c433dc5d8d0f4e2e406))
+* **deps:** bump sqlite3 from 1.6.4 to 1.7.1 ([6fa2cc7](https://github.com/itsmechlark/devise_auth0/commit/6fa2cc76410a9b7dd9e812d1ac9b6f250f0d9747))
+* **deps:** update faraday requirement from &gt;= 1.10, &lt; 2.8 to >= 1.10, < 2.10 ([c3beef8](https://github.com/itsmechlark/devise_auth0/commit/c3beef86fd80232b28d6173a3fd50174d121b434))
+
 ## [1.1.0](https://github.com/itsmechlark/devise_auth0/compare/v1.0.2...v1.1.0) (2023-09-09)
 
 
