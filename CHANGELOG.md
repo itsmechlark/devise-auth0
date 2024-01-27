@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/itsmechlark/devise_auth0/compare/v1.2.0...v1.2.1) (2024-01-27)
+
+
+### Bug Fixes
+
+* Version management with `release-please` ([6456264](https://github.com/itsmechlark/devise_auth0/commit/645626424a252cdd121e351de0c0f74704bd240e))
+
 ## [1.2.0](https://github.com/itsmechlark/devise_auth0/compare/v1.1.0...v1.2.0) (2024-01-27)
 
 
