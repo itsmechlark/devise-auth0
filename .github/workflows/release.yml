@@ -71,9 +71,9 @@ jobs:
           - ruby: '3.3'
             gemfile: rails_5.2_stable
           - ruby: '2.7'
-            gemfile: rails_7.1_stable
+            gemfile: rails_edge
           - ruby: '3.0'
-            gemfile: rails_7.1_stable
+            gemfile: rails_edge
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
     steps:
