@@ -122,7 +122,6 @@ jobs:
         id: release
         with:
           token: ${{ secrets.DEVOPS_TOKEN }}
-          release-type: ruby
 
       - name: Push to Release Branch
         if: ${{ steps.release.outputs.release_created }}
