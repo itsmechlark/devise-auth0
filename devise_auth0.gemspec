@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
 
   s.files = Dir["{app,lib}/**/*", "CHANGELOG.md", "LICENSE.md"]
   s.require_paths = ["lib"]
+  s.required_ruby_version = ">= 2.7.0"
   s.extra_rdoc_files = ["LICENSE.md"]
 
   s.add_runtime_dependency("auth0", "~> 5.6")
