@@ -58,7 +58,7 @@ An example configuration:
 class AdminUser < ApplicationRecord
   devise :database_authenticatable, :auth0,
     auth0_options: { # Model level configuration 
-      email_domains_allowlist: ["example.com"] # Only firstcircle.com users can be created
+      email_domains_allowlist: ["example.com"] # Only example.com users can be created
     }
 end
 
