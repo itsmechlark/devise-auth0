@@ -27,7 +27,7 @@ Read [this document from Github](https://docs.github.com/en/packages/working-wit
 
 #### Devise configuration
 
-First of all, you have to configure the creadentials to validate the authentication. You can do it in the devise initializer:
+First of all, you have to configure the credentials to validate the authentication. You can do it in the devise initializer:
 
 ```ruby
 Devise.setup do |config|
