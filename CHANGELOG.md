@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/itsmechlark/devise_auth0/compare/v1.2.1...v1.2.2) (2024-02-13)
+
+
+### Miscellaneous
+
+* **deps:** Require at least nokogiri 1.16.2 to avoid CVE-2024-25062 ([8199953](https://github.com/itsmechlark/devise_auth0/commit/8199953cfa4f2e56514d8184868316b66342da5e))
+
 ## [1.2.1](https://github.com/itsmechlark/devise_auth0/compare/v1.2.0...v1.2.1) (2024-01-27)
 
 
