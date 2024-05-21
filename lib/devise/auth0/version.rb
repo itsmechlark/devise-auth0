@@ -2,7 +2,7 @@
 
 module Devise
   module Auth0
-    VERSION = "1.2.1"  # x-release-please-version
+    VERSION = "1.2.2"  # x-release-please-version
 
     class << self
       def gem_version
